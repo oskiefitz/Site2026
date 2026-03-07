@@ -5,24 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <!-- ══════════════════════════════════════════════
-       SEO METADATA — edit everything in this block
+       SEO METADATA — edit these 6 lines
        ══════════════════════════════════════════════ -->
   <title>Your Name</title>
   <meta name="description" content="One sentence about who you are — shown in Google results." />
-
-  <!-- Open Graph: controls how your link looks when shared on WhatsApp, iMessage, etc. -->
   <meta property="og:title"       content="Your Name" />
   <meta property="og:description" content="One sentence about who you are." />
   <meta property="og:type"        content="website" />
   <meta property="og:url"         content="https://yourusername.github.io" />
-  <!-- Uncomment + add an image for a thumbnail when your link is shared:
-  <meta property="og:image"       content="https://yourusername.github.io/og.jpg" /> -->
-
-  <!-- Tells search engines this is the definitive URL for this page -->
+  <!-- Uncomment for a link-preview thumbnail (1200×630px):
+  <meta property="og:image" content="https://yourusername.github.io/og.jpg" /> -->
   <link rel="canonical" href="https://yourusername.github.io" />
   <!-- ══════════════════════════════════════════════ -->
 
-  <!-- Fonts: EB Garamond for Latin, Noto Naskh Arabic for Arabic -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Noto+Naskh+Arabic:wght@400;500&display=swap" rel="stylesheet" />
@@ -31,17 +26,16 @@
     /* ── Reset ── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    /* ── Design tokens ── */
+    /* ── Tokens ── */
     :root {
       --text:  #111;
       --bg:    #f7f5f0;
       --muted: #888;
       --rule:  #ccc;
       --max:   520px;
-      --ph:    1.75rem;   /* horizontal padding */
+      --ph:    1.75rem;
     }
 
-    /* ── Base ── */
     html { font-size: 18px; }
 
     body {
@@ -52,14 +46,12 @@
       padding: 3.5rem var(--ph) 5rem;
     }
 
-    /* Arabic: swap font + tune for legibility */
     html[lang="ar"] body {
       font-family: 'Noto Naskh Arabic', serif;
       font-size: 1.05rem;
       line-height: 1.95;
     }
 
-    /* ── Layout ── */
     main   { max-width: var(--max); margin: 0 auto; }
     footer { max-width: var(--max); margin: 2.5rem auto 0; }
 
@@ -86,7 +78,7 @@
     .trigger:hover  { opacity: 0.45; }
     .trigger.active { opacity: 0.45; }
 
-    /* ── Detail panel — below ALL bio text ── */
+    /* ── Detail panel (below all bio text) ── */
     #detail-area {
       display: none;
       margin-top: 2rem;
@@ -102,7 +94,8 @@
       to   { opacity: 1; transform: translateY(0); }
     }
 
-    #detail-area h2 {
+    /* ── Detail: generic styles ── */
+    #detail-area .panel-heading {
       font-size: 0.75rem;
       font-weight: 400;
       text-transform: uppercase;
@@ -110,33 +103,133 @@
       color: var(--muted);
       margin-bottom: 0.8rem;
     }
-    /* uppercase tracking looks odd on Arabic */
-    html[lang="ar"] #detail-area h2 { letter-spacing: 0; }
+    html[lang="ar"] #detail-area .panel-heading { letter-spacing: 0; }
 
     #detail-area p {
       font-size: 0.95rem;
       margin-bottom: 0.4rem;
     }
 
-    #detail-area ul { list-style: none; padding: 0; }
+    #detail-area a {
+      color: inherit;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
 
-    #detail-area ul li {
+    /* ── Project list (shown when "projects" trigger clicked) ── */
+    .project-list {
+      list-style: none;
+      padding: 0;
+    }
+    .project-list li {
       display: flex;
       gap: 1.5rem;
       margin-bottom: 0.25rem;
       font-size: 0.92rem;
     }
-
-    #detail-area ul li .year {
+    .project-list .year {
       color: var(--muted);
       min-width: 4.5rem;
       flex-shrink: 0;
     }
-
-    #detail-area a {
-      color: inherit;
+    /* Project name is itself a trigger */
+    .project-list .proj-trigger {
+      cursor: pointer;
       text-decoration: underline;
-      text-underline-offset: 2px;
+      text-underline-offset: 3px;
+      text-decoration-thickness: 1px;
+      transition: opacity 0.15s;
+    }
+    .project-list .proj-trigger:hover { opacity: 0.45; }
+
+    /* ── Project detail panel ── */
+    .proj-back {
+      display: inline-block;
+      font-size: 0.78rem;
+      color: var(--muted);
+      cursor: pointer;
+      margin-bottom: 1.2rem;
+      text-decoration: none;
+      transition: opacity 0.15s;
+    }
+    .proj-back:hover { opacity: 0.55; }
+
+    .proj-title {
+      font-size: 1rem;
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+    }
+
+    .proj-desc {
+      font-size: 0.92rem;
+      color: #444;
+      margin-bottom: 1.25rem;
+      max-width: 42ch;
+    }
+
+    /* ── Image grid (desktop) ── */
+    .img-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.5rem;
+    }
+
+    .img-grid img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      display: block;
+      background: #e0ddd7;
+    }
+
+    /* Single image spans full width */
+    .img-grid img:only-child { grid-column: 1 / -1; }
+
+    /* Odd last image (3, 5…) spans full width */
+    .img-grid img:last-child:nth-child(odd) { grid-column: 1 / -1; }
+
+    /* ── Carousel (mobile) ── */
+    .img-carousel {
+      display: none; /* hidden on desktop */
+      overflow-x: scroll;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      gap: 0.5rem;
+    }
+    .img-carousel::-webkit-scrollbar { display: none; }
+
+    .img-carousel img {
+      flex-shrink: 0;
+      width: 82vw;
+      max-width: 340px;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      scroll-snap-align: start;
+      background: #e0ddd7;
+    }
+
+    /* Carousel dots */
+    .carousel-dots {
+      display: none;
+      justify-content: center;
+      gap: 0.35rem;
+      margin-top: 0.6rem;
+    }
+    .carousel-dots span {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--rule);
+      transition: background 0.2s;
+    }
+    .carousel-dots span.active { background: var(--text); }
+
+    /* ── Switch grid → carousel on mobile ── */
+    @media (max-width: 600px) {
+      .img-grid     { display: none; }
+      .img-carousel { display: flex; }
+      .carousel-dots { display: flex; }
     }
 
     /* ── Language switcher ── */
@@ -148,7 +241,6 @@
       font-size: 0.82rem;
       color: var(--muted);
     }
-
     .lang-btn {
       cursor: pointer;
       background: none;
@@ -174,7 +266,7 @@
     footer a { color: inherit; text-decoration: none; }
     footer a:hover { text-decoration: underline; }
 
-    /* ── Mobile ── */
+    /* ── Mobile layout tweaks ── */
     @media (max-width: 600px) {
       :root { --ph: 1.25rem; }
       html  { font-size: 17px; }
@@ -190,14 +282,8 @@
 
 <main>
   <h1 id="site-name">Your Name</h1>
-
-  <!-- Bio paragraphs — populated by JS -->
   <div id="bio"></div>
-
-  <!-- Detail panel — appears here, below all bio text -->
   <div id="detail-area" aria-live="polite"></div>
-
-  <!-- Language switcher -->
   <nav id="lang-switcher" aria-label="Language">
     <button class="lang-btn active" data-lang="en">EN</button>
     <span class="lang-sep" aria-hidden="true">·</span>
@@ -211,24 +297,69 @@
 
 <script>
 // ════════════════════════════════════════════════════════════════
-//  CONTENT
-//  Edit the text here. Each language block has:
-//    name   — page title / h1
-//    bio    — array of paragraphs (HTML ok, use .trigger spans)
-//    details — panels that pop up when a trigger is clicked
-//    footer — links at the bottom
+//  PROJECTS
+//  Add or remove projects here. Each project needs:
+//    key    — a unique slug, no spaces (used internally)
+//    year   — displayed in the project list
+//    title  — shown in the project panel header
+//    desc   — short description paragraph
+//    images — array of image URLs
+//             For images in your GitHub repo, use relative paths:
+//             e.g.  "images/project-one/01.jpg"
+//             For placeholder images, use the placehold.co format below.
 //
-//  To add a trigger word: wrap it in
-//    <span class="trigger" data-key="KEY">word</span>
-//  where KEY matches a key in that language's `details` object.
+//  HOW TO ADD REAL IMAGES:
+//    1. Create an  /images/<project-slug>/  folder in your repo
+//    2. Drop your photos in (jpg/png/webp, ~1200px wide is fine)
+//    3. Replace the placehold.co URLs with  "images/<slug>/01.jpg"  etc.
+// ════════════════════════════════════════════════════════════════
+
+const PROJECTS = [
+  {
+    key:    'project-one',
+    year:   '2024',
+    title:  'Project One',
+    desc:   'A short description of this project. What it is, why it exists, what you made.',
+    images: [
+      'https://placehold.co/800x600/e0ddd7/888888?text=Image+1',
+      'https://placehold.co/800x600/d8d4ce/888888?text=Image+2',
+      'https://placehold.co/800x600/e8e5e0/888888?text=Image+3',
+      'https://placehold.co/800x600/dedad4/888888?text=Image+4',
+    ],
+  },
+  {
+    key:    'project-two',
+    year:   '2023',
+    title:  'Project Two',
+    desc:   'A short description of this project. What it is, why it exists, what you made.',
+    images: [
+      'https://placehold.co/800x600/e0ddd7/888888?text=Image+1',
+      'https://placehold.co/800x600/d8d4ce/888888?text=Image+2',
+      'https://placehold.co/800x600/e8e5e0/888888?text=Image+3',
+    ],
+  },
+  {
+    key:    'project-three',
+    year:   '2022',
+    title:  'Project Three',
+    desc:   'A short description of this project. What it is, why it exists, what you made.',
+    images: [
+      'https://placehold.co/800x600/e0ddd7/888888?text=Image+1',
+      'https://placehold.co/800x600/d8d4ce/888888?text=Image+2',
+    ],
+  },
+];
+
+// ════════════════════════════════════════════════════════════════
+//  CONTENT  (bio text, detail panels, footer — in 3 languages)
 // ════════════════════════════════════════════════════════════════
 
 const CONTENT = {
 
-  // ── ENGLISH ──────────────────────────────────────────────────
   en: {
     dir:  'ltr',
     name: 'Your Name',
+    backLabel: '← projects',
 
     bio: [
       `I'm <span class="trigger" data-key="about">Your Name</span>, a researcher and designer currently based in <span class="trigger" data-key="location">Oxford</span>.`,
@@ -243,33 +374,25 @@ const CONTENT = {
       },
       location: {
         heading: 'Location',
-        html: `<p>Oxford, England</p>
-               <p style="color:var(--muted);font-size:0.88rem;">51° 45′ N &nbsp;·&nbsp; 1° 15′ W</p>`
+        html: `<p>Oxford, England</p><p style="color:var(--muted);font-size:0.88rem;">51° 45′ N · 1° 15′ W</p>`
       },
       education: {
         heading: 'Education',
-        html: `<ul>
-          <li><span class="year">2022–</span>  <span>Your Degree, Your University</span></li>
-          <li><span class="year">2019–22</span> <span>Previous Qualification, Previous Institution</span></li>
+        html: `<ul class="project-list">
+          <li><span class="year">2022–</span><span>Your Degree, Your University</span></li>
+          <li><span class="year">2019–22</span><span>Previous Qualification, Previous Institution</span></li>
         </ul>`
       },
       work: {
         heading: 'Experience',
-        html: `<ul>
-          <li><span class="year">2024</span> <span>Role, Organisation</span></li>
-          <li><span class="year">2023</span> <span>Role, Organisation</span></li>
+        html: `<ul class="project-list">
+          <li><span class="year">2024</span><span>Role, Organisation</span></li>
+          <li><span class="year">2023</span><span>Role, Organisation</span></li>
         </ul>`
       },
       interests: {
         heading: 'Interests',
         html: `<p>Topic one, topic two, topic three. A sentence or two about what genuinely occupies your thinking.</p>`
-      },
-      projects: {
-        heading: 'Projects',
-        html: `<ul>
-          <li><span class="year">2024</span> <span><a href="#">Project Name</a> — one-line description</span></li>
-          <li><span class="year">2023</span> <span><a href="#">Another Thing</a> — one-line description</span></li>
-        </ul>`
       },
       contact: {
         heading: 'Contact',
@@ -283,10 +406,10 @@ const CONTENT = {
              <a href="https://github.com/yourusername" target="_blank">github</a>`,
   },
 
-  // ── GERMAN ───────────────────────────────────────────────────
   de: {
     dir:  'ltr',
     name: 'Ihr Name',
+    backLabel: '← Projekte',
 
     bio: [
       `Ich bin <span class="trigger" data-key="about">Ihr Name</span>, Forscher und Designer mit Sitz in <span class="trigger" data-key="location">Oxford</span>.`,
@@ -295,56 +418,22 @@ const CONTENT = {
     ],
 
     details: {
-      about: {
-        heading: 'Über mich',
-        html: `<p>Eine längere Beschreibung von Ihnen, Ihrer Arbeit und Ihren Interessen. Zwei bis drei Sätze genügen vollkommen.</p>`
-      },
-      location: {
-        heading: 'Standort',
-        html: `<p>Oxford, England</p>
-               <p style="color:var(--muted);font-size:0.88rem;">51° 45′ N &nbsp;·&nbsp; 1° 15′ W</p>`
-      },
-      education: {
-        heading: 'Ausbildung',
-        html: `<ul>
-          <li><span class="year">2022–</span>  <span>Studiengang, Universität</span></li>
-          <li><span class="year">2019–22</span> <span>Vorherige Qualifikation, Institution</span></li>
-        </ul>`
-      },
-      work: {
-        heading: 'Erfahrung',
-        html: `<ul>
-          <li><span class="year">2024</span> <span>Stelle, Organisation</span></li>
-          <li><span class="year">2023</span> <span>Stelle, Organisation</span></li>
-        </ul>`
-      },
-      interests: {
-        heading: 'Interessen',
-        html: `<p>Thema eins, Thema zwei, Thema drei. Ein bis zwei Sätze zu dem, was Sie wirklich beschäftigt.</p>`
-      },
-      projects: {
-        heading: 'Projekte',
-        html: `<ul>
-          <li><span class="year">2024</span> <span><a href="#">Projektname</a> — kurze Beschreibung</span></li>
-          <li><span class="year">2023</span> <span><a href="#">Weiteres Projekt</a> — kurze Beschreibung</span></li>
-        </ul>`
-      },
-      contact: {
-        heading: 'Kontakt',
-        html: `<p><a href="mailto:you@example.com">you@example.com</a></p>
-               <p><a href="https://github.com/yourusername" target="_blank">GitHub</a></p>
-               <p><a href="https://linkedin.com/in/yourusername" target="_blank">LinkedIn</a></p>`
-      },
+      about:    { heading: 'Über mich',  html: `<p>Eine längere Beschreibung von Ihnen, Ihrer Arbeit und Ihren Interessen.</p>` },
+      location: { heading: 'Standort',   html: `<p>Oxford, England</p><p style="color:var(--muted);font-size:0.88rem;">51° 45′ N · 1° 15′ W</p>` },
+      education:{ heading: 'Ausbildung', html: `<ul class="project-list"><li><span class="year">2022–</span><span>Studiengang, Universität</span></li><li><span class="year">2019–22</span><span>Vorherige Qualifikation, Institution</span></li></ul>` },
+      work:     { heading: 'Erfahrung',  html: `<ul class="project-list"><li><span class="year">2024</span><span>Stelle, Organisation</span></li><li><span class="year">2023</span><span>Stelle, Organisation</span></li></ul>` },
+      interests:{ heading: 'Interessen', html: `<p>Thema eins, Thema zwei, Thema drei. Ein bis zwei Sätze zu dem, was Sie wirklich beschäftigt.</p>` },
+      contact:  { heading: 'Kontakt',    html: `<p><a href="mailto:you@example.com">you@example.com</a></p><p><a href="https://github.com/yourusername" target="_blank">GitHub</a></p>` },
     },
 
     footer: `<a href="mailto:you@example.com">E-Mail</a>
              <a href="https://github.com/yourusername" target="_blank">GitHub</a>`,
   },
 
-  // ── ARABIC ───────────────────────────────────────────────────
   ar: {
     dir:  'rtl',
     name: 'اسمك',
+    backLabel: 'المشاريع ←',
 
     bio: [
       `أنا <span class="trigger" data-key="about">اسمك</span>، باحث ومصمم مقيم حالياً في <span class="trigger" data-key="location">أكسفورد</span>.`,
@@ -353,46 +442,12 @@ const CONTENT = {
     ],
 
     details: {
-      about: {
-        heading: 'نبذة',
-        html: `<p>وصف مطوَّل عن نفسك وعملك واهتماماتك. جملتان أو ثلاث تكفيان.</p>`
-      },
-      location: {
-        heading: 'الموقع',
-        html: `<p>أكسفورد، إنجلترا</p>
-               <p style="color:var(--muted);font-size:0.88rem;">51° 45′ N &nbsp;·&nbsp; 1° 15′ W</p>`
-      },
-      education: {
-        heading: 'التعليم',
-        html: `<ul>
-          <li><span class="year">٢٠٢٢–</span>  <span>درجتك العلمية، جامعتك</span></li>
-          <li><span class="year">٢٢–٢٠١٩</span> <span>مؤهل سابق، مؤسسة سابقة</span></li>
-        </ul>`
-      },
-      work: {
-        heading: 'الخبرة',
-        html: `<ul>
-          <li><span class="year">٢٠٢٤</span> <span>المنصب، المؤسسة</span></li>
-          <li><span class="year">٢٠٢٣</span> <span>المنصب، المؤسسة</span></li>
-        </ul>`
-      },
-      interests: {
-        heading: 'الاهتمامات',
-        html: `<p>موضوع أول، موضوع ثانٍ، موضوع ثالث. جملة أو جملتان حول ما يشغل تفكيرك فعلاً.</p>`
-      },
-      projects: {
-        heading: 'المشاريع',
-        html: `<ul>
-          <li><span class="year">٢٠٢٤</span> <span><a href="#">اسم المشروع</a> — وصف مختصر</span></li>
-          <li><span class="year">٢٠٢٣</span> <span><a href="#">مشروع آخر</a> — وصف مختصر</span></li>
-        </ul>`
-      },
-      contact: {
-        heading: 'التواصل',
-        html: `<p><a href="mailto:you@example.com">you@example.com</a></p>
-               <p><a href="https://github.com/yourusername" target="_blank">GitHub</a></p>
-               <p><a href="https://linkedin.com/in/yourusername" target="_blank">LinkedIn</a></p>`
-      },
+      about:    { heading: 'نبذة',           html: `<p>وصف مطوَّل عن نفسك وعملك واهتماماتك. جملتان أو ثلاث تكفيان.</p>` },
+      location: { heading: 'الموقع',          html: `<p>أكسفورد، إنجلترا</p><p style="color:var(--muted);font-size:0.88rem;">51° 45′ N · 1° 15′ W</p>` },
+      education:{ heading: 'التعليم',         html: `<ul class="project-list"><li><span class="year">٢٠٢٢–</span><span>درجتك العلمية، جامعتك</span></li><li><span class="year">٢٢–١٩</span><span>مؤهل سابق، مؤسسة سابقة</span></li></ul>` },
+      work:     { heading: 'الخبرة',          html: `<ul class="project-list"><li><span class="year">٢٠٢٤</span><span>المنصب، المؤسسة</span></li><li><span class="year">٢٠٢٣</span><span>المنصب، المؤسسة</span></li></ul>` },
+      interests:{ heading: 'الاهتمامات',      html: `<p>موضوع أول، موضوع ثانٍ، موضوع ثالث. جملة أو جملتان حول ما يشغل تفكيرك فعلاً.</p>` },
+      contact:  { heading: 'التواصل',         html: `<p><a href="mailto:you@example.com">you@example.com</a></p><p><a href="https://github.com/yourusername" target="_blank">GitHub</a></p>` },
     },
 
     footer: `<a href="mailto:you@example.com">البريد الإلكتروني</a>
@@ -401,11 +456,11 @@ const CONTENT = {
 };
 
 // ════════════════════════════════════════════════════════════════
-//  ENGINE — no need to edit below this line
+//  ENGINE
 // ════════════════════════════════════════════════════════════════
 
 let currentLang   = 'en';
-let currentDetail = null;
+let currentDetail = null;  // key of currently open panel
 
 const bioEl    = document.getElementById('bio');
 const detailEl = document.getElementById('detail-area');
@@ -413,65 +468,156 @@ const nameEl   = document.getElementById('site-name');
 const footerEl = document.getElementById('site-footer');
 const htmlEl   = document.documentElement;
 
-function showDetail(key) {
-  const d = CONTENT[currentLang].details[key];
-  if (!d) return;
-  detailEl.innerHTML = `<h2>${d.heading}</h2>${d.html}`;
+// Build the projects list panel HTML
+function projectsListHTML() {
+  const rows = PROJECTS.map(p =>
+    `<li>
+      <span class="year">${p.year}</span>
+      <span class="proj-trigger" data-proj="${p.key}">${p.title}</span>
+    </li>`
+  ).join('');
+  return `<ul class="project-list">${rows}</ul>`;
+}
+
+// Build a single project panel HTML
+function projectPanelHTML(proj) {
+  const lang   = CONTENT[currentLang];
+  const imgsSrc = proj.images;
+
+  // Grid (desktop)
+  const gridImgs = imgsSrc.map(src =>
+    `<img src="${src}" alt="${proj.title}" loading="lazy" />`
+  ).join('');
+
+  // Carousel (mobile) + dots
+  const carouselImgs = imgsSrc.map(src =>
+    `<img src="${src}" alt="${proj.title}" loading="lazy" />`
+  ).join('');
+  const dots = imgsSrc.map((_, i) =>
+    `<span class="${i === 0 ? 'active' : ''}" data-dot="${i}"></span>`
+  ).join('');
+
+  return `
+    <button class="proj-back" id="proj-back-btn">${lang.backLabel}</button>
+    <p class="proj-title">${proj.title}</p>
+    <p class="proj-desc">${proj.desc}</p>
+    <div class="img-grid">${gridImgs}</div>
+    <div class="img-carousel" id="proj-carousel">${carouselImgs}</div>
+    <div class="carousel-dots" id="carousel-dots">${dots}</div>
+  `;
+}
+
+function openDetail(key) {
+  const lang = CONTENT[currentLang];
+
+  let html = '';
+  let heading = '';
+
+  if (key === 'projects') {
+    heading = currentLang === 'ar' ? 'المشاريع' : currentLang === 'de' ? 'Projekte' : 'Projects';
+    html = `<p class="panel-heading">${heading}</p>` + projectsListHTML();
+  } else if (CONTENT[currentLang].details[key]) {
+    const d = CONTENT[currentLang].details[key];
+    html = `<p class="panel-heading">${d.heading}</p>${d.html}`;
+  }
+
+  if (!html) return;
+
+  detailEl.innerHTML = html;
   detailEl.classList.remove('visible');
-  void detailEl.offsetWidth; // force reflow so animation re-fires
+  void detailEl.offsetWidth;
   detailEl.classList.add('visible');
+
+  // Attach project-list item clicks
+  detailEl.querySelectorAll('.proj-trigger').forEach(el => {
+    el.addEventListener('click', () => {
+      const proj = PROJECTS.find(p => p.key === el.dataset.proj);
+      if (!proj) return;
+      detailEl.innerHTML = projectPanelHTML(proj);
+      detailEl.classList.remove('visible');
+      void detailEl.offsetWidth;
+      detailEl.classList.add('visible');
+      attachProjectPanelEvents();
+    });
+  });
+}
+
+function attachProjectPanelEvents() {
+  // Back button
+  const backBtn = document.getElementById('proj-back-btn');
+  if (backBtn) {
+    backBtn.addEventListener('click', () => {
+      openDetail('projects');
+      // keep current detail key as 'projects'
+      currentDetail = 'projects';
+      updateActiveTriggers('projects');
+    });
+  }
+
+  // Carousel scroll → update dots
+  const carousel = document.getElementById('proj-carousel');
+  const dotsEl   = document.getElementById('carousel-dots');
+  if (carousel && dotsEl) {
+    const dots = dotsEl.querySelectorAll('span');
+    carousel.addEventListener('scroll', () => {
+      const idx = Math.round(carousel.scrollLeft / carousel.offsetWidth);
+      dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+    }, { passive: true });
+
+    // Dots click → scroll
+    dots.forEach((dot, i) => {
+      dot.addEventListener('click', () => {
+        carousel.scrollTo({ left: i * carousel.offsetWidth, behavior: 'smooth' });
+      });
+    });
+  }
+}
+
+function updateActiveTriggers(key) {
+  document.querySelectorAll('.trigger').forEach(el =>
+    el.classList.toggle('active', el.dataset.key === key)
+  );
 }
 
 function onTriggerClick(key) {
   if (currentDetail === key) {
-    // Same word clicked again — close
+    // Close
     currentDetail = null;
     detailEl.classList.remove('visible');
-    document.querySelectorAll('.trigger').forEach(el => el.classList.remove('active'));
+    updateActiveTriggers(null);
   } else {
     currentDetail = key;
-    document.querySelectorAll('.trigger').forEach(el =>
-      el.classList.toggle('active', el.dataset.key === key)
-    );
-    showDetail(key);
+    updateActiveTriggers(key);
+    openDetail(key);
   }
 }
 
 function render(lang) {
   const t = CONTENT[lang];
-
-  // Direction + lang attribute (CSS uses these for font/direction switching)
   htmlEl.lang = lang;
   htmlEl.dir  = t.dir;
 
-  // Content
   nameEl.textContent = t.name;
   bioEl.innerHTML    = t.bio.map(p => `<p>${p}</p>`).join('');
   footerEl.innerHTML = t.footer;
 
-  // Attach click handlers (bio was re-rendered so elements are new)
   document.querySelectorAll('.trigger').forEach(el => {
     el.addEventListener('click', () => onTriggerClick(el.dataset.key));
   });
 
-  // If a detail was open, re-render it in the new language
-  if (currentDetail && CONTENT[lang].details[currentDetail]) {
-    showDetail(currentDetail);
-    document.querySelectorAll('.trigger').forEach(el =>
-      el.classList.toggle('active', el.dataset.key === currentDetail)
-    );
+  // Re-render open panel in new language
+  if (currentDetail) {
+    updateActiveTriggers(currentDetail);
+    openDetail(currentDetail);
   } else {
-    currentDetail = null;
     detailEl.classList.remove('visible');
   }
 
-  // Highlight active language button
   document.querySelectorAll('.lang-btn').forEach(btn =>
     btn.classList.toggle('active', btn.dataset.lang === lang)
   );
 }
 
-// Language button clicks
 document.querySelectorAll('.lang-btn').forEach(btn => {
   btn.addEventListener('click', () => {
     currentLang = btn.dataset.lang;
@@ -479,9 +625,7 @@ document.querySelectorAll('.lang-btn').forEach(btn => {
   });
 });
 
-// Initial render
 render('en');
 </script>
-
 </body>
 </html>
