@@ -5,69 +5,43 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>Oscar Fitzgerald</title>
-  <meta name="description" content="Oscar Fitzgerald — philologist, data artist, and designer based in Oxford." />
+  <meta name="description" content="Oscar Fitzgerald — philologist, computational artist, and student at Oxford." />
   <meta property="og:title"       content="Oscar Fitzgerald" />
-  <meta property="og:description" content="Philologist, data artist, and designer based in Oxford." />
+  <meta property="og:description" content="Philologist, computational artist, and student at Oxford." />
   <meta property="og:type"        content="website" />
   <meta property="og:url"         content="https://yourusername.github.io" />
   <link rel="canonical"           href="https://yourusername.github.io" />
 
-  <!-- Google font for EN/DE/SR fallback while custom fonts load -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500&family=Noto+Naskh+Arabic:wght@400;500&display=swap" rel="stylesheet" />
 
   <style>
     /* ═══════════════════════════════════════════════════════════
-       FONT SWAP — this is the only place you need to touch fonts
+       FONT SWAP — only touch these lines to change fonts
        ═══════════════════════════════════════════════════════════
-
-       To change the English/Latin font:
-         1. Upload your .otf or .ttf file to the root of your repo
-            (same folder as index.html)
-         2. Change the src URL on line ~40 below to match the filename
-            e.g.  url('MyNewFont.otf') format('opentype')
-                  url('MyNewFont.ttf') format('truetype')
-         3. Change --font-latin on line ~55 to 'MyNewFont'
-         That's it. Three lines, all clearly marked with ← EDIT.
-
-       To change the Arabic font: same process, but edit the
-         @font-face for 'Lenos' and --font-arabic instead.
-
-       To change the Serbian font: edit the @font-face for
-         'GT-Walsheim' and --font-sr.
+       1. Upload your .otf to the repo root
+       2. Change the filename in the src: url() below  ← EDIT
+       3. Done — --font-latin already points to 'LatinFont'
     ═══════════════════════════════════════════════════════════ */
-
-    /* English / Latin — upload your .otf here */
     @font-face {
       font-family: 'LatinFont';
-      src: url('ABCOtto-Regular-Trial.otf') format('opentype'); /* ← EDIT: change filename */
-      font-weight: 400;
-      font-style: normal;
-      font-display: swap;
+      src: url('ABCOtto-Regular-Trial.otf') format('opentype'); /* ← EDIT filename */
+      font-weight: 400; font-style: normal; font-display: swap;
     }
-
-    /* Arabic */
     @font-face {
       font-family: 'Lenos';
-      src: url('LenosMedium.otf') format('opentype'); /* ← EDIT if you swap Arabic font */
-      font-weight: 400;
-      font-style: normal;
-      font-display: swap;
+      src: url('LenosMedium.otf') format('opentype');
+      font-weight: 400; font-style: normal; font-display: swap;
     }
-
-    /* Serbian / Cyrillic */
     @font-face {
       font-family: 'GT-Walsheim';
-      src: url('GT-Walsheim-Pro-Black.ttf') format('truetype'); /* ← EDIT if you swap Serbian font */
-      font-weight: 900;
-      font-style: normal;
-      font-display: swap;
+      src: url('GT-Walsheim-Pro-Black.ttf') format('truetype');
+      font-weight: 900; font-style: normal; font-display: swap;
     }
 
     :root {
-      /* ← EDIT: change 'LatinFont' to your new font-family name after uploading */
-      --font-latin:  'LatinFont', 'Hanken Grotesk', 'Helvetica Neue', sans-serif;
+      --font-latin:  'LatinFont', 'Hanken Grotesk', 'Helvetica Neue', sans-serif; /* ← EDIT 'LatinFont' if you rename */
       --font-arabic: 'Lenos', 'Noto Naskh Arabic', serif;
       --font-sr:     'GT-Walsheim', 'Hanken Grotesk', sans-serif;
     }
@@ -76,12 +50,12 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --text:        #111;
-      --bg:          #f7f5f0;
-      --muted:       #888;
-      --rule:        #ccc;
-      --ph:          1.2rem;   /* horizontal padding — tight like Körner */
-      --footer-h:    2.75rem;  /* height reserved for fixed footer */
+      --text:     #111;
+      --bg:       #f7f5f0;
+      --muted:    #888;
+      --rule:     #ccc;
+      --ph:       1.2rem;
+      --footer-h: 2.75rem;
     }
 
     html { font-size: 18px; }
@@ -92,18 +66,14 @@
       color: var(--text);
       line-height: 1.5;
       padding: 1.2rem var(--ph) 0;
-      /* Make room so content never hides behind fixed footer */
       padding-bottom: calc(var(--footer-h) + 1.5rem);
     }
 
     html[lang="ar"] body { font-family: var(--font-arabic); line-height: 1.85; font-size: 1.05rem; }
     html[lang="sr"] body { font-family: var(--font-sr);     line-height: 1.4;  letter-spacing: -0.01em; }
 
-    /* ── Bio: single continuous paragraph, slightly larger ── */
-    #bio {
-      /* Bumped up from 1.1–1.55rem to 1.25–1.75rem */
-      font-size: clamp(1.25rem, 2.8vw, 1.75rem);
-    }
+    /* ── Bio ── */
+    #bio { font-size: clamp(1.4rem, 3.2vw, 2rem); }
     #bio p { display: inline; }
     #bio p::after { content: ' '; }
 
@@ -121,11 +91,9 @@
     /* ── Detail panel ── */
     #detail-area {
       display: none;
-      /* Tight — sits just after the bio text, no border, no big gap */
       margin-top: 0.35em;
       padding-top: 0;
       border-top: none;
-      /* Everything inside is muted grey */
       color: var(--muted);
     }
     #detail-area.visible { display: block; animation: drop 0.15s ease; }
@@ -144,18 +112,20 @@
     }
     html[lang="ar"] .panel-heading { letter-spacing: 0; }
 
-    #detail-area p { font-size: 0.9rem; margin-bottom: 0.3rem; color: var(--muted); }
-    #detail-area a { color: var(--muted); text-decoration: underline; text-underline-offset: 2px; }
+    #detail-area p   { font-size: 1rem; margin-bottom: 0.3rem; color: var(--muted); }
+    #detail-area a   { color: var(--muted); text-decoration: underline; text-underline-offset: 2px; }
     #detail-area a:hover { color: var(--text); }
 
+    /* Lists with year column */
     .item-list      { list-style: none; padding: 0; }
-    .item-list li   { display: flex; gap: 1.5rem; margin-bottom: 0.25rem; font-size: 0.9rem; align-items: baseline; color: var(--muted); }
+    .item-list li   { display: flex; gap: 1.5rem; margin-bottom: 0.25rem; font-size: 1rem; align-items: baseline; color: var(--muted); }
     .item-list .year { color: var(--muted); min-width: 4rem; flex-shrink: 0; opacity: 0.7; }
 
-    /* Philology list — no year column, no indent */
+    /* Lists without year column (philology, contact) */
     .plain-list     { list-style: none; padding: 0; }
-    .plain-list li  { margin-bottom: 0.25rem; font-size: 0.9rem; color: var(--muted); }
+    .plain-list li  { margin-bottom: 0.25rem; font-size: 1rem; color: var(--muted); }
 
+    /* Clickable sub-items */
     .sub-trigger {
       cursor: pointer;
       text-decoration: underline;
@@ -165,18 +135,14 @@
     }
     .sub-trigger:hover { opacity: 0.4; }
 
+    /* Sub-panel (image viewer) */
     .sub-back {
-      display: inline-block;
-      font-size: 0.75rem;
-      color: var(--muted);
-      cursor: pointer;
-      margin-bottom: 1rem;
-      background: none; border: none;
-      padding: 0; font-family: inherit;
+      display: inline-block; font-size: 0.75rem; color: var(--muted);
+      cursor: pointer; margin-bottom: 1rem;
+      background: none; border: none; padding: 0; font-family: inherit;
       transition: opacity 0.15s;
     }
     .sub-back:hover { opacity: 0.5; }
-
     .sub-title { font-size: 0.95rem; font-weight: 500; margin-bottom: 0.35rem; color: var(--muted); }
     .sub-desc  { font-size: 0.85rem; color: var(--muted); margin-bottom: 1.1rem; max-width: 52ch; }
 
@@ -187,94 +153,56 @@
 
     /* Carousel */
     .img-carousel {
-      display: none;
-      overflow-x: scroll; scroll-snap-type: x mandatory;
+      display: none; overflow-x: scroll; scroll-snap-type: x mandatory;
       -webkit-overflow-scrolling: touch; scrollbar-width: none; gap: 0.5rem;
     }
     .img-carousel::-webkit-scrollbar { display: none; }
     .img-carousel img {
-      flex-shrink: 0; width: 80vw; max-width: 320px;
-      aspect-ratio: 4/3; object-fit: cover;
-      scroll-snap-align: start; background: #e0ddd7;
+      flex-shrink: 0; width: 80vw; max-width: 320px; aspect-ratio: 4/3;
+      object-fit: cover; scroll-snap-align: start; background: #e0ddd7;
     }
     .carousel-dots { display: none; justify-content: center; gap: 0.35rem; margin-top: 0.6rem; }
     .carousel-dots span { width: 5px; height: 5px; border-radius: 50%; background: var(--rule); cursor: pointer; transition: background 0.2s; }
     .carousel-dots span.active { background: var(--text); }
 
     @media (max-width: 600px) {
-      .img-grid      { display: none; }
-      .img-carousel  { display: flex; }
+      .img-grid { display: none; }
+      .img-carousel { display: flex; }
       .carousel-dots { display: flex; }
     }
 
-    /* ═══════════════════════════════════════════════════════════
-       FIXED FOOTER
-       Always visible at the bottom — never needs scrolling.
-       Three zones: email+github LEFT · logo CENTRE · lang RIGHT
-    ═══════════════════════════════════════════════════════════ */
+    /* ── Fixed footer ── */
     footer {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
+      position: fixed; bottom: 0; left: 0; right: 0;
       height: var(--footer-h);
       background: var(--bg);
-
-      /* Thin top border so it doesn't bleed into content */
       border-top: 1px solid var(--rule);
-
       display: grid;
       grid-template-columns: 1fr auto 1fr;
       align-items: center;
       padding: 0 var(--ph);
       gap: 0.5rem;
-
-      /* Sit above page content */
       z-index: 100;
     }
 
-    /* LEFT: email + github */
-    .footer-left {
-      display: flex;
-      gap: 1rem;
-      font-size: 0.72rem;
-      color: var(--muted);
-    }
+    .footer-left { display: flex; gap: 1rem; font-size: 0.72rem; color: var(--muted); }
     .footer-left a { color: inherit; text-decoration: none; white-space: nowrap; }
     .footer-left a:hover { text-decoration: underline; }
 
-    /* CENTRE: logo */
     .footer-centre { display: flex; justify-content: center; }
-    .logo-link {
-      display: flex; align-items: center; justify-content: center;
-      width: 22px; height: 22px;
-      opacity: 0.4; transition: opacity 0.2s;
-    }
+    .logo-link { display: flex; align-items: center; justify-content: center; width: 22px; height: 22px; opacity: 0.4; transition: opacity 0.2s; }
     .logo-link:hover { opacity: 1; }
     .logo-link svg, .logo-link img { width: 100%; height: 100%; display: block; }
 
-    /* RIGHT: language switcher */
-    .footer-right {
-      display: flex;
-      justify-content: flex-end;
-      align-items: center;
-      gap: 0.45rem;
-    }
-    .lang-btn {
-      cursor: pointer; background: none; border: none; padding: 0;
-      font-family: inherit; font-size: 0.72rem; color: var(--muted);
-      transition: color 0.15s;
-    }
+    .footer-right { display: flex; justify-content: flex-end; align-items: center; gap: 0.45rem; }
+    .lang-btn { cursor: pointer; background: none; border: none; padding: 0; font-family: inherit; font-size: 0.72rem; color: var(--muted); transition: color 0.15s; }
     .lang-btn:hover  { color: var(--text); }
     .lang-btn.active { color: var(--text); font-style: italic; }
     .lang-sep        { font-size: 0.72rem; color: var(--rule); user-select: none; }
 
-    /* Mobile adjustments */
     @media (max-width: 480px) {
       :root { --ph: 1rem; --footer-h: 2.5rem; }
       html  { font-size: 16px; }
-      /* Collapse email label on very small screens */
-      .footer-left .long-label { display: none; }
     }
   </style>
 </head>
@@ -283,17 +211,10 @@
 <div id="bio"></div>
 <div id="detail-area" aria-live="polite"></div>
 
-<!-- ═══ FIXED FOOTER ═══ -->
 <footer>
-  <!-- LEFT -->
   <div class="footer-left" id="footer-links"></div>
 
-  <!-- CENTRE: logo links to index page -->
   <div class="footer-centre">
-    <!--
-      LOGO: replace the <svg> below with your own, or use:
-        <img src="logo.svg" alt="Oscar Fitzgerald" width="22" height="22">
-    -->
     <a href="/" class="logo-link" aria-label="Home">
       <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
         <circle cx="18" cy="18" r="16" stroke="#111" stroke-width="1.5"/>
@@ -303,7 +224,6 @@
     </a>
   </div>
 
-  <!-- RIGHT -->
   <nav class="footer-right" aria-label="Language">
     <button class="lang-btn active" data-lang="en">EN</button>
     <span class="lang-sep">·</span>
@@ -334,127 +254,219 @@ const IMAGES = {
 };
 
 const CONTENT = {
+
+  // ── ENGLISH ──────────────────────────────────────────────────
   en: {
     dir: 'ltr',
-    backLabel: { exhibitions: '← exhibitions', threed: '← 3D', philologist: '← philology' },
-    bio: `Hello. I am <span class="trigger" data-key="about">Oscar Fitzgerald</span>, currently based in <span class="trigger" data-key="location">Oxford</span>. I work with data, through <span class="trigger" data-key="exhibitions">exhibitions and installations</span> and <span class="trigger" data-key="threed">3D</span>. For the past few years however I have been <span class="trigger" data-key="studying">studying</span> at Oxford as a <span class="trigger" data-key="prizes">prize-winning</span> <span class="trigger" data-key="philologist">philologist</span>. Always happy to <span class="trigger" data-key="contact">get in touch</span>.`,
+    backLabel: { installations: '← installations', threed: '← 3D', philological: '← philology' },
+
+    bio: `Hello. I am <span class="trigger" data-key="about">Oscar Fitzgerald</span>, a <span class="trigger" data-key="prizes">prize-winning</span> philologist and computational artist, <span class="trigger" data-key="studying">studying</span> at <span class="trigger" data-key="location">Oxford</span>. I work with data of all kinds, <span class="trigger" data-key="philological">philological</span>, physical, visual, through <span class="trigger" data-key="installations">installations</span> and <span class="trigger" data-key="threed">3D</span>. Always happy to <span class="trigger" data-key="contact">get in touch</span>.`,
+
     details: {
-      about:     { heading: 'About',      type: 'html', html: `<p>Oscar Fitzgerald is a philologist and data artist based in Oxford. He works across language, computation, and physical installation.</p>` },
-      location:  { heading: 'Location',   type: 'html', html: `<p>Oxford, England</p><p style="color:var(--muted);font-size:0.85rem;">51° 45′ N · 1° 15′ W</p>` },
-      studying:  { heading: 'Education',  type: 'html', html: `<ul class="item-list"><li><span class="year">2023–26</span><span>Oxford</span></li><li><span class="year">2022–23</span><span>UAL</span></li></ul>` },
-      prizes:    { heading: 'Prizes',     type: 'html', html: `<ul class="item-list"><li><span class="year">2025</span><span>Prize name, awarding body</span></li><li><span class="year">2024</span><span>Prize name, awarding body</span></li><li><span class="year">2024</span><span>Prize name, awarding body</span></li><li><span class="year">2023</span><span>Prize name, awarding body</span></li><li><span class="year">2022</span><span>Prize name, awarding body</span></li></ul>` },
-      contact:   { heading: 'Contact',    type: 'html', html: `<p><a href="mailto:you@example.com">you@example.com</a></p><p><a href="https://github.com/yourusername" target="_blank">GitHub</a></p>` },
-      exhibitions: { heading: 'Exhibitions & Installations', type: 'projects', items: [
-        { key: 'spit-shined',   year: '2024', title: 'Spit-shined Apocalypse', desc: 'A short description of this work — medium, context, what it explores.' },
-        { key: 'brain-scanner', year: '2023', title: 'Brain-scanner',          desc: 'A short description of this work — medium, context, what it explores.' },
-      ]},
-      threed: { heading: '3D', type: 'projects', items: [
-        { key: '3d-one',   year: '2024', title: '3D Work One',   desc: 'A short description of this work.' },
-        { key: '3d-two',   year: '2023', title: '3D Work Two',   desc: 'A short description of this work.' },
-        { key: '3d-three', year: '2022', title: '3D Work Three', desc: 'A short description of this work.' },
-      ]},
-      philologist: { heading: 'Philological Work', type: 'philology', items: [
-        { key: 'cal',             title: 'Comprehensive Aramaic Lexicon', type: 'link',   href: 'https://cal.huc.edu/' },
-        { key: 'divinecommandline', title: 'Divinecommandline',           type: 'images', desc: 'A short description of this work.' },
-        { key: 'wahlul-uqode',    title: 'Wahlul Uqode',                  type: 'images', desc: 'A short description of this work.' },
-      ]},
+      about: {
+        type: 'html',
+        html: `<p>Also known as Oskie Fitz, Oskar HadžiFicĐeraldOskar, Oskar Stanković.</p>`,
+      },
+      location: {
+        type: 'html',
+        html: `<p>Oxford, England</p><p style="color:var(--muted);font-size:0.85rem;margin-top:0.2rem;">51° 45′ N · 1° 15′ W</p>`,
+      },
+      studying: {
+        type: 'html',
+        html: `<ul class="item-list">
+          <li><span class="year">2023–26</span><span>BA Theology &amp; Religion, University of Oxford</span></li>
+          <li><span class="year">2022–23</span><span>BA Fine Art: Computational Arts (CertHE), UAL</span></li>
+        </ul>`,
+      },
+      prizes: {
+        type: 'html',
+        html: `<ul class="item-list">
+          <li><span class="year">2026</span><span>Tel Aviv University Archaeology Scholarship</span></li>
+          <li><span class="year">2025</span><span>Hazem Ben-Gacem Scholarship</span></li>
+          <li><span class="year">2025</span><span>St. Antony's Middle East Centre Arabic Training Fund, Tunisia</span></li>
+          <li><span class="year">2024</span><span>Expanding Horizons Grant, St. John's College</span></li>
+          <li><span class="year">2024</span><span>Special Grant, St. John's College, University of Belgrade Faculty of Philology</span></li>
+          <li><span class="year">2024</span><span>Kennicott &amp; Pusey–Ellerton Prize, Biblical Hebrew</span></li>
+          <li><span class="year">2024</span><span>Casberd Scholarship</span></li>
+        </ul>`,
+      },
+      contact: {
+        type: 'html',
+        html: `<p><a href="mailto:oskie@wiseblood.com">oskie@wiseblood.com</a></p>`,
+      },
+
+      installations: {
+        type: 'projects',
+        backKey: 'installations',
+        items: [
+          {
+            key: 'brain-scanner',
+            year: '2024',
+            title: 'Brain-scanner',
+            desc: 'An electroencephalogram built from repurposed electronics. An interactive installation displaying a generative Monet-style image of a live webcam feed — more detailed the more concentrated the viewer is. Exhibited at Oxford Review of Books promotional show, 500+ guests.',
+          },
+          {
+            key: 'spit-shined',
+            year: '2023',
+            title: 'Spit-shined Apocalypse',
+            desc: 'Presented at Creative Tech & Digital Design, London. Work at the intersection of art and technology, shown alongside interdisciplinary exchanges with professionals across tech and creative sectors.',
+          },
+        ],
+      },
+
+      threed: {
+        type: 'projects',
+        backKey: 'threed',
+        items: [
+          {
+            key: '3d-one',
+            year: '2025',
+            title: 'Great Isaiah Scroll — FTL Institute',
+            desc: 'Conceptual mock-ups, technical schematics, and interaction plans for an immersive installation centred on the Great Isaiah Scroll. 3D interface built in Unreal Engine, with a structured database of textual emendations supporting Marcello Fidanzio\'s project on materiality.',
+          },
+          {
+            key: '3d-two',
+            year: '2024',
+            title: 'AR Furniture Tool — Chameleon Furniture',
+            desc: 'Designed and programmed an Augmented Reality tool to showcase furniture in an interactive live-feed webcam environment. Leveraged AI tools to create desired brand image without need for expensive property rental.',
+          },
+          {
+            key: '3d-three',
+            year: '2024',
+            title: '3D Work Three',
+            desc: 'Description of third 3D work.',
+          },
+        ],
+      },
+
+      philological: {
+        type: 'philology',
+        backKey: 'philological',
+        items: [
+          {
+            key: 'cal',
+            title: 'Comprehensive Aramaic Lexicon',
+            type: 'link',
+            href: 'https://cal.huc.edu/',
+          },
+          {
+            key: 'divinecommandline',
+            title: 'divinecommandline',
+            type: 'images',
+            desc: 'An open-source command-line grammatical parsing tool for right-aligned texts. Enables viewing of grammatical parsing of each Hebrew word of the Biblia Hebraica Stuttgartensia via the command line. Also includes a Qur\'ānic Arabic parsing tool using the same interface.',
+          },
+          {
+            key: 'wahlul-uqode',
+            title: 'Wahlul Uqode',
+            type: 'images',
+            desc: 'Description of this philological work.',
+          },
+        ],
+      },
     },
+
     footer: [
-      { label: 'you@example.com', href: 'mailto:you@example.com' },
-      { label: 'GitHub',          href: 'https://github.com/yourusername' },
+      { label: 'oskie@wiseblood.com', href: 'mailto:oskie@wiseblood.com' },
+      
     ],
   },
 
+  // ── GERMAN ───────────────────────────────────────────────────
   de: {
     dir: 'ltr',
-    backLabel: { exhibitions: '← Ausstellungen', threed: '← 3D', philologist: '← Philologie' },
-    bio: `Hallo. Ich bin <span class="trigger" data-key="about">Oscar Fitzgerald</span>, derzeit wohnhaft in <span class="trigger" data-key="location">Oxford</span>. Ich arbeite mit Daten – durch <span class="trigger" data-key="exhibitions">Ausstellungen und Installationen</span> sowie <span class="trigger" data-key="threed">3D</span>. Seit einigen Jahren <span class="trigger" data-key="studying">studiere</span> ich in Oxford als <span class="trigger" data-key="prizes">preisgekrönter</span> <span class="trigger" data-key="philologist">Philologe</span>. Ich freue mich jederzeit über <span class="trigger" data-key="contact">Kontakt</span>.`,
+    backLabel: { installations: '← Installationen', threed: '← 3D', philological: '← Philologie' },
+
+    bio: `Hallo. Ich bin <span class="trigger" data-key="about">Oscar Fitzgerald</span>, ein <span class="trigger" data-key="prizes">preisgekrönter</span> Philologe und Computerkünstler, der in <span class="trigger" data-key="location">Oxford</span> <span class="trigger" data-key="studying">studiert</span>. Ich arbeite mit Daten aller Art — <span class="trigger" data-key="philological">philologischen</span>, physischen, visuellen — durch <span class="trigger" data-key="installations">Installationen</span> und <span class="trigger" data-key="threed">3D</span>. Ich freue mich jederzeit über <span class="trigger" data-key="contact">Kontakt</span>.`,
+
     details: {
-      about:     { heading: 'Über mich',    type: 'html', html: `<p>Oscar Fitzgerald ist Philologe und Datenkünstler in Oxford.</p>` },
-      location:  { heading: 'Standort',     type: 'html', html: `<p>Oxford, England</p><p style="color:var(--muted);font-size:0.85rem;">51° 45′ N · 1° 15′ W</p>` },
-      studying:  { heading: 'Ausbildung',   type: 'html', html: `<ul class="item-list"><li><span class="year">2023–26</span><span>Oxford</span></li><li><span class="year">2022–23</span><span>UAL</span></li></ul>` },
-      prizes:    { heading: 'Auszeichnungen', type: 'html', html: `<ul class="item-list"><li><span class="year">2025</span><span>Preis, Vergabestelle</span></li><li><span class="year">2024</span><span>Preis, Vergabestelle</span></li><li><span class="year">2024</span><span>Preis, Vergabestelle</span></li><li><span class="year">2023</span><span>Preis, Vergabestelle</span></li><li><span class="year">2022</span><span>Preis, Vergabestelle</span></li></ul>` },
-      contact:   { heading: 'Kontakt',      type: 'html', html: `<p><a href="mailto:you@example.com">you@example.com</a></p><p><a href="https://github.com/yourusername" target="_blank">GitHub</a></p>` },
-      exhibitions: { heading: 'Ausstellungen & Installationen', type: 'projects', items: [
-        { key: 'spit-shined',   year: '2024', title: 'Spit-shined Apocalypse', desc: 'Kurze Beschreibung dieser Arbeit.' },
-        { key: 'brain-scanner', year: '2023', title: 'Brain-scanner',          desc: 'Kurze Beschreibung dieser Arbeit.' },
+      about:     { type: 'html', html: `<p>Oscar Fitzgerald ist Philologe und Computerkünstler in Oxford. Er arbeitet an der Schnittstelle von altorientalischer Literatur, Computation und physischer Installation.</p>` },
+      location:  { type: 'html', html: `<p>Oxford, England</p><p style="color:var(--muted);font-size:0.85rem;margin-top:0.2rem;">51° 45′ N · 1° 15′ W</p>` },
+      studying:  { type: 'html', html: `<ul class="item-list"><li><span class="year">2023–26</span><span>BA Theologie &amp; Religion, Universität Oxford</span></li><li><span class="year">2022–23</span><span>BA Bildende Kunst: Computational Arts (CertHE), UAL</span></li></ul>` },
+      prizes:    { type: 'html', html: `<ul class="item-list"><li><span class="year">2026</span><span>Tel Aviv University Archaeology Scholarship</span></li><li><span class="year">2025</span><span>Hazem Ben-Gacem Scholarship</span></li><li><span class="year">2025</span><span>St. Antony's Middle East Centre Arabic Training Fund, Tunesien</span></li><li><span class="year">2024</span><span>Expanding Horizons Grant, St. John's College</span></li><li><span class="year">2024</span><span>Special Grant, St. John's College, Universität Belgrad</span></li><li><span class="year">2024</span><span>Kennicott &amp; Pusey–Ellerton-Preis, Biblisches Hebräisch</span></li><li><span class="year">2024</span><span>Casberd-Stipendium</span></li></ul>` },
+      installations: { type: 'projects', backKey: 'installations', items: [
+        { key: 'brain-scanner', year: '2024', title: 'Brain-scanner', desc: 'Elektroenzephalogramm aus wiederverwendeter Elektronik. Generatives Monet-Bild eines Live-Webcam-Feeds — detailreicher je konzentrierter der Betrachter ist.' },
+        { key: 'spit-shined',   year: '2023', title: 'Spit-shined Apocalypse', desc: 'Präsentiert bei Creative Tech & Digital Design, London.' },
       ]},
-      threed: { heading: '3D', type: 'projects', items: [
-        { key: '3d-one',   year: '2024', title: '3D-Arbeit Eins',  desc: 'Kurze Beschreibung.' },
-        { key: '3d-two',   year: '2023', title: '3D-Arbeit Zwei',  desc: 'Kurze Beschreibung.' },
-        { key: '3d-three', year: '2022', title: '3D-Arbeit Drei',  desc: 'Kurze Beschreibung.' },
+      threed: { type: 'projects', backKey: 'threed', items: [
+        { key: '3d-one',   year: '2025', title: 'Großer Jesaja-Scroll — FTL Institut', desc: 'Immersive Installation zum Großen Jesaja-Scroll; 3D-Interface in Unreal Engine.' },
+        { key: '3d-two',   year: '2024', title: 'AR-Möbel-Tool — Chameleon Furniture', desc: 'Augmented-Reality-Tool zur Möbelpräsentation im Live-Webcam-Feed.' },
+        { key: '3d-three', year: '2024', title: '3D-Arbeit Drei', desc: 'Beschreibung der dritten 3D-Arbeit.' },
       ]},
-      philologist: { heading: 'Philologische Arbeiten', type: 'philology', items: [
+      philological: { type: 'philology', backKey: 'philological', items: [
         { key: 'cal',             title: 'Comprehensive Aramaic Lexicon', type: 'link',   href: 'https://cal.huc.edu/' },
-        { key: 'divinecommandline', title: 'Divinecommandline',           type: 'images', desc: 'Kurze Beschreibung.' },
-        { key: 'wahlul-uqode',    title: 'Wahlul Uqode',                  type: 'images', desc: 'Kurze Beschreibung.' },
+        { key: 'divinecommandline', title: 'divinecommandline',           type: 'images', desc: 'Open-Source-Kommandozeilen-Tool zur grammatikalischen Analyse rechtsbündiger Texte. Biblisches Hebräisch und Koranisches Arabisch.' },
+        { key: 'wahlul-uqode',    title: 'Wahlul Uqode',                  type: 'images', desc: 'Beschreibung dieser philologischen Arbeit.' },
       ]},
     },
     footer: [
-      { label: 'you@example.com', href: 'mailto:you@example.com' },
-      { label: 'GitHub',          href: 'https://github.com/yourusername' },
+      { label: 'oskie@wiseblood.com', href: 'mailto:oskie@wiseblood.com' },
+      
     ],
   },
 
+  // ── ARABIC ───────────────────────────────────────────────────
   ar: {
     dir: 'rtl',
-    backLabel: { exhibitions: 'المعارض ←', threed: 'ثلاثي الأبعاد ←', philologist: 'فقه اللغة ←' },
-    bio: `مرحباً. أنا <span class="trigger" data-key="about">أوسكار فيتزجيرالد</span>، مقيم حالياً في <span class="trigger" data-key="location">أكسفورد</span>. أعمل مع البيانات من خلال <span class="trigger" data-key="exhibitions">المعارض والتركيبات</span> و<span class="trigger" data-key="threed">النمذجة ثلاثية الأبعاد</span>. خلال السنوات الأخيرة كنت <span class="trigger" data-key="studying">أدرس</span> في أكسفورد بوصفي <span class="trigger" data-key="prizes">حائزاً على جوائز</span> في مجال <span class="trigger" data-key="philologist">فقه اللغة</span>. يسعدني دائماً <span class="trigger" data-key="contact">التواصل</span>.`,
+    backLabel: { installations: 'التركيبات ←', threed: 'ثلاثي الأبعاد ←', philological: 'فقه اللغة ←' },
+
+    bio: `مرحباً. أنا <span class="trigger" data-key="about">أوسكار فيتزجيرالد</span>، فيلولوجي وفنان حوسبة <span class="trigger" data-key="prizes">حائز على جوائز</span>، أدرس في <span class="trigger" data-key="location">أكسفورد</span> حيث <span class="trigger" data-key="studying">أتابع دراستي</span>. أعمل مع البيانات بأنواعها — <span class="trigger" data-key="philological">فيلولوجية</span> وفيزيائية وبصرية — من خلال <span class="trigger" data-key="installations">التركيبات الفنية</span> و<span class="trigger" data-key="threed">النمذجة ثلاثية الأبعاد</span>. يسعدني دائماً <span class="trigger" data-key="contact">التواصل</span>.`,
+
     details: {
-      about:     { heading: 'نبذة',          type: 'html', html: `<p>أوسكار فيتزجيرالد فيلولوجي وفنان بيانات مقيم في أكسفورد.</p>` },
-      location:  { heading: 'الموقع',         type: 'html', html: `<p>أكسفورد، إنجلترا</p><p style="color:var(--muted);font-size:0.85rem;">51° 45′ N · 1° 15′ W</p>` },
-      studying:  { heading: 'التعليم',        type: 'html', html: `<ul class="item-list"><li><span class="year">٢٠٢٣–٢٦</span><span>أكسفورد</span></li><li><span class="year">٢٠٢٢–٢٣</span><span>UAL</span></li></ul>` },
-      prizes:    { heading: 'الجوائز',        type: 'html', html: `<ul class="item-list"><li><span class="year">٢٠٢٥</span><span>اسم الجائزة، الجهة المانحة</span></li><li><span class="year">٢٠٢٤</span><span>اسم الجائزة، الجهة المانحة</span></li><li><span class="year">٢٠٢٤</span><span>اسم الجائزة، الجهة المانحة</span></li><li><span class="year">٢٠٢٣</span><span>اسم الجائزة، الجهة المانحة</span></li><li><span class="year">٢٠٢٢</span><span>اسم الجائزة، الجهة المانحة</span></li></ul>` },
-      contact:   { heading: 'التواصل',        type: 'html', html: `<p><a href="mailto:you@example.com">you@example.com</a></p><p><a href="https://github.com/yourusername" target="_blank">GitHub</a></p>` },
-      exhibitions: { heading: 'المعارض والتركيبات', type: 'projects', items: [
-        { key: 'spit-shined',   year: '٢٠٢٤', title: 'Spit-shined Apocalypse', desc: 'وصف مختصر لهذا العمل.' },
-        { key: 'brain-scanner', year: '٢٠٢٣', title: 'Brain-scanner',          desc: 'وصف مختصر لهذا العمل.' },
+      about:     { type: 'html', html: `<p>أوسكار فيتزجيرالد فيلولوجي وفنان حوسبة مقيم في أكسفورد. يعمل عند تقاطع الآداب السامية القديمة والحوسبة والتركيب المادي.</p>` },
+      location:  { type: 'html', html: `<p>أكسفورد، إنجلترا</p><p style="color:var(--muted);font-size:0.85rem;margin-top:0.2rem;">51° 45′ N · 1° 15′ W</p>` },
+      studying:  { type: 'html', html: `<ul class="item-list"><li><span class="year">٢٠٢٣–٢٦</span><span>بكالوريوس اللاهوت والدين، جامعة أكسفورد</span></li><li><span class="year">٢٠٢٢–٢٣</span><span>بكالوريوس الفنون الجميلة: الفنون الحسابية (CertHE)، UAL</span></li></ul>` },
+      prizes:    { type: 'html', html: `<ul class="item-list"><li><span class="year">٢٠٢٦</span><span>Tel Aviv University Archaeology Scholarship</span></li><li><span class="year">٢٠٢٥</span><span>منحة حازم بن قاسم</span></li><li><span class="year">٢٠٢٥</span><span>صندوق تدريب اللغة العربية، مركز الشرق الأوسط، تونس</span></li><li><span class="year">٢٠٢٤</span><span>Expanding Horizons Grant، كلية سانت جون</span></li><li><span class="year">٢٠٢٤</span><span>Special Grant، كلية سانت جون، جامعة بلغراد</span></li><li><span class="year">٢٠٢٤</span><span>جائزة كينيكوت وبيوزي–إيلرتون، العبرية الكتابية</span></li><li><span class="year">٢٠٢٤</span><span>منحة كاسبيرد</span></li></ul>` },
+      installations: { type: 'projects', backKey: 'installations', items: [
+        { key: 'brain-scanner', year: '٢٠٢٤', title: 'Brain-scanner', desc: 'جهاز تخطيط الدماغ من إلكترونيات معاد توظيفها. تركيب تفاعلي يعرض صورة تجريبية على طراز مونيه من تغذية ويب-كام مباشرة.' },
+        { key: 'spit-shined',   year: '٢٠٢٣', title: 'Spit-shined Apocalypse', desc: 'قُدِّم في Creative Tech & Digital Design، لندن.' },
       ]},
-      threed: { heading: 'ثلاثي الأبعاد', type: 'projects', items: [
-        { key: '3d-one',   year: '٢٠٢٤', title: 'عمل ثلاثي الأبعاد الأول',  desc: 'وصف مختصر.' },
-        { key: '3d-two',   year: '٢٠٢٣', title: 'عمل ثلاثي الأبعاد الثاني', desc: 'وصف مختصر.' },
-        { key: '3d-three', year: '٢٠٢٢', title: 'عمل ثلاثي الأبعاد الثالث', desc: 'وصف مختصر.' },
+      threed: { type: 'projects', backKey: 'threed', items: [
+        { key: '3d-one',   year: '٢٠٢٥', title: 'مخطوطة إشعياء الكبرى — معهد FTL', desc: 'تركيب غامر حول مخطوطة إشعياء الكبرى؛ واجهة ثلاثية الأبعاد في Unreal Engine.' },
+        { key: '3d-two',   year: '٢٠٢٤', title: 'أداة الأثاث بالواقع المعزز', desc: 'أداة واقع معزز لعرض الأثاث في بيئة بث مباشر تفاعلية.' },
+        { key: '3d-three', year: '٢٠٢٤', title: 'عمل ثلاثي الأبعاد الثالث', desc: 'وصف هذا العمل.' },
       ]},
-      philologist: { heading: 'الأعمال الفيلولوجية', type: 'philology', items: [
-        { key: 'cal',             title: 'المعجم الآرامي الشامل',  type: 'link',   href: 'https://cal.huc.edu/' },
-        { key: 'divinecommandline', title: 'Divinecommandline',     type: 'images', desc: 'وصف مختصر.' },
-        { key: 'wahlul-uqode',    title: 'Wahlul Uqode',            type: 'images', desc: 'وصف مختصر.' },
+      philological: { type: 'philology', backKey: 'philological', items: [
+        { key: 'cal',             title: 'المعجم الآرامي الشامل', type: 'link',   href: 'https://cal.huc.edu/' },
+        { key: 'divinecommandline', title: 'divinecommandline',   type: 'images', desc: 'أداة سطر أوامر مفتوحة المصدر لتحليل النصوص العبرية والعربية القرآنية نحوياً.' },
+        { key: 'wahlul-uqode',    title: 'Wahlul Uqode',          type: 'images', desc: 'وصف هذا العمل الفيلولوجي.' },
       ]},
     },
     footer: [
-      { label: 'البريد الإلكتروني', href: 'mailto:you@example.com' },
-      { label: 'GitHub',             href: 'https://github.com/yourusername' },
+      { label: 'oskie@wiseblood.com', href: 'mailto:oskie@wiseblood.com' },
+      
     ],
   },
 
+  // ── SERBIAN ──────────────────────────────────────────────────
   sr: {
     dir: 'ltr',
-    backLabel: { exhibitions: '← изложбе', threed: '← 3D', philologist: '← филологија' },
-    bio: `Zdravo. Ja sam <span class="trigger" data-key="about">Oskar Fицџералд</span>, тренутно у <span class="trigger" data-key="location">Оксфорду</span>. Радим са подацима кроз <span class="trigger" data-key="exhibitions">изложбе и инсталације</span> и <span class="trigger" data-key="threed">3D</span>. Последњих неколико година <span class="trigger" data-key="studying">студирам</span> у Оксфорду као <span class="trigger" data-key="prizes">награђивани</span> <span class="trigger" data-key="philologist">филолог</span>. Увек сам радо доступан за <span class="trigger" data-key="contact">контакт</span>.`,
+    backLabel: { installations: '← инсталације', threed: '← 3D', philological: '← филологија' },
+
+    bio: `Zdravo. Ja sam <span class="trigger" data-key="about">Oskar Fицџералд</span>, <span class="trigger" data-key="prizes">награђивани</span> филолог и рачунарски уметник, <span class="trigger" data-key="studying">студирам</span> у <span class="trigger" data-key="location">Оксфорду</span>. Радим са свим врстама података — <span class="trigger" data-key="philological">филолошким</span>, физичким, визуелним — кроз <span class="trigger" data-key="installations">инсталације</span> и <span class="trigger" data-key="threed">3D</span>. Увек сам радо доступан за <span class="trigger" data-key="contact">контакт</span>.`,
+
     details: {
-      about:     { heading: 'О мени',        type: 'html', html: `<p>Оскар Фицџералд је филолог и дата-уметник у Оксфорду.</p>` },
-      location:  { heading: 'Локација',      type: 'html', html: `<p>Оксфорд, Енглеска</p><p style="color:var(--muted);font-size:0.85rem;">51° 45′ N · 1° 15′ W</p>` },
-      studying:  { heading: 'Образовање',    type: 'html', html: `<ul class="item-list"><li><span class="year">2023–26</span><span>Оксфорд</span></li><li><span class="year">2022–23</span><span>UAL</span></li></ul>` },
-      prizes:    { heading: 'Награде',       type: 'html', html: `<ul class="item-list"><li><span class="year">2025</span><span>Назив награде, додељивач</span></li><li><span class="year">2024</span><span>Назив награде, додељивач</span></li><li><span class="year">2024</span><span>Назив награде, додељивач</span></li><li><span class="year">2023</span><span>Назив награде, додељивач</span></li><li><span class="year">2022</span><span>Назив награде, додељивач</span></li></ul>` },
-      contact:   { heading: 'Контакт',       type: 'html', html: `<p><a href="mailto:you@example.com">you@example.com</a></p><p><a href="https://github.com/yourusername" target="_blank">GitHub</a></p>` },
-      exhibitions: { heading: 'Изложбе и инсталације', type: 'projects', items: [
-        { key: 'spit-shined',   year: '2024', title: 'Spit-shined Apocalypse', desc: 'Кратак опис овог рада.' },
-        { key: 'brain-scanner', year: '2023', title: 'Brain-scanner',          desc: 'Кратак опис овог рада.' },
+      about:     { type: 'html', html: `<p>Оскар Фицџералд је филолог и рачунарски уметник у Оксфорду. Ради на пресеку старих семитских књижевности, рачунарства и физичке инсталације.</p>` },
+      location:  { type: 'html', html: `<p>Оксфорд, Енглеска</p><p style="color:var(--muted);font-size:0.85rem;margin-top:0.2rem;">51° 45′ N · 1° 15′ W</p>` },
+      studying:  { type: 'html', html: `<ul class="item-list"><li><span class="year">2023–26</span><span>BA Теологија и религија, Универзитет у Оксфорду</span></li><li><span class="year">2022–23</span><span>BA Ликовне уметности: Рачунарске уметности (CertHE), UAL</span></li></ul>` },
+      prizes:    { type: 'html', html: `<ul class="item-list"><li><span class="year">2026</span><span>Tel Aviv University Archaeology Scholarship</span></li><li><span class="year">2025</span><span>Hazem Ben-Gacem Scholarship</span></li><li><span class="year">2025</span><span>Фонд за обуку арапског језика, Тунис</span></li><li><span class="year">2024</span><span>Expanding Horizons Grant, Колеџ Св. Јована</span></li><li><span class="year">2024</span><span>Special Grant, Колеџ Св. Јована, Филолошки факултет у Београду</span></li><li><span class="year">2024</span><span>Кеникот и Пузи–Елертон награда, Библијски хебрејски</span></li><li><span class="year">2024</span><span>Каспберд стипендија</span></li></ul>` },
+      installations: { type: 'projects', backKey: 'installations', items: [
+        { key: 'brain-scanner', year: '2024', title: 'Brain-scanner', desc: 'Електроенцефалограм од рециклиране електронике. Интерактивна инсталација са генеративном сликом у стилу Монеа.' },
+        { key: 'spit-shined',   year: '2023', title: 'Spit-shined Apocalypse', desc: 'Представљено на Creative Tech & Digital Design, Лондон.' },
       ]},
-      threed: { heading: '3D', type: 'projects', items: [
-        { key: '3d-one',   year: '2024', title: '3D рад један', desc: 'Кратак опис.' },
-        { key: '3d-two',   year: '2023', title: '3D рад два',   desc: 'Кратак опис.' },
-        { key: '3d-three', year: '2022', title: '3D рад три',   desc: 'Кратак опис.' },
+      threed: { type: 'projects', backKey: 'threed', items: [
+        { key: '3d-one',   year: '2025', title: 'Велики Исаијин свитак — FTL институт', desc: 'Имерзивна инсталација о Великом Исаијином свитку; 3D интерфејс у Unreal Engine-у.' },
+        { key: '3d-two',   year: '2024', title: 'AR алат за намештај', desc: 'Алат проширене стварности за приказ намештаја у интерактивном окружењу.' },
+        { key: '3d-three', year: '2024', title: '3D рад три', desc: 'Опис трећег 3D рада.' },
       ]},
-      philologist: { heading: 'Филолошки радови', type: 'philology', items: [
-        { key: 'cal',             title: 'Comprehensive Aramaic Lexicon', type: 'link',   href: 'https://cal.huc.edu/' },
-        { key: 'divinecommandline', title: 'Divinecommandline',           type: 'images', desc: 'Кратак опис.' },
-        { key: 'wahlul-uqode',    title: 'Wahlul Uqode',                  type: 'images', desc: 'Кратак опис.' },
+      philological: { type: 'philology', backKey: 'philological', items: [
+        { key: 'cal',             title: 'Свеобухватни арамејски лексикон', type: 'link',   href: 'https://cal.huc.edu/' },
+        { key: 'divinecommandline', title: 'divinecommandline',              type: 'images', desc: 'Алат командне линије отвореног кода за граматичку анализу хебрејских и арапских текстова.' },
+        { key: 'wahlul-uqode',    title: 'Wahlul Uqode',                     type: 'images', desc: 'Опис овог филолошког рада.' },
       ]},
     },
     footer: [
-      { label: 'you@example.com', href: 'mailto:you@example.com' },
-      { label: 'GitHub',          href: 'https://github.com/yourusername' },
+      { label: 'oskie@wiseblood.com', href: 'mailto:oskie@wiseblood.com' },
+      
     ],
   },
 };
@@ -469,14 +481,14 @@ const detailEl    = document.getElementById('detail-area');
 const footerLinks = document.getElementById('footer-links');
 const htmlEl      = document.documentElement;
 
-function imageSubPanelHTML(key, title, desc, parentKey) {
+function imageSubPanelHTML(key, title, desc, backKey) {
   const imgs      = IMAGES[key] || [];
-  const backLabel = CONTENT[currentLang].backLabel[parentKey] || '←';
+  const backLabel = CONTENT[currentLang].backLabel[backKey] || '←';
   const grid      = imgs.map(s => `<img src="${s}" alt="${title}" loading="lazy">`).join('');
   const carousel  = imgs.map(s => `<img src="${s}" alt="${title}" loading="lazy">`).join('');
   const dots      = imgs.map((_, i) => `<span class="${i===0?'active':''}" data-dot="${i}"></span>`).join('');
   return `
-    <button class="sub-back" data-parent="${parentKey}">${backLabel}</button>
+    <button class="sub-back" data-parent="${backKey}">${backLabel}</button>
     <p class="sub-title">${title}</p>
     ${desc ? `<p class="sub-desc">${desc}</p>` : ''}
     <div class="img-grid">${grid}</div>
@@ -504,24 +516,23 @@ function openDetail(key) {
   const d = CONTENT[currentLang].details[key];
   if (!d) return;
 
-  let html = '';  /* no heading */
+  let html = '';
 
   if (d.type === 'html') {
-    html += d.html;
+    html = d.html;
   } else if (d.type === 'projects') {
     const rows = d.items.map(item =>
-      `<li><span class="year">${item.year}</span><span class="sub-trigger" data-key="${item.key}" data-parent="${key}" data-title="${item.title}" data-desc="${item.desc}">${item.title}</span></li>`
+      `<li><span class="year">${item.year}</span><span class="sub-trigger" data-key="${item.key}" data-backkey="${d.backKey}" data-title="${item.title}" data-desc="${item.desc}">${item.title}</span></li>`
     ).join('');
-    html += `<ul class="item-list">${rows}</ul>`;
+    html = `<ul class="item-list">${rows}</ul>`;
   } else if (d.type === 'philology') {
-    /* No year column — use a simpler list class with no left indent */
     const rows = d.items.map(item => {
       if (item.type === 'link') {
         return `<li><a href="${item.href}" target="_blank" rel="noopener">${item.title}</a></li>`;
       }
-      return `<li><span class="sub-trigger" data-key="${item.key}" data-parent="${key}" data-title="${item.title}" data-desc="${item.desc||''}">${item.title}</span></li>`;
+      return `<li><span class="sub-trigger" data-key="${item.key}" data-backkey="${d.backKey}" data-title="${item.title}" data-desc="${item.desc||''}">${item.title}</span></li>`;
     }).join('');
-    html += `<ul class="plain-list">${rows}</ul>`;
+    html = `<ul class="plain-list">${rows}</ul>`;
   }
 
   detailEl.innerHTML = html;
@@ -531,7 +542,7 @@ function openDetail(key) {
 
   detailEl.querySelectorAll('.sub-trigger').forEach(el => {
     el.addEventListener('click', () => {
-      detailEl.innerHTML = imageSubPanelHTML(el.dataset.key, el.dataset.title, el.dataset.desc, el.dataset.parent);
+      detailEl.innerHTML = imageSubPanelHTML(el.dataset.key, el.dataset.title, el.dataset.desc, el.dataset.backkey);
       detailEl.classList.remove('visible');
       void detailEl.offsetWidth;
       detailEl.classList.add('visible');
