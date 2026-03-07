@@ -5,85 +5,117 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <!-- ══════════════════════════════════════════════
-       SEO METADATA — edit these 6 lines
+       SEO METADATA — edit these lines
        ══════════════════════════════════════════════ -->
   <title>Your Name</title>
-  <meta name="description" content="One sentence about who you are — shown in Google results." />
+  <meta name="description" content="One sentence about who you are." />
   <meta property="og:title"       content="Your Name" />
   <meta property="og:description" content="One sentence about who you are." />
   <meta property="og:type"        content="website" />
   <meta property="og:url"         content="https://yourusername.github.io" />
-  <!-- Uncomment for a link-preview thumbnail (1200×630px):
-  <meta property="og:image" content="https://yourusername.github.io/og.jpg" /> -->
+  <!-- <meta property="og:image" content="https://yourusername.github.io/og.jpg" /> -->
   <link rel="canonical" href="https://yourusername.github.io" />
   <!-- ══════════════════════════════════════════════ -->
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Noto+Naskh+Arabic:wght@400;500&display=swap" rel="stylesheet" />
-
   <style>
+    /* ══════════════════════════════════════════════
+       FONTS
+       Upload these files to the root of your repo
+       (same folder as index.html) and they will
+       load automatically — no internet needed.
+       ══════════════════════════════════════════════ */
+    @font-face {
+      font-family: 'FedraSans';
+      src: url('FedraSansProBook.otf') format('opentype');
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Lenos';
+      src: url('LenosMedium.otf') format('opentype');
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'GTWalsheim';
+      src: url('GT-Walsheim-Pro-Black.ttf') format('truetype');
+      font-weight: 900;
+      font-style: normal;
+      font-display: swap;
+    }
+    /* Fallbacks while fonts load (similar rhythm) */
+    :root {
+      --font-latin:  'FedraSans', 'Gill Sans', 'Trebuchet MS', sans-serif;
+      --font-arabic: 'Lenos', 'Noto Naskh Arabic', serif;
+      --font-sr:     'GTWalsheim', 'Impact', sans-serif;
+    }
+
     /* ── Reset ── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     /* ── Tokens ── */
     :root {
-      --text:  #111;
-      --bg:    #f7f5f0;
-      --muted: #888;
-      --rule:  #ccc;
-      --max:   520px;
-      --ph:    1.75rem;
+      --text:    #111;
+      --bg:      #f7f5f0;
+      --muted:   #888;
+      --rule:    #ccc;
+      --ph:      3.5rem;    /* horizontal padding — big, like Körner */
+      --pv:      3rem;      /* vertical padding */
     }
 
+    /* ── Base — large, left-aligned, no centring ── */
     html { font-size: 18px; }
 
     body {
-      font-family: 'EB Garamond', Georgia, serif;
+      font-family: var(--font-latin);
       background: var(--bg);
       color: var(--text);
-      line-height: 1.7;
-      padding: 3.5rem var(--ph) 5rem;
+      line-height: 1.55;
+      padding: var(--pv) var(--ph) 0;
+      /* No max-width — text runs to edge with padding only */
     }
 
-    html[lang="ar"] body {
-      font-family: 'Noto Naskh Arabic', serif;
-      font-size: 1.05rem;
-      line-height: 1.95;
-    }
-
-    main   { max-width: var(--max); margin: 0 auto; }
-    footer { max-width: var(--max); margin: 2.5rem auto 0; }
+    /* Language-specific font switching */
+    html[lang="ar"] body { font-family: var(--font-arabic); line-height: 1.85; }
+    html[lang="sr"] body { font-family: var(--font-sr);     line-height: 1.4;  letter-spacing: -0.01em; }
 
     /* ── Name heading ── */
     h1 {
-      font-size: 1rem;
+      font-size: clamp(1rem, 2vw, 1.1rem);
       font-weight: 400;
       color: var(--muted);
       margin-bottom: 2.5rem;
       letter-spacing: 0.01em;
     }
+    html[lang="sr"] h1 { font-family: var(--font-sr); }
 
-    /* ── Bio ── */
-    #bio p { margin-bottom: 0.3em; }
+    /* ── Bio — LARGE text like Körner ── */
+    #bio {
+      font-size: clamp(1.45rem, 3.2vw, 2.1rem);
+      max-width: 820px;  /* comfortable reading line at large size */
+    }
+    #bio p { margin-bottom: 0.2em; }
 
     /* ── Trigger words ── */
     .trigger {
       cursor: pointer;
       text-decoration: underline;
-      text-underline-offset: 3px;
+      text-underline-offset: 4px;
       text-decoration-thickness: 1px;
       transition: opacity 0.15s;
     }
-    .trigger:hover  { opacity: 0.45; }
-    .trigger.active { opacity: 0.45; }
+    .trigger:hover  { opacity: 0.4; }
+    .trigger.active { opacity: 0.4; }
 
-    /* ── Detail panel (below all bio text) ── */
+    /* ── Detail panel — below all bio text ── */
     #detail-area {
       display: none;
-      margin-top: 2rem;
-      padding-top: 1.4rem;
+      margin-top: 2.5rem;
+      padding-top: 1.5rem;
       border-top: 1px solid var(--rule);
+      max-width: 580px;
     }
     #detail-area.visible {
       display: block;
@@ -94,86 +126,79 @@
       to   { opacity: 1; transform: translateY(0); }
     }
 
-    /* ── Detail: generic styles ── */
-    #detail-area .panel-heading {
-      font-size: 0.75rem;
+    .panel-heading {
+      font-size: 0.7rem;
       font-weight: 400;
       text-transform: uppercase;
       letter-spacing: 0.13em;
       color: var(--muted);
-      margin-bottom: 0.8rem;
+      margin-bottom: 0.9rem;
+      font-family: var(--font-latin); /* headings always in latin font */
     }
-    html[lang="ar"] #detail-area .panel-heading { letter-spacing: 0; }
+    html[lang="ar"] .panel-heading { letter-spacing: 0; font-family: var(--font-arabic); }
+    html[lang="sr"] .panel-heading { font-family: var(--font-sr); letter-spacing: 0; }
 
     #detail-area p {
       font-size: 0.95rem;
       margin-bottom: 0.4rem;
     }
-
     #detail-area a {
       color: inherit;
       text-decoration: underline;
       text-underline-offset: 2px;
     }
 
-    /* ── Project list (shown when "projects" trigger clicked) ── */
-    .project-list {
-      list-style: none;
-      padding: 0;
-    }
-    .project-list li {
-      display: flex;
-      gap: 1.5rem;
-      margin-bottom: 0.25rem;
-      font-size: 0.92rem;
-    }
+    /* ── Project list ── */
+    .project-list      { list-style: none; padding: 0; }
+    .project-list li   { display: flex; gap: 1.5rem; margin-bottom: 0.3rem; font-size: 0.92rem; }
     .project-list .year {
       color: var(--muted);
-      min-width: 4.5rem;
+      min-width: 4rem;
       flex-shrink: 0;
     }
-    /* Project name is itself a trigger */
-    .project-list .proj-trigger {
+    .proj-trigger {
       cursor: pointer;
       text-decoration: underline;
       text-underline-offset: 3px;
       text-decoration-thickness: 1px;
       transition: opacity 0.15s;
     }
-    .project-list .proj-trigger:hover { opacity: 0.45; }
+    .proj-trigger:hover { opacity: 0.4; }
 
-    /* ── Project detail panel ── */
+    /* ── Project detail ── */
     .proj-back {
       display: inline-block;
       font-size: 0.78rem;
       color: var(--muted);
       cursor: pointer;
-      margin-bottom: 1.2rem;
-      text-decoration: none;
+      margin-bottom: 1.1rem;
+      background: none;
+      border: none;
+      padding: 0;
+      font-family: inherit;
       transition: opacity 0.15s;
     }
-    .proj-back:hover { opacity: 0.55; }
+    .proj-back:hover { opacity: 0.5; }
 
     .proj-title {
       font-size: 1rem;
       font-weight: 500;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.4rem;
     }
 
     .proj-desc {
-      font-size: 0.92rem;
-      color: #444;
+      font-size: 0.88rem;
+      color: #555;
       margin-bottom: 1.25rem;
-      max-width: 42ch;
+      max-width: 44ch;
     }
 
-    /* ── Image grid (desktop) ── */
+    /* ── Image grid (desktop ≥ 601px) ── */
     .img-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 0.5rem;
     }
-
     .img-grid img {
       width: 100%;
       aspect-ratio: 4/3;
@@ -181,16 +206,11 @@
       display: block;
       background: #e0ddd7;
     }
-
-    /* Single image spans full width */
-    .img-grid img:only-child { grid-column: 1 / -1; }
-
-    /* Odd last image (3, 5…) spans full width */
     .img-grid img:last-child:nth-child(odd) { grid-column: 1 / -1; }
 
-    /* ── Carousel (mobile) ── */
+    /* ── Carousel (mobile ≤ 600px) ── */
     .img-carousel {
-      display: none; /* hidden on desktop */
+      display: none;
       overflow-x: scroll;
       scroll-snap-type: x mandatory;
       -webkit-overflow-scrolling: touch;
@@ -198,164 +218,197 @@
       gap: 0.5rem;
     }
     .img-carousel::-webkit-scrollbar { display: none; }
-
     .img-carousel img {
       flex-shrink: 0;
-      width: 82vw;
-      max-width: 340px;
+      width: 80vw;
+      max-width: 320px;
       aspect-ratio: 4/3;
       object-fit: cover;
       scroll-snap-align: start;
       background: #e0ddd7;
     }
 
-    /* Carousel dots */
     .carousel-dots {
       display: none;
       justify-content: center;
       gap: 0.35rem;
-      margin-top: 0.6rem;
+      margin-top: 0.65rem;
     }
     .carousel-dots span {
-      width: 5px;
-      height: 5px;
+      width: 5px; height: 5px;
       border-radius: 50%;
       background: var(--rule);
+      cursor: pointer;
       transition: background 0.2s;
     }
     .carousel-dots span.active { background: var(--text); }
 
-    /* ── Switch grid → carousel on mobile ── */
     @media (max-width: 600px) {
-      .img-grid     { display: none; }
-      .img-carousel { display: flex; }
-      .carousel-dots { display: flex; }
+      .img-grid          { display: none; }
+      .img-carousel      { display: flex; }
+      .carousel-dots     { display: flex; }
     }
 
-    /* ── Language switcher ── */
-    #lang-switcher {
-      margin-top: 2.75rem;
+    /* ══════════════════════════════════════════════
+       FOOTER — three zones: left · centre · right
+       Sits at the bottom of the page (not fixed)
+       ══════════════════════════════════════════════ */
+    footer {
+      margin-top: 4rem;
+      padding: 1.5rem var(--ph) 2rem;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: end;
+      gap: 1rem;
+    }
+
+    /* Left: email + github */
+    .footer-left {
       display: flex;
-      align-items: center;
-      gap: 0.6rem;
-      font-size: 0.82rem;
+      flex-direction: column;
+      gap: 0.25rem;
+      font-size: 0.8rem;
       color: var(--muted);
     }
+    .footer-left a { color: inherit; text-decoration: none; }
+    .footer-left a:hover { text-decoration: underline; }
+
+    /* Centre: logo */
+    .footer-centre {
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+    }
+    .logo-wrap {
+      width: 40px;
+      height: 40px;
+      opacity: 0.55;
+      transition: opacity 0.2s;
+    }
+    .logo-wrap:hover { opacity: 1; }
+
+    /* Right: language switcher */
+    .footer-right {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 0.55rem;
+    }
+
     .lang-btn {
       cursor: pointer;
       background: none;
       border: none;
       padding: 0;
       font-family: inherit;
-      font-size: inherit;
+      font-size: 0.8rem;
       color: var(--muted);
       transition: color 0.15s;
+      line-height: 1;
     }
     .lang-btn:hover  { color: var(--text); }
     .lang-btn.active { color: var(--text); font-style: italic; }
-    .lang-sep        { color: var(--rule); user-select: none; }
+    .lang-sep        { font-size: 0.8rem; color: var(--rule); user-select: none; }
 
-    /* ── Footer ── */
-    footer {
-      font-size: 0.82rem;
-      color: var(--muted);
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1.5rem;
-    }
-    footer a { color: inherit; text-decoration: none; }
-    footer a:hover { text-decoration: underline; }
-
-    /* ── Mobile layout tweaks ── */
-    @media (max-width: 600px) {
-      :root { --ph: 1.25rem; }
+    /* ── Mobile ── */
+    @media (max-width: 700px) {
+      :root { --ph: 1.5rem; --pv: 2.25rem; }
       html  { font-size: 17px; }
-      body  { padding-top: 2.5rem; padding-bottom: 4rem; }
+
+      footer {
+        /* Stack: logo top-centre, then left/right side by side */
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto auto;
+        padding-left: var(--ph);
+        padding-right: var(--ph);
+      }
+      .footer-centre {
+        grid-column: 1 / -1;
+        margin-bottom: 1rem;
+      }
+      .footer-right { justify-content: flex-end; }
     }
-    @media (max-width: 380px) {
-      :root { --ph: 1rem; }
+
+    @media (max-width: 420px) {
+      :root { --ph: 1.1rem; }
       html  { font-size: 16px; }
     }
   </style>
 </head>
 <body>
 
-<main>
-  <h1 id="site-name">Your Name</h1>
-  <div id="bio"></div>
-  <div id="detail-area" aria-live="polite"></div>
-  <nav id="lang-switcher" aria-label="Language">
+<h1 id="site-name">Your Name</h1>
+
+<div id="bio"></div>
+<div id="detail-area" aria-live="polite"></div>
+
+<footer>
+  <!-- LEFT: contact links -->
+  <div class="footer-left" id="footer-links"></div>
+
+  <!-- CENTRE: logo -->
+  <div class="footer-centre">
+    <a href="/" class="logo-wrap" aria-label="Home" id="logo-container">
+      <!--
+        LOGO: Replace the SVG below with your own.
+        Option A — inline SVG (best): paste your SVG code here.
+        Option B — image file:  <img src="logo.svg" alt="Your Name" width="40" height="40">
+        The placeholder below is a simple geometric mark.
+      -->
+      <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <circle cx="20" cy="20" r="18" stroke="#111" stroke-width="1.5"/>
+        <line x1="20" y1="6" x2="20" y2="34" stroke="#111" stroke-width="1.5"/>
+        <line x1="6" y1="20" x2="34" y2="20" stroke="#111" stroke-width="1.5"/>
+        <!-- Replace this SVG entirely with your actual logo -->
+      </svg>
+    </a>
+  </div>
+
+  <!-- RIGHT: language switcher -->
+  <nav class="footer-right" aria-label="Language">
     <button class="lang-btn active" data-lang="en">EN</button>
     <span class="lang-sep" aria-hidden="true">·</span>
     <button class="lang-btn" data-lang="de">DE</button>
     <span class="lang-sep" aria-hidden="true">·</span>
     <button class="lang-btn" data-lang="ar">AR</button>
+    <span class="lang-sep" aria-hidden="true">·</span>
+    <button class="lang-btn" data-lang="sr">SR</button>
   </nav>
-</main>
-
-<footer id="site-footer"></footer>
+</footer>
 
 <script>
 // ════════════════════════════════════════════════════════════════
-//  PROJECTS
-//  Add or remove projects here. Each project needs:
-//    key    — a unique slug, no spaces (used internally)
-//    year   — displayed in the project list
-//    title  — shown in the project panel header
-//    desc   — short description paragraph
-//    images — array of image URLs
-//             For images in your GitHub repo, use relative paths:
-//             e.g.  "images/project-one/01.jpg"
-//             For placeholder images, use the placehold.co format below.
-//
-//  HOW TO ADD REAL IMAGES:
-//    1. Create an  /images/<project-slug>/  folder in your repo
-//    2. Drop your photos in (jpg/png/webp, ~1200px wide is fine)
-//    3. Replace the placehold.co URLs with  "images/<slug>/01.jpg"  etc.
+//  PROJECT IMAGES  (language-independent)
+//  key must match the keys used in each language's projects array.
+//  Replace placehold.co URLs with  "images/project-one/01.jpg"
+//  once you've uploaded photos to your repo.
 // ════════════════════════════════════════════════════════════════
-
-const PROJECTS = [
-  {
-    key:    'project-one',
-    year:   '2024',
-    title:  'Project One',
-    desc:   'A short description of this project. What it is, why it exists, what you made.',
-    images: [
-      'https://placehold.co/800x600/e0ddd7/888888?text=Image+1',
-      'https://placehold.co/800x600/d8d4ce/888888?text=Image+2',
-      'https://placehold.co/800x600/e8e5e0/888888?text=Image+3',
-      'https://placehold.co/800x600/dedad4/888888?text=Image+4',
-    ],
-  },
-  {
-    key:    'project-two',
-    year:   '2023',
-    title:  'Project Two',
-    desc:   'A short description of this project. What it is, why it exists, what you made.',
-    images: [
-      'https://placehold.co/800x600/e0ddd7/888888?text=Image+1',
-      'https://placehold.co/800x600/d8d4ce/888888?text=Image+2',
-      'https://placehold.co/800x600/e8e5e0/888888?text=Image+3',
-    ],
-  },
-  {
-    key:    'project-three',
-    year:   '2022',
-    title:  'Project Three',
-    desc:   'A short description of this project. What it is, why it exists, what you made.',
-    images: [
-      'https://placehold.co/800x600/e0ddd7/888888?text=Image+1',
-      'https://placehold.co/800x600/d8d4ce/888888?text=Image+2',
-    ],
-  },
-];
+const PROJECT_IMAGES = {
+  'project-one': [
+    'https://placehold.co/800x600/e0ddd7/888?text=Image+1',
+    'https://placehold.co/800x600/d8d4ce/888?text=Image+2',
+    'https://placehold.co/800x600/e8e5df/888?text=Image+3',
+    'https://placehold.co/800x600/dedad4/888?text=Image+4',
+  ],
+  'project-two': [
+    'https://placehold.co/800x600/e0ddd7/888?text=Image+1',
+    'https://placehold.co/800x600/d8d4ce/888?text=Image+2',
+    'https://placehold.co/800x600/e8e5df/888?text=Image+3',
+  ],
+  'project-three': [
+    'https://placehold.co/800x600/e0ddd7/888?text=Image+1',
+    'https://placehold.co/800x600/d8d4ce/888?text=Image+2',
+  ],
+};
 
 // ════════════════════════════════════════════════════════════════
-//  CONTENT  (bio text, detail panels, footer — in 3 languages)
+//  CONTENT  — all text in all 4 languages
+//  Projects live inside each language block so titles/descriptions
+//  are fully translated. Images are pulled from PROJECT_IMAGES above.
 // ════════════════════════════════════════════════════════════════
-
 const CONTENT = {
 
+  // ── ENGLISH ────────────────────────────────────────────────
   en: {
     dir:  'ltr',
     name: 'Your Name',
@@ -367,45 +420,28 @@ const CONTENT = {
       `Interested in <span class="trigger" data-key="interests">a few things</span> and sometimes <span class="trigger" data-key="projects">make things</span>. Always happy to <span class="trigger" data-key="contact">get in touch</span>.`,
     ],
 
+    projects: [
+      { key: 'project-one',   year: '2024', title: 'Project One',   desc: 'A short description of this project — what it is and why it exists.' },
+      { key: 'project-two',   year: '2023', title: 'Project Two',   desc: 'A short description of this project — what it is and why it exists.' },
+      { key: 'project-three', year: '2022', title: 'Project Three', desc: 'A short description of this project — what it is and why it exists.' },
+    ],
+
     details: {
-      about: {
-        heading: 'About',
-        html: `<p>A longer description of who you are, what you work on, and what you care about. Two or three sentences is plenty.</p>`
-      },
-      location: {
-        heading: 'Location',
-        html: `<p>Oxford, England</p><p style="color:var(--muted);font-size:0.88rem;">51° 45′ N · 1° 15′ W</p>`
-      },
-      education: {
-        heading: 'Education',
-        html: `<ul class="project-list">
-          <li><span class="year">2022–</span><span>Your Degree, Your University</span></li>
-          <li><span class="year">2019–22</span><span>Previous Qualification, Previous Institution</span></li>
-        </ul>`
-      },
-      work: {
-        heading: 'Experience',
-        html: `<ul class="project-list">
-          <li><span class="year">2024</span><span>Role, Organisation</span></li>
-          <li><span class="year">2023</span><span>Role, Organisation</span></li>
-        </ul>`
-      },
-      interests: {
-        heading: 'Interests',
-        html: `<p>Topic one, topic two, topic three. A sentence or two about what genuinely occupies your thinking.</p>`
-      },
-      contact: {
-        heading: 'Contact',
-        html: `<p><a href="mailto:you@example.com">you@example.com</a></p>
-               <p><a href="https://github.com/yourusername" target="_blank">GitHub</a></p>
-               <p><a href="https://linkedin.com/in/yourusername" target="_blank">LinkedIn</a></p>`
-      },
+      about:     { heading: 'About',     html: `<p>A longer description of who you are, what you work on, and what you care about.</p>` },
+      location:  { heading: 'Location',  html: `<p>Oxford, England</p><p style="color:var(--muted);font-size:0.88rem;">51° 45′ N · 1° 15′ W</p>` },
+      education: { heading: 'Education', html: `<ul class="project-list"><li><span class="year">2022–</span><span>Your Degree, Your University</span></li><li><span class="year">2019–22</span><span>Previous Qualification, Previous Institution</span></li></ul>` },
+      work:      { heading: 'Experience',html: `<ul class="project-list"><li><span class="year">2024</span><span>Role, Organisation</span></li><li><span class="year">2023</span><span>Role, Organisation</span></li></ul>` },
+      interests: { heading: 'Interests', html: `<p>Topic one, topic two, topic three. A sentence or two about what genuinely occupies your thinking.</p>` },
+      contact:   { heading: 'Contact',   html: `<p><a href="mailto:you@example.com">you@example.com</a></p><p><a href="https://github.com/yourusername" target="_blank">GitHub</a></p>` },
     },
 
-    footer: `<a href="mailto:you@example.com">email</a>
-             <a href="https://github.com/yourusername" target="_blank">github</a>`,
+    footer: [
+      { label: 'you@example.com', href: 'mailto:you@example.com' },
+      { label: 'GitHub',          href: 'https://github.com/yourusername' },
+    ],
   },
 
+  // ── GERMAN ─────────────────────────────────────────────────
   de: {
     dir:  'ltr',
     name: 'Ihr Name',
@@ -417,19 +453,28 @@ const CONTENT = {
       `Meine Interessen umfassen <span class="trigger" data-key="interests">einige Themen</span>; gelegentlich entstehen dabei <span class="trigger" data-key="projects">Projekte</span>. Ich freue mich jederzeit über <span class="trigger" data-key="contact">Kontakt</span>.`,
     ],
 
+    projects: [
+      { key: 'project-one',   year: '2024', title: 'Projekt Eins',  desc: 'Kurze Beschreibung dieses Projekts — was es ist und warum es existiert.' },
+      { key: 'project-two',   year: '2023', title: 'Projekt Zwei',  desc: 'Kurze Beschreibung dieses Projekts — was es ist und warum es existiert.' },
+      { key: 'project-three', year: '2022', title: 'Projekt Drei',  desc: 'Kurze Beschreibung dieses Projekts — was es ist und warum es existiert.' },
+    ],
+
     details: {
-      about:    { heading: 'Über mich',  html: `<p>Eine längere Beschreibung von Ihnen, Ihrer Arbeit und Ihren Interessen.</p>` },
-      location: { heading: 'Standort',   html: `<p>Oxford, England</p><p style="color:var(--muted);font-size:0.88rem;">51° 45′ N · 1° 15′ W</p>` },
-      education:{ heading: 'Ausbildung', html: `<ul class="project-list"><li><span class="year">2022–</span><span>Studiengang, Universität</span></li><li><span class="year">2019–22</span><span>Vorherige Qualifikation, Institution</span></li></ul>` },
-      work:     { heading: 'Erfahrung',  html: `<ul class="project-list"><li><span class="year">2024</span><span>Stelle, Organisation</span></li><li><span class="year">2023</span><span>Stelle, Organisation</span></li></ul>` },
-      interests:{ heading: 'Interessen', html: `<p>Thema eins, Thema zwei, Thema drei. Ein bis zwei Sätze zu dem, was Sie wirklich beschäftigt.</p>` },
-      contact:  { heading: 'Kontakt',    html: `<p><a href="mailto:you@example.com">you@example.com</a></p><p><a href="https://github.com/yourusername" target="_blank">GitHub</a></p>` },
+      about:     { heading: 'Über mich',  html: `<p>Eine längere Beschreibung von Ihnen, Ihrer Arbeit und Ihren Interessen.</p>` },
+      location:  { heading: 'Standort',   html: `<p>Oxford, England</p><p style="color:var(--muted);font-size:0.88rem;">51° 45′ N · 1° 15′ W</p>` },
+      education: { heading: 'Ausbildung', html: `<ul class="project-list"><li><span class="year">2022–</span><span>Studiengang, Universität</span></li><li><span class="year">2019–22</span><span>Vorherige Qualifikation, Institution</span></li></ul>` },
+      work:      { heading: 'Erfahrung',  html: `<ul class="project-list"><li><span class="year">2024</span><span>Stelle, Organisation</span></li><li><span class="year">2023</span><span>Stelle, Organisation</span></li></ul>` },
+      interests: { heading: 'Interessen', html: `<p>Thema eins, Thema zwei, Thema drei.</p>` },
+      contact:   { heading: 'Kontakt',    html: `<p><a href="mailto:you@example.com">you@example.com</a></p><p><a href="https://github.com/yourusername" target="_blank">GitHub</a></p>` },
     },
 
-    footer: `<a href="mailto:you@example.com">E-Mail</a>
-             <a href="https://github.com/yourusername" target="_blank">GitHub</a>`,
+    footer: [
+      { label: 'you@example.com', href: 'mailto:you@example.com' },
+      { label: 'GitHub',          href: 'https://github.com/yourusername' },
+    ],
   },
 
+  // ── ARABIC ─────────────────────────────────────────────────
   ar: {
     dir:  'rtl',
     name: 'اسمك',
@@ -441,17 +486,58 @@ const CONTENT = {
       `أهتم بـ<span class="trigger" data-key="interests">مجالات عدة</span>، وأحياناً <span class="trigger" data-key="projects">أُنجز مشاريع</span>. يسعدني دائماً <span class="trigger" data-key="contact">التواصل</span>.`,
     ],
 
+    projects: [
+      { key: 'project-one',   year: '٢٠٢٤', title: 'المشروع الأول',  desc: 'وصف مختصر لهذا المشروع — ما هو ولماذا وُجد.' },
+      { key: 'project-two',   year: '٢٠٢٣', title: 'المشروع الثاني', desc: 'وصف مختصر لهذا المشروع — ما هو ولماذا وُجد.' },
+      { key: 'project-three', year: '٢٠٢٢', title: 'المشروع الثالث', desc: 'وصف مختصر لهذا المشروع — ما هو ولماذا وُجد.' },
+    ],
+
     details: {
-      about:    { heading: 'نبذة',           html: `<p>وصف مطوَّل عن نفسك وعملك واهتماماتك. جملتان أو ثلاث تكفيان.</p>` },
-      location: { heading: 'الموقع',          html: `<p>أكسفورد، إنجلترا</p><p style="color:var(--muted);font-size:0.88rem;">51° 45′ N · 1° 15′ W</p>` },
-      education:{ heading: 'التعليم',         html: `<ul class="project-list"><li><span class="year">٢٠٢٢–</span><span>درجتك العلمية، جامعتك</span></li><li><span class="year">٢٢–١٩</span><span>مؤهل سابق، مؤسسة سابقة</span></li></ul>` },
-      work:     { heading: 'الخبرة',          html: `<ul class="project-list"><li><span class="year">٢٠٢٤</span><span>المنصب، المؤسسة</span></li><li><span class="year">٢٠٢٣</span><span>المنصب، المؤسسة</span></li></ul>` },
-      interests:{ heading: 'الاهتمامات',      html: `<p>موضوع أول، موضوع ثانٍ، موضوع ثالث. جملة أو جملتان حول ما يشغل تفكيرك فعلاً.</p>` },
-      contact:  { heading: 'التواصل',         html: `<p><a href="mailto:you@example.com">you@example.com</a></p><p><a href="https://github.com/yourusername" target="_blank">GitHub</a></p>` },
+      about:     { heading: 'نبذة',          html: `<p>وصف مطوَّل عن نفسك وعملك واهتماماتك. جملتان أو ثلاث تكفيان.</p>` },
+      location:  { heading: 'الموقع',         html: `<p>أكسفورد، إنجلترا</p><p style="color:var(--muted);font-size:0.88rem;">51° 45′ N · 1° 15′ W</p>` },
+      education: { heading: 'التعليم',        html: `<ul class="project-list"><li><span class="year">٢٠٢٢–</span><span>درجتك العلمية، جامعتك</span></li><li><span class="year">٢٢–١٩</span><span>مؤهل سابق، مؤسسة سابقة</span></li></ul>` },
+      work:      { heading: 'الخبرة',         html: `<ul class="project-list"><li><span class="year">٢٠٢٤</span><span>المنصب، المؤسسة</span></li><li><span class="year">٢٠٢٣</span><span>المنصب، المؤسسة</span></li></ul>` },
+      interests: { heading: 'الاهتمامات',     html: `<p>موضوع أول، موضوع ثانٍ، موضوع ثالث.</p>` },
+      contact:   { heading: 'التواصل',        html: `<p><a href="mailto:you@example.com">you@example.com</a></p><p><a href="https://github.com/yourusername" target="_blank">GitHub</a></p>` },
     },
 
-    footer: `<a href="mailto:you@example.com">البريد الإلكتروني</a>
-             <a href="https://github.com/yourusername" target="_blank">GitHub</a>`,
+    footer: [
+      { label: 'البريد الإلكتروني', href: 'mailto:you@example.com' },
+      { label: 'GitHub',             href: 'https://github.com/yourusername' },
+    ],
+  },
+
+  // ── SERBIAN ────────────────────────────────────────────────
+  sr: {
+    dir:  'ltr',
+    name: 'Ваше Ime',        /* replace with your name in Serbian */
+    backLabel: '← пројекти',
+
+    bio: [
+      `Ја сам <span class="trigger" data-key="about">Ваше Ime</span>, истраживач и дизајнер тренутно у <span class="trigger" data-key="location">Оксфорду</span>.`,
+      `Студирам на <span class="trigger" data-key="education">вашем универзитету</span> и претходно сам радио у <span class="trigger" data-key="work">неколико организација</span>.`,
+      `Интересују ме <span class="trigger" data-key="interests">разне ствари</span>, а понекад <span class="trigger" data-key="projects">правим пројекте</span>. Увек сам радо доступан за <span class="trigger" data-key="contact">контакт</span>.`,
+    ],
+
+    projects: [
+      { key: 'project-one',   year: '2024', title: 'Пројекат Један', desc: 'Кратак опис пројекта — шта је и зашто постоји.' },
+      { key: 'project-two',   year: '2023', title: 'Пројекат Два',   desc: 'Кратак опис пројекта — шта је и зашто постоји.' },
+      { key: 'project-three', year: '2022', title: 'Пројекат Три',   desc: 'Кратак опис пројекта — шта је и зашто постоји.' },
+    ],
+
+    details: {
+      about:     { heading: 'О мени',       html: `<p>Дужи опис о вама, вашем раду и интересовањима. Две или три реченице су довољне.</p>` },
+      location:  { heading: 'Локација',     html: `<p>Оксфорд, Енглеска</p><p style="color:var(--muted);font-size:0.88rem;">51° 45′ N · 1° 15′ W</p>` },
+      education: { heading: 'Образовање',   html: `<ul class="project-list"><li><span class="year">2022–</span><span>Ваш студиј, Ваш универзитет</span></li><li><span class="year">2019–22</span><span>Претходна квалификација, Институција</span></li></ul>` },
+      work:      { heading: 'Искуство',     html: `<ul class="project-list"><li><span class="year">2024</span><span>Позиција, Организација</span></li><li><span class="year">2023</span><span>Позиција, Организација</span></li></ul>` },
+      interests: { heading: 'Интересовања', html: `<p>Тема прва, тема друга, тема трећа. Реченица или две о ономе шта те заиста занима.</p>` },
+      contact:   { heading: 'Контакт',      html: `<p><a href="mailto:you@example.com">you@example.com</a></p><p><a href="https://github.com/yourusername" target="_blank">GitHub</a></p>` },
+    },
+
+    footer: [
+      { label: 'you@example.com', href: 'mailto:you@example.com' },
+      { label: 'GitHub',          href: 'https://github.com/yourusername' },
+    ],
   },
 };
 
@@ -460,67 +546,56 @@ const CONTENT = {
 // ════════════════════════════════════════════════════════════════
 
 let currentLang   = 'en';
-let currentDetail = null;  // key of currently open panel
+let currentDetail = null;
 
-const bioEl    = document.getElementById('bio');
-const detailEl = document.getElementById('detail-area');
-const nameEl   = document.getElementById('site-name');
-const footerEl = document.getElementById('site-footer');
-const htmlEl   = document.documentElement;
+const bioEl      = document.getElementById('bio');
+const detailEl   = document.getElementById('detail-area');
+const nameEl     = document.getElementById('site-name');
+const footerLinks = document.getElementById('footer-links');
+const htmlEl     = document.documentElement;
 
-// Build the projects list panel HTML
-function projectsListHTML() {
-  const rows = PROJECTS.map(p =>
+// ── Build HTML for the projects list panel ──
+function projectsListHTML(lang) {
+  const t = CONTENT[lang];
+  const rows = t.projects.map(p =>
     `<li>
       <span class="year">${p.year}</span>
       <span class="proj-trigger" data-proj="${p.key}">${p.title}</span>
     </li>`
   ).join('');
-  return `<ul class="project-list">${rows}</ul>`;
+  const heading = { en: 'Projects', de: 'Projekte', ar: 'المشاريع', sr: 'Пројекти' }[lang];
+  return `<p class="panel-heading">${heading}</p><ul class="project-list">${rows}</ul>`;
 }
 
-// Build a single project panel HTML
-function projectPanelHTML(proj) {
-  const lang   = CONTENT[currentLang];
-  const imgsSrc = proj.images;
+// ── Build HTML for a single project panel ──
+function projectPanelHTML(projKey, lang) {
+  const t    = CONTENT[lang];
+  const proj = t.projects.find(p => p.key === projKey);
+  if (!proj) return '';
+  const imgs = PROJECT_IMAGES[projKey] || [];
 
-  // Grid (desktop)
-  const gridImgs = imgsSrc.map(src =>
-    `<img src="${src}" alt="${proj.title}" loading="lazy" />`
-  ).join('');
-
-  // Carousel (mobile) + dots
-  const carouselImgs = imgsSrc.map(src =>
-    `<img src="${src}" alt="${proj.title}" loading="lazy" />`
-  ).join('');
-  const dots = imgsSrc.map((_, i) =>
-    `<span class="${i === 0 ? 'active' : ''}" data-dot="${i}"></span>`
-  ).join('');
+  const gridImgs     = imgs.map(s => `<img src="${s}" alt="${proj.title}" loading="lazy">`).join('');
+  const carouselImgs = imgs.map(s => `<img src="${s}" alt="${proj.title}" loading="lazy">`).join('');
+  const dots         = imgs.map((_, i) => `<span class="${i===0?'active':''}" data-dot="${i}"></span>`).join('');
 
   return `
-    <button class="proj-back" id="proj-back-btn">${lang.backLabel}</button>
+    <button class="proj-back" id="proj-back-btn">${t.backLabel}</button>
     <p class="proj-title">${proj.title}</p>
     <p class="proj-desc">${proj.desc}</p>
     <div class="img-grid">${gridImgs}</div>
     <div class="img-carousel" id="proj-carousel">${carouselImgs}</div>
-    <div class="carousel-dots" id="carousel-dots">${dots}</div>
-  `;
+    <div class="carousel-dots" id="carousel-dots">${dots}</div>`;
 }
 
+// ── Show a named detail panel (or projects list) ──
 function openDetail(key) {
-  const lang = CONTENT[currentLang];
-
   let html = '';
-  let heading = '';
-
   if (key === 'projects') {
-    heading = currentLang === 'ar' ? 'المشاريع' : currentLang === 'de' ? 'Projekte' : 'Projects';
-    html = `<p class="panel-heading">${heading}</p>` + projectsListHTML();
+    html = projectsListHTML(currentLang);
   } else if (CONTENT[currentLang].details[key]) {
     const d = CONTENT[currentLang].details[key];
     html = `<p class="panel-heading">${d.heading}</p>${d.html}`;
   }
-
   if (!html) return;
 
   detailEl.innerHTML = html;
@@ -528,70 +603,61 @@ function openDetail(key) {
   void detailEl.offsetWidth;
   detailEl.classList.add('visible');
 
-  // Attach project-list item clicks
+  // Attach project-name clicks within the list
   detailEl.querySelectorAll('.proj-trigger').forEach(el => {
-    el.addEventListener('click', () => {
-      const proj = PROJECTS.find(p => p.key === el.dataset.proj);
-      if (!proj) return;
-      detailEl.innerHTML = projectPanelHTML(proj);
-      detailEl.classList.remove('visible');
-      void detailEl.offsetWidth;
-      detailEl.classList.add('visible');
-      attachProjectPanelEvents();
-    });
+    el.addEventListener('click', () => openProjectPanel(el.dataset.proj));
   });
 }
 
-function attachProjectPanelEvents() {
-  // Back button
-  const backBtn = document.getElementById('proj-back-btn');
-  if (backBtn) {
-    backBtn.addEventListener('click', () => {
-      openDetail('projects');
-      // keep current detail key as 'projects'
-      currentDetail = 'projects';
-      updateActiveTriggers('projects');
-    });
-  }
+// ── Open a specific project's image panel ──
+function openProjectPanel(projKey) {
+  detailEl.innerHTML = projectPanelHTML(projKey, currentLang);
+  detailEl.classList.remove('visible');
+  void detailEl.offsetWidth;
+  detailEl.classList.add('visible');
+
+  // Back button → return to project list
+  document.getElementById('proj-back-btn')?.addEventListener('click', () => {
+    openDetail('projects');
+  });
 
   // Carousel scroll → update dots
   const carousel = document.getElementById('proj-carousel');
-  const dotsEl   = document.getElementById('carousel-dots');
-  if (carousel && dotsEl) {
-    const dots = dotsEl.querySelectorAll('span');
+  const dotsWrap = document.getElementById('carousel-dots');
+  if (carousel && dotsWrap) {
+    const dots = dotsWrap.querySelectorAll('span');
     carousel.addEventListener('scroll', () => {
       const idx = Math.round(carousel.scrollLeft / carousel.offsetWidth);
       dots.forEach((d, i) => d.classList.toggle('active', i === idx));
     }, { passive: true });
-
-    // Dots click → scroll
     dots.forEach((dot, i) => {
-      dot.addEventListener('click', () => {
-        carousel.scrollTo({ left: i * carousel.offsetWidth, behavior: 'smooth' });
-      });
+      dot.addEventListener('click', () =>
+        carousel.scrollTo({ left: i * carousel.offsetWidth, behavior: 'smooth' })
+      );
     });
   }
 }
 
-function updateActiveTriggers(key) {
+// ── Toggle a trigger ──
+function onTriggerClick(key) {
+  if (currentDetail === key) {
+    currentDetail = null;
+    detailEl.classList.remove('visible');
+    setActiveTrigger(null);
+  } else {
+    currentDetail = key;
+    setActiveTrigger(key);
+    openDetail(key);
+  }
+}
+
+function setActiveTrigger(key) {
   document.querySelectorAll('.trigger').forEach(el =>
     el.classList.toggle('active', el.dataset.key === key)
   );
 }
 
-function onTriggerClick(key) {
-  if (currentDetail === key) {
-    // Close
-    currentDetail = null;
-    detailEl.classList.remove('visible');
-    updateActiveTriggers(null);
-  } else {
-    currentDetail = key;
-    updateActiveTriggers(key);
-    openDetail(key);
-  }
-}
-
+// ── Full render (called on boot + language switch) ──
 function render(lang) {
   const t = CONTENT[lang];
   htmlEl.lang = lang;
@@ -599,32 +665,40 @@ function render(lang) {
 
   nameEl.textContent = t.name;
   bioEl.innerHTML    = t.bio.map(p => `<p>${p}</p>`).join('');
-  footerEl.innerHTML = t.footer;
 
-  document.querySelectorAll('.trigger').forEach(el => {
-    el.addEventListener('click', () => onTriggerClick(el.dataset.key));
-  });
+  // Footer links
+  footerLinks.innerHTML = t.footer
+    .map(l => `<a href="${l.href}">${l.label}</a>`)
+    .join('');
 
-  // Re-render open panel in new language
+  // Attach bio trigger clicks
+  document.querySelectorAll('.trigger').forEach(el =>
+    el.addEventListener('click', () => onTriggerClick(el.dataset.key))
+  );
+
+  // Re-render open detail in new language
   if (currentDetail) {
-    updateActiveTriggers(currentDetail);
+    setActiveTrigger(currentDetail);
     openDetail(currentDetail);
   } else {
     detailEl.classList.remove('visible');
   }
 
+  // Active lang button
   document.querySelectorAll('.lang-btn').forEach(btn =>
     btn.classList.toggle('active', btn.dataset.lang === lang)
   );
 }
 
-document.querySelectorAll('.lang-btn').forEach(btn => {
+// ── Language buttons ──
+document.querySelectorAll('.lang-btn').forEach(btn =>
   btn.addEventListener('click', () => {
     currentLang = btn.dataset.lang;
     render(currentLang);
-  });
-});
+  })
+);
 
+// ── Boot ──
 render('en');
 </script>
 </body>
