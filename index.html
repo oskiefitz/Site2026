@@ -152,6 +152,10 @@
     .item-list li   { display: flex; gap: 1.5rem; margin-bottom: 0.25rem; font-size: 0.9rem; align-items: baseline; color: var(--muted); }
     .item-list .year { color: var(--muted); min-width: 4rem; flex-shrink: 0; opacity: 0.7; }
 
+    /* Philology list — no year column, no indent */
+    .plain-list     { list-style: none; padding: 0; }
+    .plain-list li  { margin-bottom: 0.25rem; font-size: 0.9rem; color: var(--muted); }
+
     .sub-trigger {
       cursor: pointer;
       text-decoration: underline;
@@ -500,7 +504,7 @@ function openDetail(key) {
   const d = CONTENT[currentLang].details[key];
   if (!d) return;
 
-  let html = `<p class="panel-heading">${d.heading}</p>`;
+  let html = '';  /* no heading */
 
   if (d.type === 'html') {
     html += d.html;
@@ -510,13 +514,14 @@ function openDetail(key) {
     ).join('');
     html += `<ul class="item-list">${rows}</ul>`;
   } else if (d.type === 'philology') {
+    /* No year column — use a simpler list class with no left indent */
     const rows = d.items.map(item => {
       if (item.type === 'link') {
-        return `<li><span class="year"></span><a href="${item.href}" target="_blank" rel="noopener">${item.title}</a></li>`;
+        return `<li><a href="${item.href}" target="_blank" rel="noopener">${item.title}</a></li>`;
       }
-      return `<li><span class="year"></span><span class="sub-trigger" data-key="${item.key}" data-parent="${key}" data-title="${item.title}" data-desc="${item.desc||''}">${item.title}</span></li>`;
+      return `<li><span class="sub-trigger" data-key="${item.key}" data-parent="${key}" data-title="${item.title}" data-desc="${item.desc||''}">${item.title}</span></li>`;
     }).join('');
-    html += `<ul class="item-list">${rows}</ul>`;
+    html += `<ul class="plain-list">${rows}</ul>`;
   }
 
   detailEl.innerHTML = html;
