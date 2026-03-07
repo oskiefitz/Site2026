@@ -4,113 +4,71 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- ══════════════════════════════════════════════
-       SEO METADATA — edit these lines
-       ══════════════════════════════════════════════ -->
-  <title>Your Name</title>
-  <meta name="description" content="One sentence about who you are." />
-  <meta property="og:title"       content="Your Name" />
-  <meta property="og:description" content="One sentence about who you are." />
+  <!-- ══ SEO — edit these ══ -->
+  <title>Oscar Fitzgerald</title>
+  <meta name="description" content="Oscar Fitzgerald — philologist, data artist, and designer based in Oxford." />
+  <meta property="og:title"       content="Oscar Fitzgerald" />
+  <meta property="og:description" content="Philologist, data artist, and designer based in Oxford." />
   <meta property="og:type"        content="website" />
   <meta property="og:url"         content="https://yourusername.github.io" />
   <!-- <meta property="og:image" content="https://yourusername.github.io/og.jpg" /> -->
   <link rel="canonical" href="https://yourusername.github.io" />
-  <!-- ══════════════════════════════════════════════ -->
 
-  <!--
-    FONT CHOICE: Hanken Grotesk (free, closest to Jonathan's neutral Swiss grotesque)
-    To try alternatives, replace "Hanken+Grotesk" in the Google Fonts URL with:
-      "DM+Sans"    — warmer, a little more personality
-      "Figtree"    — geometric, clean, friendly
-    And update --font-latin below to match.
-  -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500&family=Noto+Naskh+Arabic:wght@400;500&display=swap" rel="stylesheet" />
 
-  <!--
-    CUSTOM FONTS: If you'd rather use your own .otf / .ttf files,
-    comment out the Google Fonts link above and uncomment these:
-
-    @font-face {
-      font-family: 'FedraSans';
-      src: url('FedraSansProBook.otf') format('opentype');
-      font-weight: 400; font-style: normal; font-display: swap;
-    }
-    (etc. — see previous version for full @font-face blocks)
-  -->
-
   <style>
-    /* ── Reset ── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    /* ── Tokens ── */
     :root {
       --text:  #111;
       --bg:    #f7f5f0;
       --muted: #888;
       --rule:  #ccc;
-
-      /* Horizontal padding only — no max-width, text runs full width */
-      --ph: 2.5rem;
+      /* Körner uses ~20px padding — very tight to the edge */
+      --ph: 1.2rem;
     }
 
-    /* ── Fonts ── */
     :root {
       --font-latin:  'Hanken Grotesk', 'Helvetica Neue', Helvetica, Arial, sans-serif;
       --font-arabic: 'Noto Naskh Arabic', serif;
-      --font-sr:     'GT-Walsheim', 'Hanken Grotesk', sans-serif; /* falls back if TTF not uploaded */
     }
 
     @font-face {
       font-family: 'GT-Walsheim';
       src: url('GT-Walsheim-Pro-Black.ttf') format('truetype');
-      font-weight: 900;
-      font-style: normal;
-      font-display: swap;
+      font-weight: 900; font-style: normal; font-display: swap;
     }
     @font-face {
       font-family: 'Lenos';
       src: url('LenosMedium.otf') format('opentype');
-      font-weight: 400;
-      font-style: normal;
-      font-display: swap;
+      font-weight: 400; font-style: normal; font-display: swap;
     }
 
-    /* ── Base ── */
     html { font-size: 18px; }
 
     body {
       font-family: var(--font-latin);
       background: var(--bg);
       color: var(--text);
-      line-height: 1.55;
-      /* Text starts right at the top — like Körner */
-      padding: 2rem var(--ph) 0;
+      line-height: 1.5;
+      /* Minimal top padding — text starts near the very top */
+      padding: 1.2rem var(--ph) 0;
     }
 
-    html[lang="ar"] body {
-      font-family: 'Lenos', var(--font-arabic);
-      line-height: 1.85;
-      font-size: 1.05rem;
-    }
+    html[lang="ar"] body { font-family: 'Lenos', var(--font-arabic); line-height: 1.85; font-size: 1.05rem; }
+    html[lang="sr"] body { font-family: 'GT-Walsheim', var(--font-latin); line-height: 1.4; letter-spacing: -0.01em; }
 
-    html[lang="sr"] body {
-      font-family: 'GT-Walsheim', var(--font-latin);
-      line-height: 1.4;
-      letter-spacing: -0.01em;
-    }
-
-    /* ── Bio — full width, no max-width constraint ── */
+    /* ── Bio: ONE continuous paragraph, full width, no max-width ── */
     #bio {
-      /* Size comparable to Körner: large enough to feel editorial,
-         small enough to not be overwhelming */
       font-size: clamp(1.1rem, 2.4vw, 1.55rem);
-      /* No max-width: text stretches from padding to padding */
     }
-    #bio p { margin-bottom: 0.2em; }
+    /* Single <p> — no breaks between sentences */
+    #bio p { display: inline; }
+    #bio p::after { content: ' '; }
 
-    /* ── Trigger words ── */
+    /* ── Triggers ── */
     .trigger {
       cursor: pointer;
       text-decoration: underline;
@@ -124,14 +82,11 @@
     /* ── Detail panel ── */
     #detail-area {
       display: none;
-      margin-top: 2.5rem;
-      padding-top: 1.4rem;
+      margin-top: 2rem;
+      padding-top: 1.25rem;
       border-top: 1px solid var(--rule);
     }
-    #detail-area.visible {
-      display: block;
-      animation: drop 0.2s ease;
-    }
+    #detail-area.visible { display: block; animation: drop 0.2s ease; }
     @keyframes drop {
       from { opacity: 0; transform: translateY(-5px); }
       to   { opacity: 1; transform: translateY(0); }
@@ -147,60 +102,50 @@
     }
     html[lang="ar"] .panel-heading { letter-spacing: 0; }
 
-    #detail-area p   { font-size: 0.92rem; margin-bottom: 0.4rem; }
+    #detail-area p   { font-size: 0.9rem; margin-bottom: 0.4rem; }
     #detail-area a   { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
 
-    /* ── Project list ── */
-    .project-list    { list-style: none; padding: 0; }
-    .project-list li { display: flex; gap: 1.5rem; margin-bottom: 0.3rem; font-size: 0.9rem; }
-    .project-list .year {
-      color: var(--muted);
-      min-width: 4rem;
-      flex-shrink: 0;
-    }
-    .proj-trigger {
+    /* ── List used in multiple panels ── */
+    .item-list      { list-style: none; padding: 0; }
+    .item-list li   { display: flex; gap: 1.5rem; margin-bottom: 0.3rem; font-size: 0.9rem; align-items: baseline; }
+    .item-list .year { color: var(--muted); min-width: 4rem; flex-shrink: 0; }
+
+    /* Clickable list item (opens image sub-panel) */
+    .sub-trigger {
       cursor: pointer;
       text-decoration: underline;
       text-underline-offset: 3px;
       text-decoration-thickness: 1px;
       transition: opacity 0.15s;
     }
-    .proj-trigger:hover { opacity: 0.4; }
+    .sub-trigger:hover { opacity: 0.4; }
 
-    /* ── Project detail ── */
-    .proj-back {
+    /* ── Sub-panel (project / philology detail) ── */
+    .sub-back {
       display: inline-block;
       font-size: 0.75rem;
       color: var(--muted);
       cursor: pointer;
       margin-bottom: 1rem;
-      background: none;
-      border: none;
-      padding: 0;
-      font-family: inherit;
+      background: none; border: none;
+      padding: 0; font-family: inherit;
       transition: opacity 0.15s;
     }
-    .proj-back:hover { opacity: 0.5; }
+    .sub-back:hover { opacity: 0.5; }
 
-    .proj-title { font-size: 0.95rem; font-weight: 500; margin-bottom: 0.4rem; }
-    .proj-desc  { font-size: 0.85rem; color: #555; margin-bottom: 1.2rem; max-width: 52ch; }
+    .sub-title { font-size: 0.95rem; font-weight: 500; margin-bottom: 0.35rem; }
+    .sub-desc  { font-size: 0.85rem; color: #555; margin-bottom: 1.1rem; max-width: 52ch; }
 
     /* ── Image grid (desktop) ── */
-    .img-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; max-width: 640px; }
-    .img-grid img {
-      width: 100%; aspect-ratio: 4/3; object-fit: cover;
-      display: block; background: #e0ddd7;
-    }
+    .img-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; max-width: 600px; }
+    .img-grid img { width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block; background: #e0ddd7; }
     .img-grid img:last-child:nth-child(odd) { grid-column: 1 / -1; }
 
     /* ── Carousel (mobile) ── */
     .img-carousel {
       display: none;
-      overflow-x: scroll;
-      scroll-snap-type: x mandatory;
-      -webkit-overflow-scrolling: touch;
-      scrollbar-width: none;
-      gap: 0.5rem;
+      overflow-x: scroll; scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch; scrollbar-width: none; gap: 0.5rem;
     }
     .img-carousel::-webkit-scrollbar { display: none; }
     .img-carousel img {
@@ -208,16 +153,8 @@
       aspect-ratio: 4/3; object-fit: cover;
       scroll-snap-align: start; background: #e0ddd7;
     }
-
-    .carousel-dots {
-      display: none; justify-content: center;
-      gap: 0.35rem; margin-top: 0.6rem;
-    }
-    .carousel-dots span {
-      width: 5px; height: 5px; border-radius: 50%;
-      background: var(--rule); cursor: pointer;
-      transition: background 0.2s;
-    }
+    .carousel-dots { display: none; justify-content: center; gap: 0.35rem; margin-top: 0.6rem; }
+    .carousel-dots span { width: 5px; height: 5px; border-radius: 50%; background: var(--rule); cursor: pointer; transition: background 0.2s; }
     .carousel-dots span.active { background: var(--text); }
 
     @media (max-width: 600px) {
@@ -226,75 +163,49 @@
       .carousel-dots { display: flex; }
     }
 
-    /* ══════════════════════════════════════════════
-       FOOTER — three zones: left · centre · right
-       ══════════════════════════════════════════════ */
+    /* ══ FOOTER: left · centre · right ══ */
     footer {
-      margin-top: 4rem;
-      padding: 1.5rem var(--ph) 2rem;
+      margin-top: 3.5rem;
+      padding: 1.25rem var(--ph) 2rem;
       display: grid;
       grid-template-columns: 1fr auto 1fr;
       align-items: end;
       gap: 1rem;
     }
 
-    /* Left: contact links */
     .footer-left {
-      display: flex;
-      flex-direction: column;
-      gap: 0.2rem;
-      font-size: 0.78rem;
-      color: var(--muted);
+      display: flex; flex-direction: column; gap: 0.2rem;
+      font-size: 0.75rem; color: var(--muted);
     }
     .footer-left a { color: inherit; text-decoration: none; }
     .footer-left a:hover { text-decoration: underline; }
 
-    /* Centre: logo — links to index page */
     .footer-centre { display: flex; justify-content: center; align-items: flex-end; }
-
     .logo-link {
-      display: block;
-      width: 36px;
-      height: 36px;
-      opacity: 0.5;
-      transition: opacity 0.2s;
-      /* href="/" links to index — works on GitHub Pages */
+      display: block; width: 34px; height: 34px;
+      opacity: 0.45; transition: opacity 0.2s;
     }
     .logo-link:hover { opacity: 1; }
     .logo-link svg, .logo-link img { width: 100%; height: 100%; display: block; }
 
-    /* Right: language switcher */
     .footer-right {
-      display: flex;
-      justify-content: flex-end;
-      align-items: center;
-      gap: 0.5rem;
+      display: flex; justify-content: flex-end; align-items: center; gap: 0.5rem;
     }
     .lang-btn {
-      cursor: pointer;
-      background: none;
-      border: none;
-      padding: 0;
-      font-family: inherit;
-      font-size: 0.78rem;
-      color: var(--muted);
+      cursor: pointer; background: none; border: none; padding: 0;
+      font-family: inherit; font-size: 0.75rem; color: var(--muted);
       transition: color 0.15s;
     }
     .lang-btn:hover  { color: var(--text); }
     .lang-btn.active { color: var(--text); font-style: italic; }
-    .lang-sep        { font-size: 0.78rem; color: var(--rule); user-select: none; }
+    .lang-sep        { font-size: 0.75rem; color: var(--rule); user-select: none; }
 
-    /* ── Mobile footer ── */
     @media (max-width: 640px) {
-      :root { --ph: 1.4rem; }
       html  { font-size: 16px; }
-      body  { padding-top: 1.5rem; }
-
+      body  { padding-top: 1rem; }
       footer {
         grid-template-columns: 1fr 1fr;
         grid-template-rows: auto auto;
-        padding-left: var(--ph);
-        padding-right: var(--ph);
       }
       .footer-centre {
         grid-column: 1 / -1;
@@ -302,15 +213,10 @@
         margin-bottom: 0.75rem;
       }
     }
-
-    @media (max-width: 400px) {
-      :root { --ph: 1rem; }
-    }
   </style>
 </head>
 <body>
 
-<!-- No h1 name header — bio starts immediately -->
 <div id="bio"></div>
 <div id="detail-area" aria-live="polite"></div>
 
@@ -318,108 +224,220 @@
   <div class="footer-left" id="footer-links"></div>
 
   <div class="footer-centre">
-    <!--
-      LOGO: href="/" links back to your index page on GitHub Pages.
-      Replace the <svg> below with your own logo, or swap for:
-        <img src="logo.svg" alt="Your Name" width="36" height="36">
-    -->
+    <!-- LOGO: replace <svg> with your own, or <img src="logo.svg"> -->
     <a href="/" class="logo-link" aria-label="Home">
       <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
         <circle cx="18" cy="18" r="16" stroke="#111" stroke-width="1.5"/>
         <line x1="18" y1="5"  x2="18" y2="31" stroke="#111" stroke-width="1.5"/>
         <line x1="5"  y1="18" x2="31" y2="18" stroke="#111" stroke-width="1.5"/>
-        <!-- Replace this entire <svg> block with your real logo -->
       </svg>
     </a>
   </div>
 
   <nav class="footer-right" aria-label="Language">
     <button class="lang-btn active" data-lang="en">EN</button>
-    <span class="lang-sep" aria-hidden="true">·</span>
+    <span class="lang-sep">·</span>
     <button class="lang-btn" data-lang="de">DE</button>
-    <span class="lang-sep" aria-hidden="true">·</span>
+    <span class="lang-sep">·</span>
     <button class="lang-btn" data-lang="ar">AR</button>
-    <span class="lang-sep" aria-hidden="true">·</span>
+    <span class="lang-sep">·</span>
     <button class="lang-btn" data-lang="sr">SR</button>
   </nav>
 </footer>
 
 <script>
 // ════════════════════════════════════════════════════════════════
-//  PROJECT IMAGES  (shared across all languages)
-//  Replace placehold.co URLs with local paths once you have images:
-//    'images/project-one/01.jpg'
+//  IMAGES
+//  Key names must match the `key` fields in each project/philo entry.
+//  Replace placehold.co URLs with 'images/spit-shined/01.jpg' etc.
 // ════════════════════════════════════════════════════════════════
-const PROJECT_IMAGES = {
-  'project-one': [
-    'https://placehold.co/800x600/e0ddd7/888?text=Image+1',
-    'https://placehold.co/800x600/d8d4ce/888?text=Image+2',
-    'https://placehold.co/800x600/e8e5df/888?text=Image+3',
-    'https://placehold.co/800x600/dedad4/888?text=Image+4',
+const IMAGES = {
+  // Exhibitions & installations
+  'spit-shined': [
+    'https://placehold.co/800x600/e0ddd7/888?text=Spit-shined+1',
+    'https://placehold.co/800x600/d8d4ce/888?text=Spit-shined+2',
+    'https://placehold.co/800x600/e8e5df/888?text=Spit-shined+3',
   ],
-  'project-two': [
-    'https://placehold.co/800x600/e0ddd7/888?text=Image+1',
-    'https://placehold.co/800x600/d8d4ce/888?text=Image+2',
-    'https://placehold.co/800x600/e8e5df/888?text=Image+3',
+  'brain-scanner': [
+    'https://placehold.co/800x600/e0ddd7/888?text=Brain-scanner+1',
+    'https://placehold.co/800x600/d8d4ce/888?text=Brain-scanner+2',
   ],
-  'project-three': [
-    'https://placehold.co/800x600/e0ddd7/888?text=Image+1',
-    'https://placehold.co/800x600/d8d4ce/888?text=Image+2',
+  // 3D projects
+  '3d-one': [
+    'https://placehold.co/800x600/e0ddd7/888?text=3D+One+1',
+    'https://placehold.co/800x600/d8d4ce/888?text=3D+One+2',
+    'https://placehold.co/800x600/e8e5df/888?text=3D+One+3',
+  ],
+  '3d-two': [
+    'https://placehold.co/800x600/e0ddd7/888?text=3D+Two+1',
+    'https://placehold.co/800x600/d8d4ce/888?text=3D+Two+2',
+  ],
+  '3d-three': [
+    'https://placehold.co/800x600/e0ddd7/888?text=3D+Three+1',
+    'https://placehold.co/800x600/d8d4ce/888?text=3D+Three+2',
+    'https://placehold.co/800x600/e8e5df/888?text=3D+Three+3',
+  ],
+  // Philological works with images
+  'divinecommandline': [
+    'https://placehold.co/800x600/e0ddd7/888?text=Divinecommandline+1',
+    'https://placehold.co/800x600/d8d4ce/888?text=Divinecommandline+2',
+    'https://placehold.co/800x600/e8e5df/888?text=Divinecommandline+3',
+  ],
+  'wahlul-uqode': [
+    'https://placehold.co/800x600/e0ddd7/888?text=Wahlul+Uqode+1',
+    'https://placehold.co/800x600/d8d4ce/888?text=Wahlul+Uqode+2',
   ],
 };
 
 // ════════════════════════════════════════════════════════════════
-//  CONTENT  — four languages
+//  CONTENT
+//
+//  bio is now a SINGLE STRING (one continuous paragraph).
+//  Triggers: <span class="trigger" data-key="KEY">word</span>
+//
+//  Panel types in details:
+//    type: 'html'        — plain HTML content
+//    type: 'list'        — list of prizes / plain items (no click)
+//    type: 'projects'    — clickable list → image sub-panel
+//    type: 'philology'   — mixed list: external links OR image sub-panels
 // ════════════════════════════════════════════════════════════════
 const CONTENT = {
 
+  // ── ENGLISH ──────────────────────────────────────────────────
   en: {
     dir: 'ltr',
-    backLabel: '← projects',
-    bio: [
-      `Hello. I am <span class="trigger" data-key="about">Oscar Fitzgerald</span>, a creative currently based in <span class="trigger" data-key="location">Oxford</span>.`,
-      `Studying at <span class="trigger" data-key="education">your university</span> and previously at <span class="trigger" data-key="work">several organisations</span>.`,
-      `Interested in <span class="trigger" data-key="interests">a few things</span> and sometimes <span class="trigger" data-key="projects">make things</span>. Always happy to <span class="trigger" data-key="contact">get in touch</span>.`,
-    ],
-    projects: [
-      { key: 'project-one',   year: '2024', title: 'Project One',   desc: 'A short description — what it is and why it exists.' },
-      { key: 'project-two',   year: '2023', title: 'Project Two',   desc: 'A short description — what it is and why it exists.' },
-      { key: 'project-three', year: '2022', title: 'Project Three', desc: 'A short description — what it is and why it exists.' },
-    ],
+    backLabel: { exhibitions: '← exhibitions', threed: '← 3D', philologist: '← philology' },
+
+    // Single continuous paragraph — no line breaks
+    bio: `Hello. I am <span class="trigger" data-key="about">Oscar Fitzgerald</span>, currently based in <span class="trigger" data-key="location">Oxford</span>. I work with data, through <span class="trigger" data-key="exhibitions">exhibitions and installations</span> and <span class="trigger" data-key="threed">3D</span>. For the past few years however I have been <span class="trigger" data-key="studying">studying</span> at Oxford as a <span class="trigger" data-key="prizes">prize-winning</span> <span class="trigger" data-key="philologist">philologist</span>. Always happy to <span class="trigger" data-key="contact">get in touch</span>.`,
+
     details: {
-      about:     { heading: 'About',      html: `<p>A longer description of who you are, what you work on, and what you care about. Two or three sentences is plenty.</p>` },
-      location:  { heading: 'Location',   html: `<p>Oxford, England</p><p style="color:var(--muted);font-size:0.85rem;">51° 45′ N · 1° 15′ W</p>` },
-      education: { heading: 'Education',  html: `<ul class="project-list"><li><span class="year">2022–</span><span>Your Degree, Your University</span></li><li><span class="year">2019–22</span><span>Previous Qualification, Previous Institution</span></li></ul>` },
-      work:      { heading: 'Experience', html: `<ul class="project-list"><li><span class="year">2024</span><span>Role, Organisation</span></li><li><span class="year">2023</span><span>Role, Organisation</span></li></ul>` },
-      interests: { heading: 'Interests',  html: `<p>Topic one, topic two, topic three. A sentence or two about what genuinely occupies your thinking.</p>` },
-      contact:   { heading: 'Contact',    html: `<p><a href="mailto:you@example.com">you@example.com</a></p><p><a href="https://github.com/yourusername" target="_blank">GitHub</a></p>` },
+      about: {
+        heading: 'About',
+        type: 'html',
+        html: `<p>Oscar Fitzgerald is a philologist and data artist based in Oxford. He works across language, computation, and physical installation.</p>`,
+      },
+      location: {
+        heading: 'Location',
+        type: 'html',
+        html: `<p>Oxford, England</p><p style="color:var(--muted);font-size:0.85rem;">51° 45′ N · 1° 15′ W</p>`,
+      },
+      studying: {
+        heading: 'Education',
+        type: 'html',
+        html: `<ul class="item-list">
+          <li><span class="year">2023–26</span><span>Oxford</span></li>
+          <li><span class="year">2022–23</span><span>UAL</span></li>
+        </ul>`,
+      },
+      prizes: {
+        heading: 'Prizes',
+        type: 'html',
+        html: `<ul class="item-list">
+          <li><span class="year">2025</span><span>Prize name, awarding body</span></li>
+          <li><span class="year">2024</span><span>Prize name, awarding body</span></li>
+          <li><span class="year">2024</span><span>Prize name, awarding body</span></li>
+          <li><span class="year">2023</span><span>Prize name, awarding body</span></li>
+          <li><span class="year">2022</span><span>Prize name, awarding body</span></li>
+        </ul>`,
+      },
+      contact: {
+        heading: 'Contact',
+        type: 'html',
+        html: `<p><a href="mailto:you@example.com">you@example.com</a></p>
+               <p><a href="https://github.com/yourusername" target="_blank">GitHub</a></p>`,
+      },
+
+      // ── Exhibitions: clickable project list → image panel
+      exhibitions: {
+        heading: 'Exhibitions & Installations',
+        type: 'projects',
+        items: [
+          { key: 'spit-shined',  year: '2024', title: 'Spit-shined Apocalypse', desc: 'A short description of this work — medium, context, what it explores.' },
+          { key: 'brain-scanner', year: '2023', title: 'Brain-scanner',          desc: 'A short description of this work — medium, context, what it explores.' },
+        ],
+      },
+
+      // ── 3D: clickable project list → image panel
+      threed: {
+        heading: '3D',
+        type: 'projects',
+        items: [
+          { key: '3d-one',   year: '2024', title: '3D Work One',   desc: 'A short description of this work.' },
+          { key: '3d-two',   year: '2023', title: '3D Work Two',   desc: 'A short description of this work.' },
+          { key: '3d-three', year: '2022', title: '3D Work Three', desc: 'A short description of this work.' },
+        ],
+      },
+
+      // ── Philologist: mixed list (external link + image panels)
+      philologist: {
+        heading: 'Philological Work',
+        type: 'philology',
+        items: [
+          {
+            key:  'cal',
+            title: 'Comprehensive Aramaic Lexicon',
+            type: 'link',          // opens external URL, no images
+            href: 'https://cal.huc.edu/',
+          },
+          {
+            key:  'divinecommandline',
+            title: 'Divinecommandline',
+            type: 'images',        // opens image sub-panel
+            desc: 'A short description of this work.',
+          },
+          {
+            key:  'wahlul-uqode',
+            title: 'Wahlul Uqode',
+            type: 'images',
+            desc: 'A short description of this work.',
+          },
+        ],
+      },
     },
+
     footer: [
       { label: 'you@example.com', href: 'mailto:you@example.com' },
       { label: 'GitHub',          href: 'https://github.com/yourusername' },
     ],
   },
 
+  // ── GERMAN ───────────────────────────────────────────────────
   de: {
     dir: 'ltr',
-    backLabel: '← Projekte',
-    bio: [
-      `Ich bin <span class="trigger" data-key="about">Ihr Name</span>, Forscher und Designer mit Sitz in <span class="trigger" data-key="location">Oxford</span>.`,
-      `Ich studiere an <span class="trigger" data-key="education">Ihrer Universität</span> und habe zuvor bei <span class="trigger" data-key="work">verschiedenen Organisationen</span> gearbeitet.`,
-      `Meine Interessen umfassen <span class="trigger" data-key="interests">einige Themen</span>; gelegentlich entstehen <span class="trigger" data-key="projects">Projekte</span>. Ich freue mich jederzeit über <span class="trigger" data-key="contact">Kontakt</span>.`,
-    ],
-    projects: [
-      { key: 'project-one',   year: '2024', title: 'Projekt Eins', desc: 'Kurze Beschreibung — was es ist und warum es existiert.' },
-      { key: 'project-two',   year: '2023', title: 'Projekt Zwei', desc: 'Kurze Beschreibung — was es ist und warum es existiert.' },
-      { key: 'project-three', year: '2022', title: 'Projekt Drei', desc: 'Kurze Beschreibung — was es ist und warum es existiert.' },
-    ],
+    backLabel: { exhibitions: '← Ausstellungen', threed: '← 3D', philologist: '← Philologie' },
+
+    bio: `Hallo. Ich bin <span class="trigger" data-key="about">Oscar Fitzgerald</span>, derzeit wohnhaft in <span class="trigger" data-key="location">Oxford</span>. Ich arbeite mit Daten – durch <span class="trigger" data-key="exhibitions">Ausstellungen und Installationen</span> sowie <span class="trigger" data-key="threed">3D</span>. Seit einigen Jahren <span class="trigger" data-key="studying">studiere</span> ich in Oxford als <span class="trigger" data-key="prizes">preisgekrönter</span> <span class="trigger" data-key="philologist">Philologe</span>. Ich freue mich jederzeit über <span class="trigger" data-key="contact">Kontakt</span>.`,
+
     details: {
-      about:     { heading: 'Über mich',  html: `<p>Eine längere Beschreibung von Ihnen, Ihrer Arbeit und Ihren Interessen.</p>` },
-      location:  { heading: 'Standort',   html: `<p>Oxford, England</p><p style="color:var(--muted);font-size:0.85rem;">51° 45′ N · 1° 15′ W</p>` },
-      education: { heading: 'Ausbildung', html: `<ul class="project-list"><li><span class="year">2022–</span><span>Studiengang, Universität</span></li><li><span class="year">2019–22</span><span>Vorherige Qualifikation, Institution</span></li></ul>` },
-      work:      { heading: 'Erfahrung',  html: `<ul class="project-list"><li><span class="year">2024</span><span>Stelle, Organisation</span></li><li><span class="year">2023</span><span>Stelle, Organisation</span></li></ul>` },
-      interests: { heading: 'Interessen', html: `<p>Thema eins, Thema zwei, Thema drei.</p>` },
-      contact:   { heading: 'Kontakt',    html: `<p><a href="mailto:you@example.com">you@example.com</a></p><p><a href="https://github.com/yourusername" target="_blank">GitHub</a></p>` },
+      about:     { heading: 'Über mich',    type: 'html', html: `<p>Oscar Fitzgerald ist Philologe und Datenkünstler in Oxford. Er arbeitet an der Schnittstelle von Sprache, Computation und physischer Installation.</p>` },
+      location:  { heading: 'Standort',     type: 'html', html: `<p>Oxford, England</p><p style="color:var(--muted);font-size:0.85rem;">51° 45′ N · 1° 15′ W</p>` },
+      studying:  { heading: 'Ausbildung',   type: 'html', html: `<ul class="item-list"><li><span class="year">2023–26</span><span>Oxford</span></li><li><span class="year">2022–23</span><span>UAL</span></li></ul>` },
+      prizes:    { heading: 'Auszeichnungen', type: 'html', html: `<ul class="item-list"><li><span class="year">2025</span><span>Preis, Vergabestelle</span></li><li><span class="year">2024</span><span>Preis, Vergabestelle</span></li><li><span class="year">2024</span><span>Preis, Vergabestelle</span></li><li><span class="year">2023</span><span>Preis, Vergabestelle</span></li><li><span class="year">2022</span><span>Preis, Vergabestelle</span></li></ul>` },
+      contact:   { heading: 'Kontakt',      type: 'html', html: `<p><a href="mailto:you@example.com">you@example.com</a></p><p><a href="https://github.com/yourusername" target="_blank">GitHub</a></p>` },
+      exhibitions: {
+        heading: 'Ausstellungen & Installationen', type: 'projects',
+        items: [
+          { key: 'spit-shined',   year: '2024', title: 'Spit-shined Apocalypse', desc: 'Kurze Beschreibung dieser Arbeit.' },
+          { key: 'brain-scanner', year: '2023', title: 'Brain-scanner',          desc: 'Kurze Beschreibung dieser Arbeit.' },
+        ],
+      },
+      threed: {
+        heading: '3D', type: 'projects',
+        items: [
+          { key: '3d-one',   year: '2024', title: '3D-Arbeit Eins',  desc: 'Kurze Beschreibung.' },
+          { key: '3d-two',   year: '2023', title: '3D-Arbeit Zwei',  desc: 'Kurze Beschreibung.' },
+          { key: '3d-three', year: '2022', title: '3D-Arbeit Drei',  desc: 'Kurze Beschreibung.' },
+        ],
+      },
+      philologist: {
+        heading: 'Philologische Arbeiten', type: 'philology',
+        items: [
+          { key: 'cal',             title: 'Comprehensive Aramaic Lexicon', type: 'link',   href: 'https://cal.huc.edu/' },
+          { key: 'divinecommandline', title: 'Divinecommandline',           type: 'images', desc: 'Kurze Beschreibung.' },
+          { key: 'wahlul-uqode',    title: 'Wahlul Uqode',                  type: 'images', desc: 'Kurze Beschreibung.' },
+        ],
+      },
     },
     footer: [
       { label: 'you@example.com', href: 'mailto:you@example.com' },
@@ -427,26 +445,42 @@ const CONTENT = {
     ],
   },
 
+  // ── ARABIC ───────────────────────────────────────────────────
   ar: {
     dir: 'rtl',
-    backLabel: 'المشاريع ←',
-    bio: [
-      `أنا <span class="trigger" data-key="about">اسمك</span>، باحث ومصمم مقيم حالياً في <span class="trigger" data-key="location">أكسفورد</span>.`,
-      `أدرس في <span class="trigger" data-key="education">جامعتك</span>، وعملت سابقاً في <span class="trigger" data-key="work">عدة مؤسسات</span>.`,
-      `أهتم بـ<span class="trigger" data-key="interests">مجالات عدة</span>، وأحياناً <span class="trigger" data-key="projects">أُنجز مشاريع</span>. يسعدني دائماً <span class="trigger" data-key="contact">التواصل</span>.`,
-    ],
-    projects: [
-      { key: 'project-one',   year: '٢٠٢٤', title: 'المشروع الأول',  desc: 'وصف مختصر — ما هو ولماذا وُجد.' },
-      { key: 'project-two',   year: '٢٠٢٣', title: 'المشروع الثاني', desc: 'وصف مختصر — ما هو ولماذا وُجد.' },
-      { key: 'project-three', year: '٢٠٢٢', title: 'المشروع الثالث', desc: 'وصف مختصر — ما هو ولماذا وُجد.' },
-    ],
+    backLabel: { exhibitions: 'المعارض ←', threed: 'ثلاثي الأبعاد ←', philologist: 'فقه اللغة ←' },
+
+    bio: `مرحباً. أنا <span class="trigger" data-key="about">أوسكار فيتزجيرالد</span>، مقيم حالياً في <span class="trigger" data-key="location">أكسفورد</span>. أعمل مع البيانات من خلال <span class="trigger" data-key="exhibitions">المعارض والتركيبات</span> و<span class="trigger" data-key="threed">النمذجة ثلاثية الأبعاد</span>. خلال السنوات الأخيرة كنت <span class="trigger" data-key="studying">أدرس</span> في أكسفورد بوصفي <span class="trigger" data-key="prizes">حائزاً على جوائز</span> في مجال <span class="trigger" data-key="philologist">فقه اللغة</span>. يسعدني دائماً <span class="trigger" data-key="contact">التواصل</span>.`,
+
     details: {
-      about:     { heading: 'نبذة',      html: `<p>وصف مطوَّل عن نفسك وعملك واهتماماتك.</p>` },
-      location:  { heading: 'الموقع',    html: `<p>أكسفورد، إنجلترا</p><p style="color:var(--muted);font-size:0.85rem;">51° 45′ N · 1° 15′ W</p>` },
-      education: { heading: 'التعليم',   html: `<ul class="project-list"><li><span class="year">٢٠٢٢–</span><span>درجتك، جامعتك</span></li><li><span class="year">٢٢–١٩</span><span>مؤهل سابق، مؤسسة سابقة</span></li></ul>` },
-      work:      { heading: 'الخبرة',    html: `<ul class="project-list"><li><span class="year">٢٠٢٤</span><span>المنصب، المؤسسة</span></li><li><span class="year">٢٠٢٣</span><span>المنصب، المؤسسة</span></li></ul>` },
-      interests: { heading: 'الاهتمامات', html: `<p>موضوع أول، موضوع ثانٍ، موضوع ثالث.</p>` },
-      contact:   { heading: 'التواصل',   html: `<p><a href="mailto:you@example.com">you@example.com</a></p><p><a href="https://github.com/yourusername" target="_blank">GitHub</a></p>` },
+      about:     { heading: 'نبذة',          type: 'html', html: `<p>أوسكار فيتزجيرالد فيلولوجي وفنان بيانات مقيم في أكسفورد. يعمل عند تقاطع اللغة والحوسبة والتركيب المادي.</p>` },
+      location:  { heading: 'الموقع',         type: 'html', html: `<p>أكسفورد، إنجلترا</p><p style="color:var(--muted);font-size:0.85rem;">51° 45′ N · 1° 15′ W</p>` },
+      studying:  { heading: 'التعليم',        type: 'html', html: `<ul class="item-list"><li><span class="year">٢٠٢٣–٢٦</span><span>أكسفورد</span></li><li><span class="year">٢٠٢٢–٢٣</span><span>UAL</span></li></ul>` },
+      prizes:    { heading: 'الجوائز',        type: 'html', html: `<ul class="item-list"><li><span class="year">٢٠٢٥</span><span>اسم الجائزة، الجهة المانحة</span></li><li><span class="year">٢٠٢٤</span><span>اسم الجائزة، الجهة المانحة</span></li><li><span class="year">٢٠٢٤</span><span>اسم الجائزة، الجهة المانحة</span></li><li><span class="year">٢٠٢٣</span><span>اسم الجائزة، الجهة المانحة</span></li><li><span class="year">٢٠٢٢</span><span>اسم الجائزة، الجهة المانحة</span></li></ul>` },
+      contact:   { heading: 'التواصل',        type: 'html', html: `<p><a href="mailto:you@example.com">you@example.com</a></p><p><a href="https://github.com/yourusername" target="_blank">GitHub</a></p>` },
+      exhibitions: {
+        heading: 'المعارض والتركيبات', type: 'projects',
+        items: [
+          { key: 'spit-shined',   year: '٢٠٢٤', title: 'Spit-shined Apocalypse', desc: 'وصف مختصر لهذا العمل.' },
+          { key: 'brain-scanner', year: '٢٠٢٣', title: 'Brain-scanner',          desc: 'وصف مختصر لهذا العمل.' },
+        ],
+      },
+      threed: {
+        heading: 'ثلاثي الأبعاد', type: 'projects',
+        items: [
+          { key: '3d-one',   year: '٢٠٢٤', title: 'عمل ثلاثي الأبعاد الأول',  desc: 'وصف مختصر.' },
+          { key: '3d-two',   year: '٢٠٢٣', title: 'عمل ثلاثي الأبعاد الثاني', desc: 'وصف مختصر.' },
+          { key: '3d-three', year: '٢٠٢٢', title: 'عمل ثلاثي الأبعاد الثالث', desc: 'وصف مختصر.' },
+        ],
+      },
+      philologist: {
+        heading: 'الأعمال الفيلولوجية', type: 'philology',
+        items: [
+          { key: 'cal',             title: 'المعجم الآرامي الشامل',  type: 'link',   href: 'https://cal.huc.edu/' },
+          { key: 'divinecommandline', title: 'Divinecommandline',     type: 'images', desc: 'وصف مختصر.' },
+          { key: 'wahlul-uqode',    title: 'Wahlul Uqode',            type: 'images', desc: 'وصف مختصر.' },
+        ],
+      },
     },
     footer: [
       { label: 'البريد الإلكتروني', href: 'mailto:you@example.com' },
@@ -454,26 +488,42 @@ const CONTENT = {
     ],
   },
 
+  // ── SERBIAN ──────────────────────────────────────────────────
   sr: {
     dir: 'ltr',
-    backLabel: '← пројекти',
-    bio: [
-      `Ја сам <span class="trigger" data-key="about">Ваше Ime</span>, истраживач и дизајнер тренутно у <span class="trigger" data-key="location">Оксфорду</span>.`,
-      `Студирам на <span class="trigger" data-key="education">вашем универзитету</span> и претходно сам радио у <span class="trigger" data-key="work">неколико организација</span>.`,
-      `Интересују ме <span class="trigger" data-key="interests">разне ствари</span>, а понекад <span class="trigger" data-key="projects">правим пројекте</span>. Увек сам радо доступан за <span class="trigger" data-key="contact">контакт</span>.`,
-    ],
-    projects: [
-      { key: 'project-one',   year: '2024', title: 'Пројекат Један', desc: 'Кратак опис — шта је и зашто постоји.' },
-      { key: 'project-two',   year: '2023', title: 'Пројекат Два',   desc: 'Кратак опис — шта је и зашто постоји.' },
-      { key: 'project-three', year: '2022', title: 'Пројекат Три',   desc: 'Кратак опис — шта је и зашто постоји.' },
-    ],
+    backLabel: { exhibitions: '← изложбе', threed: '← 3D', philologist: '← филологија' },
+
+    bio: `Zdravo. Ja sam <span class="trigger" data-key="about">Oskar Fицџералд</span>, тренутно у <span class="trigger" data-key="location">Оксфорду</span>. Радим са подацима кроз <span class="trigger" data-key="exhibitions">изложбе и инсталације</span> и <span class="trigger" data-key="threed">3D</span>. Последњих неколико година <span class="trigger" data-key="studying">студирам</span> у Оксфорду као <span class="trigger" data-key="prizes">награђивани</span> <span class="trigger" data-key="philologist">филолог</span>. Увек сам радо доступан за <span class="trigger" data-key="contact">контакт</span>.`,
+
     details: {
-      about:     { heading: 'О мени',       html: `<p>Дужи опис о вама, вашем раду и интересовањима.</p>` },
-      location:  { heading: 'Локација',     html: `<p>Оксфорд, Енглеска</p><p style="color:var(--muted);font-size:0.85rem;">51° 45′ N · 1° 15′ W</p>` },
-      education: { heading: 'Образовање',   html: `<ul class="project-list"><li><span class="year">2022–</span><span>Ваш студиј, Универзитет</span></li><li><span class="year">2019–22</span><span>Претходна квалификација, Институција</span></li></ul>` },
-      work:      { heading: 'Искуство',     html: `<ul class="project-list"><li><span class="year">2024</span><span>Позиција, Организација</span></li><li><span class="year">2023</span><span>Позиција, Организација</span></li></ul>` },
-      interests: { heading: 'Интересовања', html: `<p>Тема прва, тема друга, тема трећа.</p>` },
-      contact:   { heading: 'Контакт',      html: `<p><a href="mailto:you@example.com">you@example.com</a></p><p><a href="https://github.com/yourusername" target="_blank">GitHub</a></p>` },
+      about:     { heading: 'О мени',        type: 'html', html: `<p>Оскар Фицџералд је филолог и дата-уметник у Оксфорду. Ради на пресеку језика, рачунарства и физичке инсталације.</p>` },
+      location:  { heading: 'Локација',      type: 'html', html: `<p>Оксфорд, Енглеска</p><p style="color:var(--muted);font-size:0.85rem;">51° 45′ N · 1° 15′ W</p>` },
+      studying:  { heading: 'Образовање',    type: 'html', html: `<ul class="item-list"><li><span class="year">2023–26</span><span>Оксфорд</span></li><li><span class="year">2022–23</span><span>UAL</span></li></ul>` },
+      prizes:    { heading: 'Награде',       type: 'html', html: `<ul class="item-list"><li><span class="year">2025</span><span>Назив награде, додељивач</span></li><li><span class="year">2024</span><span>Назив награде, додељивач</span></li><li><span class="year">2024</span><span>Назив награде, додељивач</span></li><li><span class="year">2023</span><span>Назив награде, додељивач</span></li><li><span class="year">2022</span><span>Назив награде, додељивач</span></li></ul>` },
+      contact:   { heading: 'Контакт',       type: 'html', html: `<p><a href="mailto:you@example.com">you@example.com</a></p><p><a href="https://github.com/yourusername" target="_blank">GitHub</a></p>` },
+      exhibitions: {
+        heading: 'Изложбе и инсталације', type: 'projects',
+        items: [
+          { key: 'spit-shined',   year: '2024', title: 'Spit-shined Apocalypse', desc: 'Кратак опис овог рада.' },
+          { key: 'brain-scanner', year: '2023', title: 'Brain-scanner',          desc: 'Кратак опис овог рада.' },
+        ],
+      },
+      threed: {
+        heading: '3D', type: 'projects',
+        items: [
+          { key: '3d-one',   year: '2024', title: '3D рад један', desc: 'Кратак опис.' },
+          { key: '3d-two',   year: '2023', title: '3D рад два',   desc: 'Кратак опис.' },
+          { key: '3d-three', year: '2022', title: '3D рад три',   desc: 'Кратак опис.' },
+        ],
+      },
+      philologist: {
+        heading: 'Филолошки радови', type: 'philology',
+        items: [
+          { key: 'cal',             title: 'Comprehensive Aramaic Lexicon', type: 'link',   href: 'https://cal.huc.edu/' },
+          { key: 'divinecommandline', title: 'Divinecommandline',           type: 'images', desc: 'Кратак опис.' },
+          { key: 'wahlul-uqode',    title: 'Wahlul Uqode',                  type: 'images', desc: 'Кратак опис.' },
+        ],
+      },
     },
     footer: [
       { label: 'you@example.com', href: 'mailto:you@example.com' },
@@ -487,83 +537,98 @@ const CONTENT = {
 // ════════════════════════════════════════════════════════════════
 
 let currentLang   = 'en';
-let currentDetail = null;
+let currentDetail = null;   // which top-level trigger is open
+let currentParent = null;   // which panel to return to from a sub-panel
 
 const bioEl       = document.getElementById('bio');
 const detailEl    = document.getElementById('detail-area');
 const footerLinks = document.getElementById('footer-links');
 const htmlEl      = document.documentElement;
 
-function projectsListHTML(lang) {
-  const t = CONTENT[lang];
-  const headings = { en: 'Projects', de: 'Projekte', ar: 'المشاريع', sr: 'Пројекти' };
-  const rows = t.projects.map(p =>
-    `<li><span class="year">${p.year}</span><span class="proj-trigger" data-proj="${p.key}">${p.title}</span></li>`
-  ).join('');
-  return `<p class="panel-heading">${headings[lang]}</p><ul class="project-list">${rows}</ul>`;
-}
-
-function projectPanelHTML(projKey, lang) {
-  const t    = CONTENT[lang];
-  const proj = t.projects.find(p => p.key === projKey);
-  if (!proj) return '';
-  const imgs = PROJECT_IMAGES[projKey] || [];
-  const grid     = imgs.map(s => `<img src="${s}" alt="${proj.title}" loading="lazy">`).join('');
-  const carousel = imgs.map(s => `<img src="${s}" alt="${proj.title}" loading="lazy">`).join('');
-  const dots     = imgs.map((_, i) => `<span class="${i===0?'active':''}" data-dot="${i}"></span>`).join('');
+// ── Build image sub-panel (project or philology work) ──
+function imageSubPanelHTML(key, title, desc, parentKey) {
+  const imgs      = IMAGES[key] || [];
+  const backLabel = CONTENT[currentLang].backLabel[parentKey] || '←';
+  const grid      = imgs.map(s => `<img src="${s}" alt="${title}" loading="lazy">`).join('');
+  const carousel  = imgs.map(s => `<img src="${s}" alt="${title}" loading="lazy">`).join('');
+  const dots      = imgs.map((_, i) => `<span class="${i===0?'active':''}" data-dot="${i}"></span>`).join('');
   return `
-    <button class="proj-back" id="proj-back-btn">${t.backLabel}</button>
-    <p class="proj-title">${proj.title}</p>
-    <p class="proj-desc">${proj.desc}</p>
+    <button class="sub-back" data-parent="${parentKey}">${backLabel}</button>
+    <p class="sub-title">${title}</p>
+    ${desc ? `<p class="sub-desc">${desc}</p>` : ''}
     <div class="img-grid">${grid}</div>
-    <div class="img-carousel" id="proj-carousel">${carousel}</div>
-    <div class="carousel-dots" id="carousel-dots">${dots}</div>`;
+    <div class="img-carousel" id="sub-carousel">${carousel}</div>
+    <div class="carousel-dots" id="sub-dots">${dots}</div>`;
 }
 
+// ── Attach carousel events after rendering sub-panel ──
+function attachCarousel() {
+  const carousel = document.getElementById('sub-carousel');
+  const dotsWrap = document.getElementById('sub-dots');
+  if (!carousel || !dotsWrap) return;
+  const dots = dotsWrap.querySelectorAll('span');
+  carousel.addEventListener('scroll', () => {
+    const idx = Math.round(carousel.scrollLeft / carousel.offsetWidth);
+    dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+  }, { passive: true });
+  dots.forEach((dot, i) =>
+    dot.addEventListener('click', () =>
+      carousel.scrollTo({ left: i * carousel.offsetWidth, behavior: 'smooth' })
+    )
+  );
+}
+
+// ── Render a detail panel by key ──
 function openDetail(key) {
-  let html = '';
-  if (key === 'projects') {
-    html = projectsListHTML(currentLang);
-  } else {
-    const d = CONTENT[currentLang].details[key];
-    if (d) html = `<p class="panel-heading">${d.heading}</p>${d.html}`;
+  const d = CONTENT[currentLang].details[key];
+  if (!d) return;
+
+  let html = `<p class="panel-heading">${d.heading}</p>`;
+
+  if (d.type === 'html') {
+    html += d.html;
+
+  } else if (d.type === 'projects') {
+    const rows = d.items.map(item =>
+      `<li><span class="year">${item.year}</span><span class="sub-trigger" data-key="${item.key}" data-parent="${key}" data-title="${item.title}" data-desc="${item.desc}">${item.title}</span></li>`
+    ).join('');
+    html += `<ul class="item-list">${rows}</ul>`;
+
+  } else if (d.type === 'philology') {
+    const rows = d.items.map(item => {
+      if (item.type === 'link') {
+        return `<li><span class="year"></span><a href="${item.href}" target="_blank" rel="noopener">${item.title}</a></li>`;
+      } else {
+        return `<li><span class="year"></span><span class="sub-trigger" data-key="${item.key}" data-parent="${key}" data-title="${item.title}" data-desc="${item.desc||''}">${item.title}</span></li>`;
+      }
+    }).join('');
+    html += `<ul class="item-list">${rows}</ul>`;
   }
-  if (!html) return;
 
   detailEl.innerHTML = html;
   detailEl.classList.remove('visible');
   void detailEl.offsetWidth;
   detailEl.classList.add('visible');
 
-  detailEl.querySelectorAll('.proj-trigger').forEach(el =>
-    el.addEventListener('click', () => openProjectPanel(el.dataset.proj))
-  );
+  // Attach sub-item click handlers
+  detailEl.querySelectorAll('.sub-trigger').forEach(el => {
+    el.addEventListener('click', () => {
+      const parentKey = el.dataset.parent;
+      currentParent   = parentKey;
+      detailEl.innerHTML = imageSubPanelHTML(el.dataset.key, el.dataset.title, el.dataset.desc, parentKey);
+      detailEl.classList.remove('visible');
+      void detailEl.offsetWidth;
+      detailEl.classList.add('visible');
+      attachCarousel();
+      // Back button
+      detailEl.querySelector('.sub-back')?.addEventListener('click', e => {
+        openDetail(e.target.dataset.parent);
+      });
+    });
+  });
 }
 
-function openProjectPanel(projKey) {
-  detailEl.innerHTML = projectPanelHTML(projKey, currentLang);
-  detailEl.classList.remove('visible');
-  void detailEl.offsetWidth;
-  detailEl.classList.add('visible');
-
-  document.getElementById('proj-back-btn')?.addEventListener('click', () => openDetail('projects'));
-
-  const carousel = document.getElementById('proj-carousel');
-  const dotsWrap = document.getElementById('carousel-dots');
-  if (carousel && dotsWrap) {
-    const dots = dotsWrap.querySelectorAll('span');
-    carousel.addEventListener('scroll', () => {
-      const idx = Math.round(carousel.scrollLeft / carousel.offsetWidth);
-      dots.forEach((d, i) => d.classList.toggle('active', i === idx));
-    }, { passive: true });
-    dots.forEach((dot, i) =>
-      dot.addEventListener('click', () =>
-        carousel.scrollTo({ left: i * carousel.offsetWidth, behavior: 'smooth' })
-      )
-    );
-  }
-}
-
+// ── Toggle a top-level trigger ──
 function onTriggerClick(key) {
   if (currentDetail === key) {
     currentDetail = null;
@@ -578,12 +643,15 @@ function onTriggerClick(key) {
   }
 }
 
+// ── Full render ──
 function render(lang) {
   const t = CONTENT[lang];
   htmlEl.lang = lang;
   htmlEl.dir  = t.dir;
 
-  bioEl.innerHTML    = t.bio.map(p => `<p>${p}</p>`).join('');
+  // Single paragraph — wrap bio string in one <p>
+  bioEl.innerHTML = `<p>${t.bio}</p>`;
+
   footerLinks.innerHTML = t.footer.map(l => `<a href="${l.href}">${l.label}</a>`).join('');
 
   document.querySelectorAll('.trigger').forEach(el =>
