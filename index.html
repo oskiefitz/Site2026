@@ -304,7 +304,7 @@ const VIDEOS = {
 };
 
 const GAMES = {
-  'spit-shined': 'https://itch.io/embed-upload/1821519?color=f7f5f0',
+  'spit-shined': 'https://oskiefitz.itch.io/spitshinedapocalypse',
 };
 
 const CONTENT = {
@@ -570,8 +570,7 @@ function imageSubPanelHTML(key, title, desc, backKey) {
   const dots      = imgs.map((_, i) => `<span class="${i===0?'active':''}" data-dot="${i}"></span>`).join('');
   const videoHTML = video ? `<video controls preload="metadata" style="width:100%;max-width:600px;display:block;margin-top:0.75rem"><source src="${video}" type="video/mp4"></video>` : '';
   const gameHTML  = game
-    ? `<p style="margin-top:0.75rem"><span class="sub-trigger" data-mode="game" data-game="${game}" style="cursor:pointer">press here to play!</span></p>
-       <div class="game-wrap" id="game-wrap-${key}"><iframe id="game-frame-${key}" src="" allowfullscreen></iframe></div>`
+    ? `<p style="margin-top:0.75rem"><a href="${game}" target="_blank" rel="noopener" class="sub-trigger" style="color:var(--muted)">press here to play!</a></p>`
     : '';
   return `
     <button class="sub-back" data-parent="${backKey}">${backLabel}</button>
