@@ -146,6 +146,17 @@
     .sub-title { font-size: 0.95rem; font-weight: 500; margin-bottom: 0.35rem; color: var(--muted); }
     .sub-desc  { font-size: 0.85rem; color: var(--muted); margin-bottom: 1.1rem; max-width: 52ch; }
 
+    /* Lightbox */
+    dialog#lb { border: none; background: transparent; padding: 0; max-width: 92vw; max-height: 92vh; }
+    dialog#lb::backdrop { background: rgba(0,0,0,0.82); }
+    dialog#lb img { display: block; max-width: 92vw; max-height: 88vh; object-fit: contain; }
+    dialog#lb .lb-close {
+      position: fixed; top: 1rem; right: 1.2rem;
+      background: none; border: none; color: #fff; font-size: 1.4rem;
+      cursor: pointer; opacity: 0.7; font-family: inherit; line-height: 1;
+    }
+    dialog#lb .lb-close:hover { opacity: 1; }
+
     /* Image grid */
     .img-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; max-width: 600px; }
     .img-grid img { width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block; background: #e0ddd7; }
@@ -235,6 +246,11 @@
   </nav>
 </footer>
 
+<dialog id="lb">
+  <button class="lb-close" onclick="document.getElementById('lb').close()">✕</button>
+  <img id="lb-img" src="" alt="">
+</dialog>
+
 <script>
 const IMAGES = {
   'spit-shined': [
@@ -242,13 +258,19 @@ const IMAGES = {
     'https://placehold.co/800x600/d8d4ce/888?text=Spit-shined+2',
     'https://placehold.co/800x600/e8e5df/888?text=Spit-shined+3',
   ],
-  'brain-scanner': [
+  'en-plein-air': [
     'images/orb/1.png',
     'images/orb/2.png',
     'images/orb/3.png',
     'images/orb/4.png',
     'images/orb/5.jpeg',
     'images/orb/6.jpg',
+  ],
+  'brain-scanner': [
+    'https://placehold.co/800x600/e0ddd7/888?text=Brain+Scanner+1',
+    'https://placehold.co/800x600/d8d4ce/888?text=Brain+Scanner+2',
+    'https://placehold.co/800x600/e8e5df/888?text=Brain+Scanner+3',
+    'https://placehold.co/800x600/dedad4/888?text=Brain+Scanner+4',
   ],
   '3d-one':   ['https://placehold.co/800x600/e0ddd7/888?text=3D+One+1','https://placehold.co/800x600/d8d4ce/888?text=3D+One+2','https://placehold.co/800x600/e8e5df/888?text=3D+One+3'],
   '3d-two':   ['https://placehold.co/800x600/e0ddd7/888?text=3D+Two+1','https://placehold.co/800x600/d8d4ce/888?text=3D+Two+2'],
@@ -257,12 +279,16 @@ const IMAGES = {
   'wahlul-uqode': ['https://placehold.co/800x600/e0ddd7/888?text=Wahlul+Uqode+1','https://placehold.co/800x600/d8d4ce/888?text=Wahlul+Uqode+2'],
 };
 
+const VIDEOS = {
+  'brain-scanner': 'videos/brain-scanner.mp4', // ← update path to your video
+};
+
 const CONTENT = {
 
   // ── ENGLISH ──────────────────────────────────────────────────
   en: {
     dir: 'ltr',
-    backLabel: { installations: '← installations', threed: '← 3D', philological: '← philology' },
+    backLabel: { installations: '← installations', threed: '← 3D', philological: '← philology', physical: '← physical' },
 
     bio: `Hello. I am <span class="trigger" data-key="about">Oscar Fitzgerald</span>, a <span class="trigger" data-key="prizes">prize-winning</span> philologist and computational artist, <span class="trigger" data-key="studying">studying</span> at <span class="trigger" data-key="location">Oxford</span>. I work with data of all kinds, <span class="trigger" data-key="physical">physical</span>, <span class="trigger" data-key="prizes">prize-winning</span>, visual, through <span class="trigger" data-key="installations">installations</span> and <span class="trigger" data-key="threed">3D</span>. Always happy to <span class="trigger" data-key="contact">get in touch</span>.`,
 
@@ -304,16 +330,29 @@ const CONTENT = {
         backKey: 'installations',
         items: [
           {
-            key: 'brain-scanner',
+            key: 'en-plein-air',
             year: '2024',
-            title: 'Brain-scanner',
-            desc: 'An electroencephalogram built from repurposed electronics. An interactive installation displaying a generative Monet-style image of a live webcam feed — more detailed the more concentrated the viewer is. Exhibited at Oxford Review of Books promotional show, 500+ guests.',
+            title: 'En Plein Air, Oxford 2025',
+            desc: 'An electroencephalogram built from repurposed electronics. An interactive installation displaying a generative Monet-style image of a live webcam feed, more detailed the more concentrated the viewer is. Exhibited at Oxford Review of Books promotional show, 500+ guests.',
           },
           {
             key: 'spit-shined',
             year: '2023',
             title: 'Spit-shined Apocalypse',
             desc: 'Presented at Creative Tech & Digital Design, London. Work at the intersection of art and technology, shown alongside interdisciplinary exchanges with professionals across tech and creative sectors.',
+          },
+        ],
+      },
+
+      physical: {
+        type: 'projects',
+        backKey: 'physical',
+        items: [
+          {
+            key: 'brain-scanner',
+            year: '2024',
+            title: 'Brain Scanner',
+            desc: 'Description of the Brain Scanner physical work.',
           },
         ],
       },
@@ -378,9 +417,9 @@ const CONTENT = {
   // ── GERMAN ───────────────────────────────────────────────────
   de: {
     dir: 'ltr',
-    backLabel: { installations: '← Installationen', threed: '← 3D', philological: '← Philologie' },
+    backLabel: { installations: '← Installationen', threed: '← 3D', philological: '← Philologie', physical: '← Physisch' },
 
-    bio: `Hallo. Ich bin <span class="trigger" data-key="about">Oscar Fitzgerald</span>, ein <span class="trigger" data-key="prizes">preisgekrönter</span> Philologe und Computerkünstler, der in <span class="trigger" data-key="location">Oxford</span> <span class="trigger" data-key="studying">studiert</span>. Ich arbeite mit Daten aller Art — <span class="trigger" data-key="philological">philologischen</span>, physischen, visuellen — durch <span class="trigger" data-key="installations">Installationen</span> und <span class="trigger" data-key="threed">3D</span>. Ich freue mich jederzeit über <span class="trigger" data-key="contact">Kontakt</span>.`,
+    bio: `Hallo. Ich bin <span class="trigger" data-key="about">Oscar Fitzgerald</span>, ein <span class="trigger" data-key="prizes">preisgekrönter</span> Philologe und Computerkünstler, der in <span class="trigger" data-key="location">Oxford</span> <span class="trigger" data-key="studying">studiert</span>. Ich arbeite mit Daten aller Art, <span class="trigger" data-key="philological">philologischen</span>, physischen, visuellen, durch <span class="trigger" data-key="installations">Installationen</span> und <span class="trigger" data-key="threed">3D</span>. Ich freue mich jederzeit über <span class="trigger" data-key="contact">Kontakt</span>.`,
 
     details: {
       about:     { type: 'html', html: `<p>Oscar Fitzgerald ist Philologe und Computerkünstler in Oxford. Er arbeitet an der Schnittstelle von altorientalischer Literatur, Computation und physischer Installation.</p>` },
@@ -388,8 +427,11 @@ const CONTENT = {
       studying:  { type: 'html', html: `<ul class="item-list"><li><span class="year">2023–26</span><span>BA Theologie &amp; Religion, Universität Oxford</span></li><li><span class="year">2022–23</span><span>BA Bildende Kunst: Computational Arts (CertHE), UAL</span></li></ul>` },
       prizes:    { type: 'html', html: `<ul class="item-list"><li><span class="year">2026</span><span>Tel Aviv University Archaeology Scholarship</span></li><li><span class="year">2025</span><span>Hazem Ben-Gacem Scholarship</span></li><li><span class="year">2025</span><span>St. Antony's Middle East Centre Arabic Training Fund, Tunesien</span></li><li><span class="year">2024</span><span>Expanding Horizons Grant, St. John's College</span></li><li><span class="year">2024</span><span>Special Grant, St. John's College, Universität Belgrad</span></li><li><span class="year">2024</span><span>Kennicott &amp; Pusey–Ellerton-Preis, Biblisches Hebräisch</span></li><li><span class="year">2024</span><span>Casberd-Stipendium</span></li></ul>` },
       installations: { type: 'projects', backKey: 'installations', items: [
-        { key: 'brain-scanner', year: '2024', title: 'Brain-scanner', desc: 'Elektroenzephalogramm aus wiederverwendeter Elektronik. Generatives Monet-Bild eines Live-Webcam-Feeds — detailreicher je konzentrierter der Betrachter ist.' },
-        { key: 'spit-shined',   year: '2023', title: 'Spit-shined Apocalypse', desc: 'Präsentiert bei Creative Tech & Digital Design, London.' },
+        { key: 'en-plein-air', year: '2024', title: 'En Plein Air, Oxford 2025', desc: 'Elektroenzephalogramm aus wiederverwendeter Elektronik. Generatives Monet-Bild eines Live-Webcam-Feeds, detailreicher je konzentrierter der Betrachter ist.' },
+        { key: 'spit-shined',  year: '2023', title: 'Spit-shined Apocalypse', desc: 'Präsentiert bei Creative Tech & Digital Design, London.' },
+      ]},
+      physical: { type: 'projects', backKey: 'physical', items: [
+        { key: 'brain-scanner', year: '2024', title: 'Brain Scanner', desc: 'Beschreibung der physischen Brain-Scanner-Arbeit.' },
       ]},
       threed: { type: 'projects', backKey: 'threed', items: [
         { key: '3d-one',   year: '2025', title: 'Großer Jesaja-Scroll — FTL Institut', desc: 'Immersive Installation zum Großen Jesaja-Scroll; 3D-Interface in Unreal Engine.' },
@@ -411,9 +453,9 @@ const CONTENT = {
   // ── ARABIC ───────────────────────────────────────────────────
   ar: {
     dir: 'rtl',
-    backLabel: { installations: 'التركيبات ←', threed: 'ثلاثي الأبعاد ←', philological: 'فقه اللغة ←' },
+    backLabel: { installations: 'التركيبات ←', threed: 'ثلاثي الأبعاد ←', philological: 'فقه اللغة ←', physical: 'المادي ←' },
 
-    bio: `مرحباً. أنا <span class="trigger" data-key="about">أوسكار فيتزجيرالد</span>، فيلولوجي وفنان حوسبة <span class="trigger" data-key="prizes">حائز على جوائز</span>، أدرس في <span class="trigger" data-key="location">أكسفورد</span> حيث <span class="trigger" data-key="studying">أتابع دراستي</span>. أعمل مع البيانات بأنواعها — <span class="trigger" data-key="philological">فيلولوجية</span> وفيزيائية وبصرية — من خلال <span class="trigger" data-key="installations">التركيبات الفنية</span> و<span class="trigger" data-key="threed">النمذجة ثلاثية الأبعاد</span>. يسعدني دائماً <span class="trigger" data-key="contact">التواصل</span>.`,
+    bio: `مرحباً. أنا <span class="trigger" data-key="about">أوسكار فيتزجيرالد</span>، فيلولوجي وفنان حوسبة <span class="trigger" data-key="prizes">حائز على جوائز</span>، أدرس في <span class="trigger" data-key="location">أكسفورد</span> حيث <span class="trigger" data-key="studying">أتابع دراستي</span>. أعمل مع البيانات بأنواعها، <span class="trigger" data-key="philological">فيلولوجية</span> وفيزيائية وبصرية، من خلال <span class="trigger" data-key="installations">التركيبات الفنية</span> و<span class="trigger" data-key="threed">النمذجة ثلاثية الأبعاد</span>. يسعدني دائماً <span class="trigger" data-key="contact">التواصل</span>.`,
 
     details: {
       about:     { type: 'html', html: `<p>أوسكار فيتزجيرالد فيلولوجي وفنان حوسبة مقيم في أكسفورد. يعمل عند تقاطع الآداب السامية القديمة والحوسبة والتركيب المادي.</p>` },
@@ -421,8 +463,11 @@ const CONTENT = {
       studying:  { type: 'html', html: `<ul class="item-list"><li><span class="year">٢٠٢٣–٢٦</span><span>بكالوريوس اللاهوت والدين، جامعة أكسفورد</span></li><li><span class="year">٢٠٢٢–٢٣</span><span>بكالوريوس الفنون الجميلة: الفنون الحسابية (CertHE)، UAL</span></li></ul>` },
       prizes:    { type: 'html', html: `<ul class="item-list"><li><span class="year">٢٠٢٦</span><span>Tel Aviv University Archaeology Scholarship</span></li><li><span class="year">٢٠٢٥</span><span>منحة حازم بن قاسم</span></li><li><span class="year">٢٠٢٥</span><span>صندوق تدريب اللغة العربية، مركز الشرق الأوسط، تونس</span></li><li><span class="year">٢٠٢٤</span><span>Expanding Horizons Grant، كلية سانت جون</span></li><li><span class="year">٢٠٢٤</span><span>Special Grant، كلية سانت جون، جامعة بلغراد</span></li><li><span class="year">٢٠٢٤</span><span>جائزة كينيكوت وبيوزي–إيلرتون، العبرية الكتابية</span></li><li><span class="year">٢٠٢٤</span><span>منحة كاسبيرد</span></li></ul>` },
       installations: { type: 'projects', backKey: 'installations', items: [
-        { key: 'brain-scanner', year: '٢٠٢٤', title: 'Brain-scanner', desc: 'جهاز تخطيط الدماغ من إلكترونيات معاد توظيفها. تركيب تفاعلي يعرض صورة تجريبية على طراز مونيه من تغذية ويب-كام مباشرة.' },
-        { key: 'spit-shined',   year: '٢٠٢٣', title: 'Spit-shined Apocalypse', desc: 'قُدِّم في Creative Tech & Digital Design، لندن.' },
+        { key: 'en-plein-air', year: '٢٠٢٤', title: 'En Plein Air, Oxford 2025', desc: 'جهاز تخطيط الدماغ من إلكترونيات معاد توظيفها. تركيب تفاعلي يعرض صورة تجريبية على طراز مونيه من تغذية ويب-كام مباشرة.' },
+        { key: 'spit-shined',  year: '٢٠٢٣', title: 'Spit-shined Apocalypse', desc: 'قُدِّم في Creative Tech & Digital Design، لندن.' },
+      ]},
+      physical: { type: 'projects', backKey: 'physical', items: [
+        { key: 'brain-scanner', year: '٢٠٢٤', title: 'Brain Scanner', desc: 'وصف عمل Brain Scanner المادي.' },
       ]},
       threed: { type: 'projects', backKey: 'threed', items: [
         { key: '3d-one',   year: '٢٠٢٥', title: 'مخطوطة إشعياء الكبرى — معهد FTL', desc: 'تركيب غامر حول مخطوطة إشعياء الكبرى؛ واجهة ثلاثية الأبعاد في Unreal Engine.' },
@@ -444,9 +489,9 @@ const CONTENT = {
   // ── SERBIAN ──────────────────────────────────────────────────
   sr: {
     dir: 'ltr',
-    backLabel: { installations: '← инсталације', threed: '← 3D', philological: '← филологија' },
+    backLabel: { installations: '← инсталације', threed: '← 3D', philological: '← филологија', physical: '← физичко' },
 
-    bio: `Zdravo. Ja sam <span class="trigger" data-key="about">Oskar Fицџералд</span>, <span class="trigger" data-key="prizes">награђивани</span> филолог и рачунарски уметник, <span class="trigger" data-key="studying">студирам</span> у <span class="trigger" data-key="location">Оксфорду</span>. Радим са свим врстама података — <span class="trigger" data-key="philological">филолошким</span>, физичким, визуелним — кроз <span class="trigger" data-key="installations">инсталације</span> и <span class="trigger" data-key="threed">3D</span>. Увек сам радо доступан за <span class="trigger" data-key="contact">контакт</span>.`,
+    bio: `Zdravo. Ja sam <span class="trigger" data-key="about">Oskar Fицџералд</span>, <span class="trigger" data-key="prizes">награђивани</span> филолог и рачунарски уметник, <span class="trigger" data-key="studying">студирам</span> у <span class="trigger" data-key="location">Оксфорду</span>. Радим са свим врстама података, <span class="trigger" data-key="philological">филолошким</span>, физичким, визуелним, кроз <span class="trigger" data-key="installations">инсталације</span> и <span class="trigger" data-key="threed">3D</span>. Увек сам радо доступан за <span class="trigger" data-key="contact">контакт</span>.`,
 
     details: {
       about:     { type: 'html', html: `<p>Оскар Фицџералд је филолог и рачунарски уметник у Оксфорду. Ради на пресеку старих семитских књижевности, рачунарства и физичке инсталације.</p>` },
@@ -454,8 +499,11 @@ const CONTENT = {
       studying:  { type: 'html', html: `<ul class="item-list"><li><span class="year">2023–26</span><span>BA Теологија и религија, Универзитет у Оксфорду</span></li><li><span class="year">2022–23</span><span>BA Ликовне уметности: Рачунарске уметности (CertHE), UAL</span></li></ul>` },
       prizes:    { type: 'html', html: `<ul class="item-list"><li><span class="year">2026</span><span>Tel Aviv University Archaeology Scholarship</span></li><li><span class="year">2025</span><span>Hazem Ben-Gacem Scholarship</span></li><li><span class="year">2025</span><span>Фонд за обуку арапског језика, Тунис</span></li><li><span class="year">2024</span><span>Expanding Horizons Grant, Колеџ Св. Јована</span></li><li><span class="year">2024</span><span>Special Grant, Колеџ Св. Јована, Филолошки факултет у Београду</span></li><li><span class="year">2024</span><span>Кеникот и Пузи–Елертон награда, Библијски хебрејски</span></li><li><span class="year">2024</span><span>Каспберд стипендија</span></li></ul>` },
       installations: { type: 'projects', backKey: 'installations', items: [
-        { key: 'brain-scanner', year: '2024', title: 'Brain-scanner', desc: 'Електроенцефалограм од рециклиране електронике. Интерактивна инсталација са генеративном сликом у стилу Монеа.' },
-        { key: 'spit-shined',   year: '2023', title: 'Spit-shined Apocalypse', desc: 'Представљено на Creative Tech & Digital Design, Лондон.' },
+        { key: 'en-plein-air', year: '2024', title: 'En Plein Air, Oxford 2025', desc: 'Електроенцефалограм од рециклиране електронике. Интерактивна инсталација са генеративном сликом у стилу Монеа.' },
+        { key: 'spit-shined',  year: '2023', title: 'Spit-shined Apocalypse', desc: 'Представљено на Creative Tech & Digital Design, Лондон.' },
+      ]},
+      physical: { type: 'projects', backKey: 'physical', items: [
+        { key: 'brain-scanner', year: '2024', title: 'Brain Scanner', desc: 'Опис физичког рада Brain Scanner.' },
       ]},
       threed: { type: 'projects', backKey: 'threed', items: [
         { key: '3d-one',   year: '2025', title: 'Велики Исаијин свитак — FTL институт', desc: 'Имерзивна инсталација о Великом Исаијином свитку; 3D интерфејс у Unreal Engine-у.' },
@@ -487,17 +535,20 @@ const htmlEl      = document.documentElement;
 
 function imageSubPanelHTML(key, title, desc, backKey) {
   const imgs      = IMAGES[key] || [];
+  const video     = VIDEOS[key] || null;
   const backLabel = CONTENT[currentLang].backLabel[backKey] || '←';
-  const grid      = imgs.map(s => `<img src="${s}" alt="${title}" loading="lazy">`).join('');
+  const grid      = imgs.map(s => `<img src="${s}" alt="${title}" loading="lazy" style="cursor:zoom-in" onclick="document.getElementById('lb-img').src=this.src;document.getElementById('lb').showModal()">`).join('');
   const carousel  = imgs.map(s => `<img src="${s}" alt="${title}" loading="lazy">`).join('');
   const dots      = imgs.map((_, i) => `<span class="${i===0?'active':''}" data-dot="${i}"></span>`).join('');
+  const videoHTML = video ? `<video class="sub-video" controls preload="metadata" style="width:100%;max-width:600px;display:block;margin-top:0.75rem"><source src="${video}" type="video/mp4">Your browser does not support video.</video>` : '';
   return `
     <button class="sub-back" data-parent="${backKey}">${backLabel}</button>
     <p class="sub-title">${title}</p>
     ${desc ? `<p class="sub-desc">${desc}</p>` : ''}
     <div class="img-grid">${grid}</div>
     <div class="img-carousel" id="sub-carousel">${carousel}</div>
-    <div class="carousel-dots" id="sub-dots">${dots}</div>`;
+    <div class="carousel-dots" id="sub-dots">${dots}</div>
+    ${videoHTML}`;
 }
 
 function attachCarousel() {
@@ -601,6 +652,10 @@ function render(lang) {
 document.querySelectorAll('.lang-btn').forEach(btn =>
   btn.addEventListener('click', () => { currentLang = btn.dataset.lang; render(currentLang); })
 );
+
+document.getElementById('lb').addEventListener('click', function(e) {
+  if (e.target === this) this.close();
+});
 
 render('en');
 </script>
