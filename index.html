@@ -147,7 +147,7 @@
     .sub-desc  { font-size: 0.85rem; color: var(--muted); margin-bottom: 1.1rem; max-width: 52ch; }
 
     /* Lightbox */
-    dialog#lb { border: none; background: transparent; padding: 0; max-width: 92vw; max-height: 92vh; }
+    dialog#lb { border: none; background: transparent; padding: 0; max-width: 92vw; max-height: 92vh; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); margin: 0; }
     dialog#lb::backdrop { background: rgba(0,0,0,0.82); }
     dialog#lb img { display: block; max-width: 92vw; max-height: 88vh; object-fit: contain; }
     dialog#lb .lb-close {
