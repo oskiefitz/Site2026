@@ -146,6 +146,11 @@
     .sub-title { font-size: 0.95rem; font-weight: 500; margin-bottom: 0.35rem; color: var(--muted); }
     .sub-desc  { font-size: 0.85rem; color: var(--muted); margin-bottom: 1.1rem; max-width: 52ch; }
 
+    /* Game iframe */
+    .game-wrap { display:none; margin-top:0.75rem; width:100%; max-width:600px; }
+    .game-wrap iframe { width:100%; aspect-ratio:16/9; border:none; display:block; }
+    .game-wrap.open { display:block; }
+
     /* Lightbox */
     dialog#lb { border: none; background: transparent; padding: 0; max-width: 92vw; max-height: 92vh; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); margin: 0; }
     dialog#lb::backdrop { background: rgba(0,0,0,0.82); }
@@ -295,6 +300,11 @@ const IMAGES = {
 
 const VIDEOS = {
   'brain-scanner': 'images/brain/1.mp4',
+  'spit-shined':   'videos/spit-shined.mp4', // ← update path to your video
+};
+
+const GAMES = {
+  'spit-shined': 'game/index.html', // ← path to your extracted Godot export folder
 };
 
 const CONTENT = {
@@ -355,6 +365,7 @@ const CONTENT = {
             year: '2023',
             title: 'Spit-shined Apocalypse',
             desc: 'Presented at Creative Tech & Digital Design, London. Work at the intersection of art and technology, shown alongside interdisciplinary exchanges with professionals across tech and creative sectors.',
+            direct: true,
           },
         ],
       },
@@ -444,7 +455,7 @@ const CONTENT = {
       prizes:    { type: 'html', html: `<ul class="item-list"><li><span class="year">2026</span><span>Tel Aviv University Archaeology Scholarship</span></li><li><span class="year">2025</span><span>Hazem Ben-Gacem Scholarship</span></li><li><span class="year">2025</span><span>St. Antony's Middle East Centre Arabic Training Fund, Tunesien</span></li><li><span class="year">2024</span><span>Expanding Horizons Grant, St. John's College</span></li><li><span class="year">2024</span><span>Special Grant, St. John's College, Universität Belgrad</span></li><li><span class="year">2024</span><span>Kennicott &amp; Pusey–Ellerton-Preis, Biblisches Hebräisch</span></li><li><span class="year">2024</span><span>Casberd-Stipendium</span></li></ul>` },
       installations: { type: 'projects', backKey: 'installations', items: [
         { key: 'en-plein-air', year: '2024', title: 'En Plein Air, Oxford 2025', desc: 'Elektroenzephalogramm aus wiederverwendeter Elektronik. Generatives Monet-Bild eines Live-Webcam-Feeds, detailreicher je konzentrierter der Betrachter ist.', panelImages: 'en-plein-air-exhibition' },
-        { key: 'spit-shined',  year: '2023', title: 'Spit-shined Apocalypse', desc: 'Präsentiert bei Creative Tech & Digital Design, London.' },
+        { key: 'spit-shined',  year: '2023', title: 'Spit-shined Apocalypse', desc: 'Präsentiert bei Creative Tech & Digital Design, London.', direct: true },
       ]},
       physical: { type: 'projects', backKey: 'physical', items: [
         { key: 'brain-scanner', year: '2024', title: 'Brain Scanner', desc: 'Beschreibung der physischen Brain-Scanner-Arbeit.', direct: true },
@@ -480,7 +491,7 @@ const CONTENT = {
       prizes:    { type: 'html', html: `<ul class="item-list"><li><span class="year">٢٠٢٦</span><span>Tel Aviv University Archaeology Scholarship</span></li><li><span class="year">٢٠٢٥</span><span>منحة حازم بن قاسم</span></li><li><span class="year">٢٠٢٥</span><span>صندوق تدريب اللغة العربية، مركز الشرق الأوسط، تونس</span></li><li><span class="year">٢٠٢٤</span><span>Expanding Horizons Grant، كلية سانت جون</span></li><li><span class="year">٢٠٢٤</span><span>Special Grant، كلية سانت جون، جامعة بلغراد</span></li><li><span class="year">٢٠٢٤</span><span>جائزة كينيكوت وبيوزي–إيلرتون، العبرية الكتابية</span></li><li><span class="year">٢٠٢٤</span><span>منحة كاسبيرد</span></li></ul>` },
       installations: { type: 'projects', backKey: 'installations', items: [
         { key: 'en-plein-air', year: '٢٠٢٤', title: 'En Plein Air, Oxford 2025', desc: 'جهاز تخطيط الدماغ من إلكترونيات معاد توظيفها. تركيب تفاعلي يعرض صورة تجريبية على طراز مونيه من تغذية ويب-كام مباشرة.', panelImages: 'en-plein-air-exhibition' },
-        { key: 'spit-shined',  year: '٢٠٢٣', title: 'Spit-shined Apocalypse', desc: 'قُدِّم في Creative Tech & Digital Design، لندن.' },
+        { key: 'spit-shined',  year: '٢٠٢٣', title: 'Spit-shined Apocalypse', desc: 'قُدِّم في Creative Tech & Digital Design، لندن.', direct: true },
       ]},
       physical: { type: 'projects', backKey: 'physical', items: [
         { key: 'brain-scanner', year: '٢٠٢٤', title: 'Brain Scanner', desc: 'وصف عمل Brain Scanner المادي.', direct: true },
@@ -516,7 +527,7 @@ const CONTENT = {
       prizes:    { type: 'html', html: `<ul class="item-list"><li><span class="year">2026</span><span>Tel Aviv University Archaeology Scholarship</span></li><li><span class="year">2025</span><span>Hazem Ben-Gacem Scholarship</span></li><li><span class="year">2025</span><span>Фонд за обуку арапског језика, Тунис</span></li><li><span class="year">2024</span><span>Expanding Horizons Grant, Колеџ Св. Јована</span></li><li><span class="year">2024</span><span>Special Grant, Колеџ Св. Јована, Филолошки факултет у Београду</span></li><li><span class="year">2024</span><span>Кеникот и Пузи–Елертон награда, Библијски хебрејски</span></li><li><span class="year">2024</span><span>Каспберд стипендија</span></li></ul>` },
       installations: { type: 'projects', backKey: 'installations', items: [
         { key: 'en-plein-air', year: '2024', title: 'En Plein Air, Oxford 2025', desc: 'Електроенцефалограм од рециклиране електронике. Интерактивна инсталација са генеративном сликом у стилу Монеа.', panelImages: 'en-plein-air-exhibition' },
-        { key: 'spit-shined',  year: '2023', title: 'Spit-shined Apocalypse', desc: 'Представљено на Creative Tech & Digital Design, Лондон.' },
+        { key: 'spit-shined',  year: '2023', title: 'Spit-shined Apocalypse', desc: 'Представљено на Creative Tech & Digital Design, Лондон.', direct: true },
       ]},
       physical: { type: 'projects', backKey: 'physical', items: [
         { key: 'brain-scanner', year: '2024', title: 'Brain Scanner', desc: 'Опис физичког рада Brain Scanner.', direct: true },
@@ -552,15 +563,21 @@ const htmlEl      = document.documentElement;
 function imageSubPanelHTML(key, title, desc, backKey) {
   const imgs      = IMAGES[key] || [];
   const video     = VIDEOS[key] || null;
+  const game      = GAMES[key]  || null;
   const backLabel = CONTENT[currentLang].backLabel[backKey] || '←';
-  const grid      = imgs.map(s => `<img src="${s}" alt="${title}" loading="lazy" style="cursor:zoom-in" onclick="document.getElementById('lb-img').src=this.src;document.getElementById('lb').showModal()">`).join('');
-  const carousel  = imgs.map(s => `<img src="${s}" alt="${title}" loading="lazy">`).join('');
+  const grid      = imgs.map(s => `<img src="${s}" alt="${title}" loading="lazy" decoding="async" style="cursor:zoom-in" onclick="document.getElementById('lb-img').src=this.src;document.getElementById('lb').showModal()">`).join('');
+  const carousel  = imgs.map(s => `<img src="${s}" alt="${title}" loading="lazy" decoding="async">`).join('');
   const dots      = imgs.map((_, i) => `<span class="${i===0?'active':''}" data-dot="${i}"></span>`).join('');
-  const videoHTML = video ? `<video class="sub-video" controls preload="metadata" style="width:100%;max-width:600px;display:block;margin-top:0.75rem"><source src="${video}" type="video/mp4">Your browser does not support video.</video>` : '';
+  const videoHTML = video ? `<video controls preload="metadata" style="width:100%;max-width:600px;display:block;margin-top:0.75rem"><source src="${video}" type="video/mp4"></video>` : '';
+  const gameHTML  = game
+    ? `<p style="margin-top:0.75rem"><span class="sub-trigger" data-mode="game" data-game="${game}" style="cursor:pointer">press here to play!</span></p>
+       <div class="game-wrap" id="game-wrap-${key}"><iframe id="game-frame-${key}" src="" allowfullscreen></iframe></div>`
+    : '';
   return `
     <button class="sub-back" data-parent="${backKey}">${backLabel}</button>
     <p class="sub-title">${title}</p>
     ${desc ? `<p class="sub-desc">${desc}</p>` : ''}
+    ${gameHTML}
     <div class="img-grid">${grid}</div>
     <div class="img-carousel" id="sub-carousel">${carousel}</div>
     <div class="carousel-dots" id="sub-dots">${dots}</div>
@@ -602,6 +619,21 @@ function attachCarousel() {
   );
 }
 
+function attachGameTriggers() {
+  detailEl.querySelectorAll('[data-mode="game"]').forEach(el => {
+    el.addEventListener('click', () => {
+      const wrap  = detailEl.querySelector('[id^="game-wrap-"]');
+      const frame = detailEl.querySelector('[id^="game-frame-"]');
+      if (wrap && frame) {
+        wrap.classList.toggle('open');
+        if (wrap.classList.contains('open') && !frame.src) {
+          frame.src = el.dataset.game;
+        }
+      }
+    });
+  });
+}
+
 function openDetail(key) {
   const d = CONTENT[currentLang].details[key];
   if (!d) return;
@@ -632,12 +664,23 @@ function openDetail(key) {
 
   detailEl.querySelectorAll('.sub-trigger').forEach(el => {
     el.addEventListener('click', () => {
-      if (el.dataset.mode === 'gallery' || el.dataset.direct === '1') {
+      if (el.dataset.mode === 'game') {
+        // toggle iframe open
+        const wrap = detailEl.querySelector('[id^="game-wrap-"]');
+        const frame = detailEl.querySelector('[id^="game-frame-"]');
+        if (wrap && frame) {
+          wrap.classList.toggle('open');
+          if (wrap.classList.contains('open') && !frame.src) {
+            frame.src = el.dataset.game;
+          }
+        }
+      } else if (el.dataset.mode === 'gallery' || el.dataset.direct === '1') {
         detailEl.innerHTML = imageSubPanelHTML(el.dataset.key, el.dataset.title, el.dataset.desc, el.dataset.backkey);
         detailEl.classList.remove('visible');
         void detailEl.offsetWidth;
         detailEl.classList.add('visible');
         attachCarousel();
+        attachGameTriggers();
         detailEl.querySelector('.sub-back')?.addEventListener('click', e => {
           openDetail(e.target.dataset.parent);
         });
