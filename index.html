@@ -266,6 +266,12 @@ const IMAGES = {
     'images/orb/5.jpeg',
     'images/orb/6.jpg',
   ],
+  'en-plein-air-exhibition': [
+    'https://placehold.co/800x600/e0ddd7/888?text=Exhibition+1',
+    'https://placehold.co/800x600/d8d4ce/888?text=Exhibition+2',
+    'https://placehold.co/800x600/e8e5df/888?text=Exhibition+3',
+    'https://placehold.co/800x600/dedad4/888?text=Exhibition+4',
+  ],
   'brain-scanner': [
     'https://placehold.co/800x600/e0ddd7/888?text=Brain+Scanner+1',
     'https://placehold.co/800x600/d8d4ce/888?text=Brain+Scanner+2',
@@ -290,7 +296,7 @@ const CONTENT = {
     dir: 'ltr',
     backLabel: { installations: '← installations', threed: '← 3D', philological: '← philology', physical: '← physical' },
 
-    bio: `Hello. I am <span class="trigger" data-key="about">Oscar Fitzgerald</span>, a <span class="trigger" data-key="prizes">prize-winning</span> philologist and computational artist, <span class="trigger" data-key="studying">studying</span> at <span class="trigger" data-key="location">Oxford</span>. I work with data of all kinds, <span class="trigger" data-key="physical">physical</span>, <span class="trigger" data-key="prizes">prize-winning</span>, visual, through <span class="trigger" data-key="installations">installations</span> and <span class="trigger" data-key="threed">3D</span>. Always happy to <span class="trigger" data-key="contact">get in touch</span>.`,
+    bio: `Hello. I am <span class="trigger" data-key="about">Oscar Fitzgerald</span>, a <span class="trigger" data-key="prizes">prize-winning</span> philologist and computational artist, <span class="trigger" data-key="studying">studying</span> at <span class="trigger" data-key="location">Oxford</span>. I work with data of all kinds, <span class="trigger" data-key="philological">philological</span>, <span class="trigger" data-key="physical">physical</span>, visual, through <span class="trigger" data-key="installations">installations</span> and <span class="trigger" data-key="threed">3D</span>. Always happy to <span class="trigger" data-key="contact">get in touch</span>.`,
 
     details: {
       about: {
@@ -334,6 +340,7 @@ const CONTENT = {
             year: '2024',
             title: 'En Plein Air, Oxford 2025',
             desc: 'An electroencephalogram built from repurposed electronics. An interactive installation displaying a generative Monet-style image of a live webcam feed, more detailed the more concentrated the viewer is. Exhibited at Oxford Review of Books promotional show, 500+ guests.',
+            panelImages: 'en-plein-air-exhibition',
           },
           {
             key: 'spit-shined',
@@ -353,6 +360,7 @@ const CONTENT = {
             year: '2024',
             title: 'Brain Scanner',
             desc: 'Description of the Brain Scanner physical work.',
+            direct: true,
           },
         ],
       },
@@ -427,11 +435,11 @@ const CONTENT = {
       studying:  { type: 'html', html: `<ul class="item-list"><li><span class="year">2023–26</span><span>BA Theologie &amp; Religion, Universität Oxford</span></li><li><span class="year">2022–23</span><span>BA Bildende Kunst: Computational Arts (CertHE), UAL</span></li></ul>` },
       prizes:    { type: 'html', html: `<ul class="item-list"><li><span class="year">2026</span><span>Tel Aviv University Archaeology Scholarship</span></li><li><span class="year">2025</span><span>Hazem Ben-Gacem Scholarship</span></li><li><span class="year">2025</span><span>St. Antony's Middle East Centre Arabic Training Fund, Tunesien</span></li><li><span class="year">2024</span><span>Expanding Horizons Grant, St. John's College</span></li><li><span class="year">2024</span><span>Special Grant, St. John's College, Universität Belgrad</span></li><li><span class="year">2024</span><span>Kennicott &amp; Pusey–Ellerton-Preis, Biblisches Hebräisch</span></li><li><span class="year">2024</span><span>Casberd-Stipendium</span></li></ul>` },
       installations: { type: 'projects', backKey: 'installations', items: [
-        { key: 'en-plein-air', year: '2024', title: 'En Plein Air, Oxford 2025', desc: 'Elektroenzephalogramm aus wiederverwendeter Elektronik. Generatives Monet-Bild eines Live-Webcam-Feeds, detailreicher je konzentrierter der Betrachter ist.' },
+        { key: 'en-plein-air', year: '2024', title: 'En Plein Air, Oxford 2025', desc: 'Elektroenzephalogramm aus wiederverwendeter Elektronik. Generatives Monet-Bild eines Live-Webcam-Feeds, detailreicher je konzentrierter der Betrachter ist.', panelImages: 'en-plein-air-exhibition' },
         { key: 'spit-shined',  year: '2023', title: 'Spit-shined Apocalypse', desc: 'Präsentiert bei Creative Tech & Digital Design, London.' },
       ]},
       physical: { type: 'projects', backKey: 'physical', items: [
-        { key: 'brain-scanner', year: '2024', title: 'Brain Scanner', desc: 'Beschreibung der physischen Brain-Scanner-Arbeit.' },
+        { key: 'brain-scanner', year: '2024', title: 'Brain Scanner', desc: 'Beschreibung der physischen Brain-Scanner-Arbeit.', direct: true },
       ]},
       threed: { type: 'projects', backKey: 'threed', items: [
         { key: '3d-one',   year: '2025', title: 'Großer Jesaja-Scroll — FTL Institut', desc: 'Immersive Installation zum Großen Jesaja-Scroll; 3D-Interface in Unreal Engine.' },
@@ -463,11 +471,11 @@ const CONTENT = {
       studying:  { type: 'html', html: `<ul class="item-list"><li><span class="year">٢٠٢٣–٢٦</span><span>بكالوريوس اللاهوت والدين، جامعة أكسفورد</span></li><li><span class="year">٢٠٢٢–٢٣</span><span>بكالوريوس الفنون الجميلة: الفنون الحسابية (CertHE)، UAL</span></li></ul>` },
       prizes:    { type: 'html', html: `<ul class="item-list"><li><span class="year">٢٠٢٦</span><span>Tel Aviv University Archaeology Scholarship</span></li><li><span class="year">٢٠٢٥</span><span>منحة حازم بن قاسم</span></li><li><span class="year">٢٠٢٥</span><span>صندوق تدريب اللغة العربية، مركز الشرق الأوسط، تونس</span></li><li><span class="year">٢٠٢٤</span><span>Expanding Horizons Grant، كلية سانت جون</span></li><li><span class="year">٢٠٢٤</span><span>Special Grant، كلية سانت جون، جامعة بلغراد</span></li><li><span class="year">٢٠٢٤</span><span>جائزة كينيكوت وبيوزي–إيلرتون، العبرية الكتابية</span></li><li><span class="year">٢٠٢٤</span><span>منحة كاسبيرد</span></li></ul>` },
       installations: { type: 'projects', backKey: 'installations', items: [
-        { key: 'en-plein-air', year: '٢٠٢٤', title: 'En Plein Air, Oxford 2025', desc: 'جهاز تخطيط الدماغ من إلكترونيات معاد توظيفها. تركيب تفاعلي يعرض صورة تجريبية على طراز مونيه من تغذية ويب-كام مباشرة.' },
+        { key: 'en-plein-air', year: '٢٠٢٤', title: 'En Plein Air, Oxford 2025', desc: 'جهاز تخطيط الدماغ من إلكترونيات معاد توظيفها. تركيب تفاعلي يعرض صورة تجريبية على طراز مونيه من تغذية ويب-كام مباشرة.', panelImages: 'en-plein-air-exhibition' },
         { key: 'spit-shined',  year: '٢٠٢٣', title: 'Spit-shined Apocalypse', desc: 'قُدِّم في Creative Tech & Digital Design، لندن.' },
       ]},
       physical: { type: 'projects', backKey: 'physical', items: [
-        { key: 'brain-scanner', year: '٢٠٢٤', title: 'Brain Scanner', desc: 'وصف عمل Brain Scanner المادي.' },
+        { key: 'brain-scanner', year: '٢٠٢٤', title: 'Brain Scanner', desc: 'وصف عمل Brain Scanner المادي.', direct: true },
       ]},
       threed: { type: 'projects', backKey: 'threed', items: [
         { key: '3d-one',   year: '٢٠٢٥', title: 'مخطوطة إشعياء الكبرى — معهد FTL', desc: 'تركيب غامر حول مخطوطة إشعياء الكبرى؛ واجهة ثلاثية الأبعاد في Unreal Engine.' },
@@ -499,11 +507,11 @@ const CONTENT = {
       studying:  { type: 'html', html: `<ul class="item-list"><li><span class="year">2023–26</span><span>BA Теологија и религија, Универзитет у Оксфорду</span></li><li><span class="year">2022–23</span><span>BA Ликовне уметности: Рачунарске уметности (CertHE), UAL</span></li></ul>` },
       prizes:    { type: 'html', html: `<ul class="item-list"><li><span class="year">2026</span><span>Tel Aviv University Archaeology Scholarship</span></li><li><span class="year">2025</span><span>Hazem Ben-Gacem Scholarship</span></li><li><span class="year">2025</span><span>Фонд за обуку арапског језика, Тунис</span></li><li><span class="year">2024</span><span>Expanding Horizons Grant, Колеџ Св. Јована</span></li><li><span class="year">2024</span><span>Special Grant, Колеџ Св. Јована, Филолошки факултет у Београду</span></li><li><span class="year">2024</span><span>Кеникот и Пузи–Елертон награда, Библијски хебрејски</span></li><li><span class="year">2024</span><span>Каспберд стипендија</span></li></ul>` },
       installations: { type: 'projects', backKey: 'installations', items: [
-        { key: 'en-plein-air', year: '2024', title: 'En Plein Air, Oxford 2025', desc: 'Електроенцефалограм од рециклиране електронике. Интерактивна инсталација са генеративном сликом у стилу Монеа.' },
+        { key: 'en-plein-air', year: '2024', title: 'En Plein Air, Oxford 2025', desc: 'Електроенцефалограм од рециклиране електронике. Интерактивна инсталација са генеративном сликом у стилу Монеа.', panelImages: 'en-plein-air-exhibition' },
         { key: 'spit-shined',  year: '2023', title: 'Spit-shined Apocalypse', desc: 'Представљено на Creative Tech & Digital Design, Лондон.' },
       ]},
       physical: { type: 'projects', backKey: 'physical', items: [
-        { key: 'brain-scanner', year: '2024', title: 'Brain Scanner', desc: 'Опис физичког рада Brain Scanner.' },
+        { key: 'brain-scanner', year: '2024', title: 'Brain Scanner', desc: 'Опис физичког рада Brain Scanner.', direct: true },
       ]},
       threed: { type: 'projects', backKey: 'threed', items: [
         { key: '3d-one',   year: '2025', title: 'Велики Исаијин свитак — FTL институт', desc: 'Имерзивна инсталација о Великом Исаијином свитку; 3D интерфејс у Unreal Engine-у.' },
@@ -551,6 +559,25 @@ function imageSubPanelHTML(key, title, desc, backKey) {
     ${videoHTML}`;
 }
 
+function projectPanelHTML(key, title, desc, backKey, panelImages) {
+  const backLabel = CONTENT[currentLang].backLabel[backKey] || '←';
+  const hasGallery = IMAGES[key] && IMAGES[key].length;
+  const galleryLink = hasGallery
+    ? `<p style="margin-top:0.75rem"><span class="sub-trigger" data-key="${key}" data-backkey="${backKey}" data-title="${title}" data-desc="${desc}" data-mode="gallery">gallery of generations</span></p>`
+    : '';
+  const panelImgs = panelImages ? (IMAGES[panelImages] || []) : [];
+  const panelGrid = panelImgs.length
+    ? `<div class="img-grid" style="margin-top:0.75rem">${panelImgs.map(s => `<img src="${s}" alt="${title}" loading="lazy" style="cursor:zoom-in" onclick="document.getElementById('lb-img').src=this.src;document.getElementById('lb').showModal()">`).join('')}</div>`
+    : '';
+  return `
+    <button class="sub-back" data-parent="${backKey}">${backLabel}</button>
+    <p class="sub-title">${title}</p>
+    ${desc ? `<p class="sub-desc">${desc}</p>` : ''}
+    ${galleryLink}
+    ${panelGrid}`;
+}
+
+
 function attachCarousel() {
   const carousel = document.getElementById('sub-carousel');
   const dotsWrap = document.getElementById('sub-dots');
@@ -577,7 +604,7 @@ function openDetail(key) {
     html = d.html;
   } else if (d.type === 'projects') {
     const rows = d.items.map(item =>
-      `<li><span class="year">${item.year}</span><span class="sub-trigger" data-key="${item.key}" data-backkey="${d.backKey}" data-title="${item.title}" data-desc="${item.desc}">${item.title}</span></li>`
+      `<li><span class="year">${item.year}</span><span class="sub-trigger" data-key="${item.key}" data-backkey="${d.backKey}" data-title="${item.title}" data-desc="${item.desc}"${item.direct ? ' data-direct="1"' : ''}${item.panelImages ? ` data-panel-images="${item.panelImages}"` : ''}>${item.title}</span></li>`
     ).join('');
     html = `<ul class="item-list">${rows}</ul>`;
   } else if (d.type === 'philology') {
@@ -597,14 +624,36 @@ function openDetail(key) {
 
   detailEl.querySelectorAll('.sub-trigger').forEach(el => {
     el.addEventListener('click', () => {
-      detailEl.innerHTML = imageSubPanelHTML(el.dataset.key, el.dataset.title, el.dataset.desc, el.dataset.backkey);
-      detailEl.classList.remove('visible');
-      void detailEl.offsetWidth;
-      detailEl.classList.add('visible');
-      attachCarousel();
-      detailEl.querySelector('.sub-back')?.addEventListener('click', e => {
-        openDetail(e.target.dataset.parent);
-      });
+      if (el.dataset.mode === 'gallery' || el.dataset.direct === '1') {
+        detailEl.innerHTML = imageSubPanelHTML(el.dataset.key, el.dataset.title, el.dataset.desc, el.dataset.backkey);
+        detailEl.classList.remove('visible');
+        void detailEl.offsetWidth;
+        detailEl.classList.add('visible');
+        attachCarousel();
+        detailEl.querySelector('.sub-back')?.addEventListener('click', e => {
+          openDetail(e.target.dataset.parent);
+        });
+      } else {
+        detailEl.innerHTML = projectPanelHTML(el.dataset.key, el.dataset.title, el.dataset.desc, el.dataset.backkey, el.dataset.panelImages);
+        detailEl.classList.remove('visible');
+        void detailEl.offsetWidth;
+        detailEl.classList.add('visible');
+        detailEl.querySelector('.sub-back')?.addEventListener('click', e => {
+          openDetail(e.target.dataset.parent);
+        });
+        detailEl.querySelectorAll('.sub-trigger').forEach(inner => {
+          inner.addEventListener('click', () => {
+            detailEl.innerHTML = imageSubPanelHTML(inner.dataset.key, inner.dataset.title, inner.dataset.desc, inner.dataset.backkey);
+            detailEl.classList.remove('visible');
+            void detailEl.offsetWidth;
+            detailEl.classList.add('visible');
+            attachCarousel();
+            detailEl.querySelector('.sub-back')?.addEventListener('click', e => {
+              openDetail(e.target.dataset.parent);
+            });
+          });
+        });
+      }
     });
   });
 }
