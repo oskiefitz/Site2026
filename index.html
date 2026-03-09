@@ -26,7 +26,7 @@
     ═══════════════════════════════════════════════════════════ */
     @font-face {
       font-family: 'LatinFont';
-      src: url('PPKyoto-Light.otf') format('opentype'); /* ← EDIT filename */
+      src: url('ABCOtto-Regular-Trial.otf') format('opentype'); /* ← EDIT filename */
       font-weight: 400; font-style: normal; font-display: swap;
     }
     @font-face {
@@ -221,12 +221,32 @@
       :root { --ph: 1rem; --footer-h: 2.5rem; }
       html  { font-size: 16px; }
     }
+    @media (min-width: 768px) {
+      .desktop-logo {
+        display: block;
+        position: fixed;
+        right: -2vw;
+        top: 50%;
+        transform: translateY(-50%);
+        width: clamp(220px, 28vw, 420px);
+        opacity: 0.18;
+        mix-blend-mode: multiply;
+        pointer-events: none;
+        user-select: none;
+        z-index: 0;
+      }
+    }
+    @media (max-width: 767px) {
+      .desktop-logo { display: none; }
+    }
   </style>
 </head>
 <body>
 
 <div id="bio"></div>
 <div id="detail-area" aria-live="polite"></div>
+
+<img src="images/logo.PNG" class="desktop-logo" alt="" aria-hidden="true">
 
 <footer>
   <div class="footer-left" id="footer-links"></div>
