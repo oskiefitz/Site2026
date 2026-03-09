@@ -233,11 +233,7 @@
 
   <div class="footer-centre">
     <a href="/" class="logo-link" aria-label="Home">
-      <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <circle cx="18" cy="18" r="16" stroke="#111" stroke-width="1.5"/>
-        <line x1="18" y1="5"  x2="18" y2="31" stroke="#111" stroke-width="1.5"/>
-        <line x1="5"  y1="18" x2="31" y2="18" stroke="#111" stroke-width="1.5"/>
-      </svg>
+      <img src="images/logo.PNG" alt="Logo" style="width:100%;height:100%;object-fit:contain;mix-blend-mode:multiply;">
     </a>
   </div>
 
@@ -313,6 +309,17 @@ const IMAGES = {
     'https://placehold.co/800x600/d8d4ce/888?text=Render+2',
     'https://placehold.co/800x600/e8e5df/888?text=Render+3',
   ],
+  'illustrations': [
+    'https://placehold.co/800x600/e0ddd7/888?text=Illustration+1',
+    'https://placehold.co/800x600/d8d4ce/888?text=Illustration+2',
+    'https://placehold.co/800x600/e8e5df/888?text=Illustration+3',
+    'https://placehold.co/800x600/dedad4/888?text=Illustration+4',
+  ],
+  'misc': [
+    'https://placehold.co/800x600/e0ddd7/888?text=Misc+1',
+    'https://placehold.co/800x600/d8d4ce/888?text=Misc+2',
+    'https://placehold.co/800x600/e8e5df/888?text=Misc+3',
+  ], 
   'divinecommandline': ['https://placehold.co/800x600/e0ddd7/888?text=Divinecommandline+1','https://placehold.co/800x600/d8d4ce/888?text=Divinecommandline+2','https://placehold.co/800x600/e8e5df/888?text=Divinecommandline+3'],
   'wahlul-uqode': ['https://placehold.co/800x600/e0ddd7/888?text=Wahlul+Uqode+1','https://placehold.co/800x600/d8d4ce/888?text=Wahlul+Uqode+2'],
 };
@@ -340,9 +347,9 @@ const CONTENT = {
   // ── ENGLISH ──────────────────────────────────────────────────
   en: {
     dir: 'ltr',
-    backLabel: { installations: '← installations', threed: '← 3D', philological: '← philology', physical: '← physical' },
+    backLabel: { installations: '← installations', threed: '← 3D', philological: '← philology', physical: '← physical', visual: '← visual' },
 
-    bio: `Hello. I am <span class="trigger" data-key="about">Oscar Fitzgerald</span>, a <span class="trigger" data-key="prizes">prize-winning</span> philologist and computational artist, <span class="trigger" data-key="studying">studying</span> at <span class="trigger" data-key="location">Oxford</span>. I work with data of all kinds, <span class="trigger" data-key="philological">philological</span>, <span class="trigger" data-key="physical">physical</span>, visual, through <span class="trigger" data-key="installations">installations</span> and <span class="trigger" data-key="threed">3D</span>. Always happy to <span class="trigger" data-key="contact">get in touch</span>.`,
+    bio: `Hello. I am <span class="trigger" data-key="about">Oscar Fitzgerald</span>, a <span class="trigger" data-key="prizes">prize-winning</span> philologist and computational artist, <span class="trigger" data-key="studying">studying</span> at <span class="trigger" data-key="location">Oxford</span>. I work with data of all kinds, <span class="trigger" data-key="philological">philological</span>, <span class="trigger" data-key="physical">physical</span>, <span class="trigger" data-key="visual">visual</span>, through <span class="trigger" data-key="installations">installations</span> and <span class="trigger" data-key="threed">3D</span>. Always happy to <span class="trigger" data-key="contact">get in touch</span>.`,
 
     details: {
       about: {
@@ -472,20 +479,27 @@ const CONTENT = {
           },
         ],
       },
+
+      visual: {
+        type: 'projects',
+        backKey: 'visual',
+        items: [
+          { key: 'illustrations', year: '',     title: 'Illustrations', desc: '', direct: true },
+          { key: 'misc',          year: '',     title: 'Misc',          desc: '', direct: true },
+        ],
+      },
     },
 
     footer: [
       { label: 'oskie@wiseblood.com', href: 'mailto:oskie@wiseblood.com' },
-      
     ],
   },
 
-  // ── GERMAN ───────────────────────────────────────────────────
   de: {
     dir: 'ltr',
-    backLabel: { installations: '← Installationen', threed: '← 3D', philological: '← Philologie', physical: '← Physisch' },
+    backLabel: { installations: '← Installationen', threed: '← 3D', philological: '← Philologie', physical: '← Physisch', visual: '← Visuell' },
 
-    bio: `Hallo. Ich bin <span class="trigger" data-key="about">Oscar Fitzgerald</span>, ein <span class="trigger" data-key="prizes">preisgekrönter</span> Philologe und Computerkünstler, der in <span class="trigger" data-key="location">Oxford</span> <span class="trigger" data-key="studying">studiert</span>. Ich arbeite mit Daten aller Art, <span class="trigger" data-key="philological">philologischen</span>, physischen, visuellen, durch <span class="trigger" data-key="installations">Installationen</span> und <span class="trigger" data-key="threed">3D</span>. Ich freue mich jederzeit über <span class="trigger" data-key="contact">Kontakt</span>.`,
+    bio: `Hallo. Ich bin <span class="trigger" data-key="about">Oscar Fitzgerald</span>, ein <span class="trigger" data-key="prizes">preisgekrönter</span> Philologe und Computerkünstler, der in <span class="trigger" data-key="location">Oxford</span> <span class="trigger" data-key="studying">studiert</span>. Ich arbeite mit Daten aller Art, <span class="trigger" data-key="philological">philologischen</span>, physischen, <span class="trigger" data-key="visual">visuellen</span>, durch <span class="trigger" data-key="installations">Installationen</span> und <span class="trigger" data-key="threed">3D</span>. Ich freue mich jederzeit über <span class="trigger" data-key="contact">Kontakt</span>.`,
 
     details: {
       about:     { type: 'html', html: `<p>Oscar Fitzgerald ist Philologe und Computerkünstler in Oxford. Er arbeitet an der Schnittstelle von altorientalischer Literatur, Computation und physischer Installation.</p>` },
@@ -510,19 +524,21 @@ const CONTENT = {
         { key: 'divinecommandline', title: 'divinecommandline',           type: 'images', desc: 'Open-Source-Kommandozeilen-Tool zur grammatikalischen Analyse rechtsbündiger Texte. Biblisches Hebräisch und Koranisches Arabisch.', direct: true },
         { key: 'wahlul-uqode',    title: 'Wahlul Uqode',                  type: 'plain', desc: 'Beschreibung dieser philologischen Arbeit.' },
       ]},
+      visual: { type: 'projects', backKey: 'visual', items: [
+        { key: 'illustrations', year: '', title: 'Illustrationen', desc: '', direct: true },
+        { key: 'misc',          year: '', title: 'Sonstiges',      desc: '', direct: true },
+      ]},
     },
     footer: [
       { label: 'oskie@wiseblood.com', href: 'mailto:oskie@wiseblood.com' },
-      
     ],
   },
 
-  // ── ARABIC ───────────────────────────────────────────────────
   ar: {
     dir: 'rtl',
-    backLabel: { installations: 'التركيبات ←', threed: 'ثلاثي الأبعاد ←', philological: 'فقه اللغة ←', physical: 'المادي ←' },
+    backLabel: { installations: 'التركيبات ←', threed: 'ثلاثي الأبعاد ←', philological: 'فقه اللغة ←', physical: 'المادي ←', visual: 'البصري ←' },
 
-    bio: `مرحباً. أنا <span class="trigger" data-key="about">أوسكار فيتزجيرالد</span>، فيلولوجي وفنان حوسبة <span class="trigger" data-key="prizes">حائز على جوائز</span>، أدرس في <span class="trigger" data-key="location">أكسفورد</span> حيث <span class="trigger" data-key="studying">أتابع دراستي</span>. أعمل مع البيانات بأنواعها، <span class="trigger" data-key="philological">فيلولوجية</span> وفيزيائية وبصرية، من خلال <span class="trigger" data-key="installations">التركيبات الفنية</span> و<span class="trigger" data-key="threed">النمذجة ثلاثية الأبعاد</span>. يسعدني دائماً <span class="trigger" data-key="contact">التواصل</span>.`,
+    bio: `مرحباً. أنا <span class="trigger" data-key="about">أوسكار فيتزجيرالد</span>، فيلولوجي وفنان حوسبة <span class="trigger" data-key="prizes">حائز على جوائز</span>، أدرس في <span class="trigger" data-key="location">أكسفورد</span> حيث <span class="trigger" data-key="studying">أتابع دراستي</span>. أعمل مع البيانات بأنواعها، <span class="trigger" data-key="philological">فيلولوجية</span> وفيزيائية و<span class="trigger" data-key="visual">بصرية</span>، من خلال <span class="trigger" data-key="installations">التركيبات الفنية</span> و<span class="trigger" data-key="threed">النمذجة ثلاثية الأبعاد</span>. يسعدني دائماً <span class="trigger" data-key="contact">التواصل</span>.`,
 
     details: {
       about:     { type: 'html', html: `<p>أوسكار فيتزجيرالد فيلولوجي وفنان حوسبة مقيم في أكسفورد. يعمل عند تقاطع الآداب السامية القديمة والحوسبة والتركيب المادي.</p>` },
@@ -547,6 +563,10 @@ const CONTENT = {
         { key: 'divinecommandline', title: 'divinecommandline',   type: 'images', desc: 'أداة سطر أوامر مفتوحة المصدر لتحليل النصوص العبرية والعربية القرآنية نحوياً.', direct: true },
         { key: 'wahlul-uqode',    title: 'Wahlul Uqode',          type: 'plain', desc: 'وصف هذا العمل الفيلولوجي.' },
       ]},
+      visual: { type: 'projects', backKey: 'visual', items: [
+        { key: 'illustrations', year: '', title: 'رسوم توضيحية', desc: '', direct: true },
+        { key: 'misc',          year: '', title: 'متنوع',         desc: '', direct: true },
+      ]},
     },
     footer: [
       { label: 'oskie@wiseblood.com', href: 'mailto:oskie@wiseblood.com' },
@@ -557,9 +577,9 @@ const CONTENT = {
   // ── SERBIAN ──────────────────────────────────────────────────
   sr: {
     dir: 'ltr',
-    backLabel: { installations: '← инсталације', threed: '← 3D', philological: '← филологија', physical: '← физичко' },
+    backLabel: { installations: '← инсталације', threed: '← 3D', philological: '← филологија', physical: '← физичко', visual: '← визуелно' },
 
-    bio: `Zdravo. Ja sam <span class="trigger" data-key="about">Oskar Fицџералд</span>, <span class="trigger" data-key="prizes">награђивани</span> филолог и рачунарски уметник, <span class="trigger" data-key="studying">студирам</span> у <span class="trigger" data-key="location">Оксфорду</span>. Радим са свим врстама података, <span class="trigger" data-key="philological">филолошким</span>, физичким, визуелним, кроз <span class="trigger" data-key="installations">инсталације</span> и <span class="trigger" data-key="threed">3D</span>. Увек сам радо доступан за <span class="trigger" data-key="contact">контакт</span>.`,
+    bio: `Zdravo. Ja sam <span class="trigger" data-key="about">Oskar Fицџералд</span>, <span class="trigger" data-key="prizes">награђивани</span> филолог и рачунарски уметник, <span class="trigger" data-key="studying">студирам</span> у <span class="trigger" data-key="location">Оксфорду</span>. Радим са свим врстама података, <span class="trigger" data-key="philological">филолошким</span>, физичким, <span class="trigger" data-key="visual">визуелним</span>, кроз <span class="trigger" data-key="installations">инсталације</span> и <span class="trigger" data-key="threed">3D</span>. Увек сам радо доступан за <span class="trigger" data-key="contact">контакт</span>.`,
 
     details: {
       about:     { type: 'html', html: `<p>Оскар Фицџералд је филолог и рачунарски уметник у Оксфорду. Ради на пресеку старих семитских књижевности, рачунарства и физичке инсталације.</p>` },
@@ -583,6 +603,10 @@ const CONTENT = {
         { key: 'cal',             title: 'My entries on the Comprehensive Aramaic Lexicon', type: 'link',   href: 'https://cal.huc.edu/displaycits.abbrev.php?abbrev=Bhchr%3E' },
         { key: 'divinecommandline', title: 'divinecommandline',              type: 'images', desc: 'Алат командне линије отвореног кода за граматичку анализу хебрејских и арапских текстова.', direct: true },
         { key: 'wahlul-uqode',    title: 'Wahlul Uqode',                     type: 'plain', desc: 'Опис овог филолошког рада.' },
+      ]},
+      visual: { type: 'projects', backKey: 'visual', items: [
+        { key: 'illustrations', year: '', title: 'Илустрације', desc: '', direct: true },
+        { key: 'misc',          year: '', title: 'Разно',        desc: '', direct: true },
       ]},
     },
     footer: [
@@ -686,10 +710,11 @@ function openDetail(key) {
     html = d.html;
   } else if (d.type === 'projects') {
     const rows = d.items.map(item => {
+      const yearSpan = item.year ? `<span class="year">${item.year}</span>` : '';
       if (item.plain) {
-        return `<li><span class="year">${item.year}</span><span style="color:var(--muted)">${item.title}</span></li>`;
+        return `<li>${yearSpan}<span style="color:var(--muted)">${item.title}</span></li>`;
       }
-      return `<li><span class="year">${item.year}</span><span class="sub-trigger" data-key="${item.key}" data-backkey="${d.backKey}" data-title="${item.title}" data-desc="${item.desc}"${item.direct ? ' data-direct="1"' : ''}${item.panelImages ? ` data-panel-images="${item.panelImages}"` : ''}>${item.title}</span></li>`;
+      return `<li>${yearSpan}<span class="sub-trigger" data-key="${item.key}" data-backkey="${d.backKey}" data-title="${item.title}" data-desc="${item.desc}"${item.direct ? ' data-direct="1"' : ''}${item.panelImages ? ` data-panel-images="${item.panelImages}"` : ''}>${item.title}</span></li>`;
     }).join('');
     html = `<ul class="item-list">${rows}</ul>`;
   } else if (d.type === 'philology') {
