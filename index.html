@@ -165,6 +165,7 @@
     /* Image grid */
     .img-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; max-width: 600px; }
     .img-grid img { width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block; background: #e0ddd7; }
+    .img-grid img[src$=".gif"] { aspect-ratio: unset; object-fit: contain; background: none; }
     .img-grid img:last-child:nth-child(odd) { grid-column: 1 / -1; }
 
     /* Carousel */
@@ -427,6 +428,7 @@ const CONTENT = {
             year: '2024',
             title: 'AR Furniture Tool — Chameleon Furniture',
             desc: 'Designed and programmed an Augmented Reality tool to showcase furniture in an interactive live-feed webcam environment. Leveraged AI tools to create desired brand image without need for expensive property rental.',
+            plain: true,
           },
           {
             key: '3d-three',
@@ -465,9 +467,8 @@ const CONTENT = {
           {
             key: 'wahlul-uqode',
             title: 'Wahlul Uqode',
-            type: 'images',
+            type: 'plain',
             desc: 'Description of this philological work.',
-            direct: true,
           },
         ],
       },
@@ -500,14 +501,14 @@ const CONTENT = {
       ]},
       threed: { type: 'projects', backKey: 'threed', items: [
         { key: '3d-one',   year: '2025', title: 'Großer Jesaja-Scroll — FTL Institut', desc: 'Immersive Installation zum Großen Jesaja-Scroll; 3D-Interface in Unreal Engine.', direct: true },
-        { key: '3d-two',   year: '2024', title: 'AR-Möbel-Tool — Chameleon Furniture', desc: 'Augmented-Reality-Tool zur Möbelpräsentation im Live-Webcam-Feed.' },
+        { key: '3d-two',   year: '2024', title: 'AR-Möbel-Tool — Chameleon Furniture', desc: 'Augmented-Reality-Tool zur Möbelpräsentation im Live-Webcam-Feed.', plain: true },
         { key: '3d-three', year: '2024', title: 'Animationen', desc: '', direct: true },
         { key: 'renders',  year: '2024', title: 'Renders', desc: '', direct: true },
       ]},
       philological: { type: 'philology', backKey: 'philological', items: [
-        { key: 'cal',             title: 'Comprehensive Aramaic Lexicon', type: 'link',   href: 'https://cal.huc.edu/' },
+        { key: 'cal',             title: 'My entries on the Comprehensive Aramaic Lexicon', type: 'link',   href: 'https://cal.huc.edu/displaycits.abbrev.php?abbrev=Bhchr%3E' },
         { key: 'divinecommandline', title: 'divinecommandline',           type: 'images', desc: 'Open-Source-Kommandozeilen-Tool zur grammatikalischen Analyse rechtsbündiger Texte. Biblisches Hebräisch und Koranisches Arabisch.', direct: true },
-        { key: 'wahlul-uqode',    title: 'Wahlul Uqode',                  type: 'images', desc: 'Beschreibung dieser philologischen Arbeit.', direct: true },
+        { key: 'wahlul-uqode',    title: 'Wahlul Uqode',                  type: 'plain', desc: 'Beschreibung dieser philologischen Arbeit.' },
       ]},
     },
     footer: [
@@ -537,14 +538,14 @@ const CONTENT = {
       ]},
       threed: { type: 'projects', backKey: 'threed', items: [
         { key: '3d-one',   year: '٢٠٢٥', title: 'مخطوطة إشعياء الكبرى — معهد FTL', desc: 'تركيب غامر حول مخطوطة إشعياء الكبرى؛ واجهة ثلاثية الأبعاد في Unreal Engine.', direct: true },
-        { key: '3d-two',   year: '٢٠٢٤', title: 'أداة الأثاث بالواقع المعزز', desc: 'أداة واقع معزز لعرض الأثاث في بيئة بث مباشر تفاعلية.' },
+        { key: '3d-two',   year: '٢٠٢٤', title: 'أداة الأثاث بالواقع المعزز', desc: 'أداة واقع معزز لعرض الأثاث في بيئة بث مباشر تفاعلية.', plain: true },
         { key: '3d-three', year: '٢٠٢٤', title: 'رسوم متحركة', desc: '', direct: true },
         { key: 'renders',  year: '٢٠٢٤', title: 'Renders', desc: '', direct: true },
       ]},
       philological: { type: 'philology', backKey: 'philological', items: [
-        { key: 'cal',             title: 'المعجم الآرامي الشامل', type: 'link',   href: 'https://cal.huc.edu/' },
+        { key: 'cal',             title: 'My entries on the Comprehensive Aramaic Lexicon', type: 'link',   href: 'https://cal.huc.edu/displaycits.abbrev.php?abbrev=Bhchr%3E' },
         { key: 'divinecommandline', title: 'divinecommandline',   type: 'images', desc: 'أداة سطر أوامر مفتوحة المصدر لتحليل النصوص العبرية والعربية القرآنية نحوياً.', direct: true },
-        { key: 'wahlul-uqode',    title: 'Wahlul Uqode',          type: 'images', desc: 'وصف هذا العمل الفيلولوجي.', direct: true },
+        { key: 'wahlul-uqode',    title: 'Wahlul Uqode',          type: 'plain', desc: 'وصف هذا العمل الفيلولوجي.' },
       ]},
     },
     footer: [
@@ -574,14 +575,14 @@ const CONTENT = {
       ]},
       threed: { type: 'projects', backKey: 'threed', items: [
         { key: '3d-one',   year: '2025', title: 'Велики Исаијин свитак — FTL институт', desc: 'Имерзивна инсталација о Великом Исаијином свитку; 3D интерфејс у Unreal Engine-у.', direct: true },
-        { key: '3d-two',   year: '2024', title: 'AR алат за намештај', desc: 'Алат проширене стварности за приказ намештаја у интерактивном окружењу.' },
+        { key: '3d-two',   year: '2024', title: 'AR алат за намештај', desc: 'Алат проширене стварности за приказ намештаја у интерактивном окружењу.', plain: true },
         { key: '3d-three', year: '2024', title: 'Анимације', desc: '', direct: true },
         { key: 'renders',  year: '2024', title: 'Renders', desc: '', direct: true },
       ]},
       philological: { type: 'philology', backKey: 'philological', items: [
-        { key: 'cal',             title: 'Свеобухватни арамејски лексикон', type: 'link',   href: 'https://cal.huc.edu/' },
+        { key: 'cal',             title: 'My entries on the Comprehensive Aramaic Lexicon', type: 'link',   href: 'https://cal.huc.edu/displaycits.abbrev.php?abbrev=Bhchr%3E' },
         { key: 'divinecommandline', title: 'divinecommandline',              type: 'images', desc: 'Алат командне линије отвореног кода за граматичку анализу хебрејских и арапских текстова.', direct: true },
-        { key: 'wahlul-uqode',    title: 'Wahlul Uqode',                     type: 'images', desc: 'Опис овог филолошког рада.', direct: true },
+        { key: 'wahlul-uqode',    title: 'Wahlul Uqode',                     type: 'plain', desc: 'Опис овог филолошког рада.' },
       ]},
     },
     footer: [
@@ -684,14 +685,20 @@ function openDetail(key) {
   if (d.type === 'html') {
     html = d.html;
   } else if (d.type === 'projects') {
-    const rows = d.items.map(item =>
-      `<li><span class="year">${item.year}</span><span class="sub-trigger" data-key="${item.key}" data-backkey="${d.backKey}" data-title="${item.title}" data-desc="${item.desc}"${item.direct ? ' data-direct="1"' : ''}${item.panelImages ? ` data-panel-images="${item.panelImages}"` : ''}>${item.title}</span></li>`
-    ).join('');
+    const rows = d.items.map(item => {
+      if (item.plain) {
+        return `<li><span class="year">${item.year}</span><span style="color:var(--muted)">${item.title}</span></li>`;
+      }
+      return `<li><span class="year">${item.year}</span><span class="sub-trigger" data-key="${item.key}" data-backkey="${d.backKey}" data-title="${item.title}" data-desc="${item.desc}"${item.direct ? ' data-direct="1"' : ''}${item.panelImages ? ` data-panel-images="${item.panelImages}"` : ''}>${item.title}</span></li>`;
+    }).join('');
     html = `<ul class="item-list">${rows}</ul>`;
   } else if (d.type === 'philology') {
     const rows = d.items.map(item => {
       if (item.type === 'link') {
         return `<li><a href="${item.href}" target="_blank" rel="noopener">${item.title}</a></li>`;
+      }
+      if (item.type === 'plain') {
+        return `<li><span style="color:var(--muted)">${item.title}</span></li>`;
       }
       return `<li><span class="sub-trigger" data-key="${item.key}" data-backkey="${d.backKey}" data-title="${item.title}" data-desc="${item.desc||''}"${item.direct ? ' data-direct="1"' : ''}>${item.title}</span></li>`;
     }).join('');
