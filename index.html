@@ -682,8 +682,10 @@ function projectPanelHTML(key, title, desc, backKey, panelImages) {
     ? `<p style="margin-top:0.75rem"><span class="sub-trigger" data-key="${key}" data-backkey="${backKey}" data-title="${title}" data-desc="${desc}" data-mode="gallery">gallery of generations</span></p>`
     : '';
   const panelImgs = panelImages ? (IMAGES[panelImages] || []) : [];
+  const panelCarousel = panelImgs.map(s => `<img src="${s}" alt="${title}" loading="lazy" decoding="async">`).join('');
+  const panelDots = panelImgs.map((_, i) => `<span class="${i===0?'active':''}" data-dot="${i}"></span>`).join('');
   const panelGrid = panelImgs.length
-    ? `<div class="img-grid" style="margin-top:0.75rem">${panelImgs.map(s => `<img src="${s}" alt="${title}" loading="lazy" style="cursor:zoom-in" onclick="document.getElementById('lb-img').src=this.src;document.getElementById('lb').showModal()">`).join('')}</div>`
+    ? `<div class="img-grid" style="margin-top:0.75rem">${panelImgs.map(s => `<img src="${s}" alt="${title}" loading="lazy" style="cursor:zoom-in" onclick="document.getElementById('lb-img').src=this.src;document.getElementById('lb').showModal()">`).join('')}</div><div class="img-carousel" id="sub-carousel" style="margin-top:0.75rem">${panelCarousel}</div><div class="carousel-dots" id="sub-dots">${panelDots}</div>`
     : '';
   return `
     <button class="sub-back" data-parent="${backKey}">${backLabel}</button>
