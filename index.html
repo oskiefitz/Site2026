@@ -193,7 +193,7 @@
       position: fixed; bottom: 0; left: 0; right: 0;
       height: var(--footer-h);
       background: var(--bg);
-      border-top: 2px solid #111;
+      border-top: 3px solid #111;
       display: grid;
       grid-template-columns: 1fr auto 1fr;
       align-items: center;
@@ -375,7 +375,7 @@ const CONTENT = {
     dir: 'ltr',
     backLabel: { installations: '← installations', threed: '← 3D', philological: '← philology', physical: '← physical', visual: '← visual' },
 
-    bio: `Hello. I am <span class="trigger" data-key="about">Oscar Fitzgerald</span>, a <span class="trigger" data-key="prizes">prize-winning</span> philologist and computational artist, <span class="trigger" data-key="studying">studying</span> at <span class="trigger" data-key="location">Oxford</span>. I work with data of all kinds, <span class="trigger" data-key="philological">philological</span>, <span class="trigger" data-key="physical">physical</span>, <span class="trigger" data-key="visual">visual</span>, through <span class="trigger" data-key="installations">installations</span> and <span class="trigger" data-key="threed">3D</span>. Always happy to <span class="trigger" data-key="contact">get in touch</span>.`,
+    bio: `Shalom. I am <span class="trigger" data-key="about">Oscar Fitzgerald</span>, a <span class="trigger" data-key="prizes">prize-winning</span> philologist and computational artist, <span class="trigger" data-key="studying">studying</span> at <span class="trigger" data-key="location">Oxford</span>. I work with data of all kinds, <span class="trigger" data-key="philological">philological</span>, <span class="trigger" data-key="physical">physical</span>, <span class="trigger" data-key="visual">visual</span>, through <span class="trigger" data-key="installations">installations</span> and <span class="trigger" data-key="threed">3D</span>. Always happy to <span class="trigger" data-key="contact">get in touch</span>.`,
 
     details: {
       about: {
@@ -452,14 +452,14 @@ const CONTENT = {
           {
             key: '3d-one',
             year: '2025',
-            title: 'Great Isaiah Scroll Mock-ups — FTL Institute',
+            title: 'Great Isaiah Scroll Installation',
             desc: 'Conceptual mock-ups, technical schematics, and interaction plans for an immersive installation centred on the Great Isaiah Scroll. 3D interface built in Unreal Engine, with a structured database of textual emendations, controlled with an orientation sensor, to emulate materiality, such that the interface moves in real time to a physical replica.',
             direct: true,
           },
           {
             key: '3d-two',
             year: '2024',
-            title: 'AR Furniture Tool — Chameleon Furniture',
+            title: 'Chameleon Furniture, Holland: Augmented Reality Tool',
             desc: 'Designed and programmed an Augmented Reality tool to showcase furniture in an interactive live-feed webcam environment. Leveraged AI tools to create desired brand image without need for expensive property rental.',
             plain: true,
           },
@@ -540,8 +540,8 @@ const CONTENT = {
         { key: 'brain-scanner', year: '2024', title: 'Brain Scanner', desc: 'Ein Elektroenzephalogramm aus wiederverwendeter Elektronik, das elektrische Signale des Gehirns messen und visualisieren kann.', direct: true },
       ]},
       threed: { type: 'projects', backKey: 'threed', items: [
-        { key: '3d-one',   year: '2025', title: 'Großer Jesaja-Scroll Mock-ups — FTL Institut', desc: 'Konzeptuelle Mock-ups, technische Schemata und Interaktionspläne für eine immersive Installation rund um den Großen Jesaja-Scroll. 3D-Interface in Unreal Engine, mit einer strukturierten Datenbank textueller Emendationen, gesteuert durch einen Orientierungssensor zur Materialitätssimulation.', direct: true },
-        { key: '3d-two',   year: '2024', title: 'AR-Möbel-Tool — Chameleon Furniture', desc: 'Augmented-Reality-Tool zur Möbelpräsentation im Live-Webcam-Feed.', plain: true },
+        { key: '3d-one',   year: '2025', title: 'Great Isaiah Scroll Installation', desc: 'Konzeptuelle Mock-ups, technische Schemata und Interaktionspläne für eine immersive Installation rund um den Großen Jesaja-Scroll. 3D-Interface in Unreal Engine, mit einer strukturierten Datenbank textueller Emendationen, gesteuert durch einen Orientierungssensor zur Materialitätssimulation.', direct: true },
+        { key: '3d-two',   year: '2024', title: 'Chameleon Furniture, Holland: Augmented Reality Tool', desc: 'Augmented-Reality-Tool zur Möbelpräsentation im Live-Webcam-Feed.', plain: true },
         { key: '3d-three', year: '2024', title: 'Animationen', desc: '', direct: true },
         { key: 'renders',  year: '2024', title: 'Renders', desc: '', direct: true },
       ]},
@@ -579,8 +579,8 @@ const CONTENT = {
         { key: 'brain-scanner', year: '٢٠٢٤', title: 'Brain Scanner', desc: 'جهاز تخطيط الدماغ مبني من إلكترونيات معاد توظيفها، يستطيع قياس وتصور الإشارات الكهربائية الصادرة من الدماغ.', direct: true },
       ]},
       threed: { type: 'projects', backKey: 'threed', items: [
-        { key: '3d-one',   year: '٢٠٢٥', title: 'نماذج مخطوطة إشعياء الكبرى — معهد FTL', desc: 'نماذج مفاهيمية ومخططات تقنية وخطط تفاعل لتركيب غامر حول مخطوطة إشعياء الكبرى. واجهة ثلاثية الأبعاد في Unreal Engine مع قاعدة بيانات منظمة للتعديلات النصية، تتحكم بها مستشعر التوجه لمحاكاة الماديّة.', direct: true },
-        { key: '3d-two',   year: '٢٠٢٤', title: 'أداة الأثاث بالواقع المعزز', desc: 'أداة واقع معزز لعرض الأثاث في بيئة بث مباشر تفاعلية.', plain: true },
+        { key: '3d-one',   year: '٢٠٢٥', title: 'تركيب مخطوطة إشعياء الكبرى', desc: 'نماذج مفاهيمية ومخططات تقنية وخطط تفاعل لتركيب غامر حول مخطوطة إشعياء الكبرى. واجهة ثلاثية الأبعاد في Unreal Engine مع قاعدة بيانات منظمة للتعديلات النصية، تتحكم بها مستشعر التوجه لمحاكاة الماديّة.', direct: true },
+        { key: '3d-two',   year: '٢٠٢٤', title: 'Chameleon Furniture، هولندا: أداة الواقع المعزز', desc: 'أداة واقع معزز لعرض الأثاث في بيئة بث مباشر تفاعلية.', plain: true },
         { key: '3d-three', year: '٢٠٢٤', title: 'رسوم متحركة', desc: '', direct: true },
         { key: 'renders',  year: '٢٠٢٤', title: 'Renders', desc: '', direct: true },
       ]},
@@ -620,8 +620,8 @@ const CONTENT = {
         { key: 'brain-scanner', year: '2024', title: 'Brain Scanner', desc: 'Електроенцефалограм направљен од рециклиране електронике, може мерити и визуализовати електричне сигнале мозга.', direct: true },
       ]},
       threed: { type: 'projects', backKey: 'threed', items: [
-        { key: '3d-one',   year: '2025', title: 'Макете Великог Исаијиног свитка — FTL институт', desc: 'Концептуалне макете, технички дијаграми и планови интеракције за имерзивну инсталацију о Великом Исаијином свитку. 3D интерфејс у Unreal Engine-у са структурираном базом текстуалних емендација, контролисан сензором оријентације ради симулације материјалности.', direct: true },
-        { key: '3d-two',   year: '2024', title: 'AR алат за намештај', desc: 'Алат проширене стварности за приказ намештаја у интерактивном окружењу.', plain: true },
+        { key: '3d-one',   year: '2025', title: 'Great Isaiah Scroll Installation', desc: 'Концептуалне макете, технички дијаграми и планови интеракције за имерзивну инсталацију о Великом Исаијином свитку. 3D интерфејс у Unreal Engine-у са структурираном базом текстуалних емендација, контролисан сензором оријентације ради симулације материјалности.', direct: true },
+        { key: '3d-two',   year: '2024', title: 'Chameleon Furniture, Холандија: Augmented Reality алат', desc: 'Алат проширене стварности за приказ намештаја у интерактивном окружењу.', plain: true },
         { key: '3d-three', year: '2024', title: 'Анимације', desc: '', direct: true },
         { key: 'renders',  year: '2024', title: 'Renders', desc: '', direct: true },
       ]},
