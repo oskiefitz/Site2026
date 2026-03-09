@@ -392,14 +392,14 @@ const CONTENT = {
             key: 'en-plein-air',
             year: '2024',
             title: 'En Plein Air, Oxford 2025',
-            desc: 'An electroencephalogram built from repurposed electronics. An interactive installation displaying a generative Monet-style image of a live webcam feed, more detailed the more concentrated the viewer is. Exhibited at Oxford Review of Books promotional show, 500+ guests.',
+            desc: 'Using an electroencephalogram built from repurposed electronics, this interactive installation uses electrical activity in the brain to produce generative Monet-style artworks of a live webcam feed. The more concentrated the viewer is, the more stylised the generation. Exhibited at Oxford Review of Books promotional show, and in Dolphin Quad Gallery, 600+ guests.',
             panelImages: 'en-plein-air-exhibition',
           },
           {
             key: 'spit-shined',
             year: '2023',
             title: 'Spit-shined Apocalypse',
-            desc: 'Presented at Creative Tech & Digital Design, London. Work at the intersection of art and technology, shown alongside interdisciplinary exchanges with professionals across tech and creative sectors.',
+            desc: 'The world\'s first fire-controlled arcade game. Exhibited at the Oxo Tower in London; use a flame to make the player shoot fire in the game.',
             direct: true,
           },
         ],
@@ -413,7 +413,7 @@ const CONTENT = {
             key: 'brain-scanner',
             year: '2024',
             title: 'Brain Scanner',
-            desc: 'Description of the Brain Scanner physical work.',
+            desc: 'An electroencephalogram built from repurposed electronics, can measure, and in turn visualise, electric signals from the brain.',
             direct: true,
           },
         ],
@@ -426,8 +426,8 @@ const CONTENT = {
           {
             key: '3d-one',
             year: '2025',
-            title: 'Great Isaiah Scroll — FTL Institute',
-            desc: 'Conceptual mock-ups, technical schematics, and interaction plans for an immersive installation centred on the Great Isaiah Scroll. 3D interface built in Unreal Engine, with a structured database of textual emendations supporting Marcello Fidanzio\'s project on materiality.',
+            title: 'Great Isaiah Scroll Mock-ups — FTL Institute',
+            desc: 'Conceptual mock-ups, technical schematics, and interaction plans for an immersive installation centred on the Great Isaiah Scroll. 3D interface built in Unreal Engine, with a structured database of textual emendations, controlled with an orientation sensor, to emulate materiality, such that the interface moves in real time to a physical replica.',
             direct: true,
           },
           {
@@ -498,30 +498,31 @@ const CONTENT = {
     dir: 'ltr',
     backLabel: { installations: '← Installationen', threed: '← 3D', philological: '← Philologie', physical: '← Physisch', visual: '← Visuell' },
 
-    bio: `Hallo. Ich bin <span class="trigger" data-key="about">Oscar Fitzgerald</span>, ein <span class="trigger" data-key="prizes">preisgekrönter</span> Philologe und Computerkünstler, der in <span class="trigger" data-key="location">Oxford</span> <span class="trigger" data-key="studying">studiert</span>. Ich arbeite mit Daten aller Art, <span class="trigger" data-key="philological">philologischen</span>, physischen, <span class="trigger" data-key="visual">visuellen</span>, durch <span class="trigger" data-key="installations">Installationen</span> und <span class="trigger" data-key="threed">3D</span>. Ich freue mich jederzeit über <span class="trigger" data-key="contact">Kontakt</span>.`,
+    bio: `Schalom. Ich bin <span class="trigger" data-key="about">Oscar Fitzgerald</span>, <span class="trigger" data-key="prizes">preisgekrönter</span> Philologe und Computerkünstler, und <span class="trigger" data-key="studying">studiere</span> in <span class="trigger" data-key="location">Oxford</span>. Ich beschäftige mich mit verschiedenen Arten von Daten, <span class="trigger" data-key="philological">philologischen</span>, <span class="trigger" data-key="physical">physikalischen</span> und <span class="trigger" data-key="visual">visuellen</span>, mithilfe von <span class="trigger" data-key="installations">Installationen</span> und <span class="trigger" data-key="threed">3D</span>. Bin immer offen für neue <span class="trigger" data-key="contact">Kontakte</span>.`,
 
     details: {
-      about:     { type: 'html', html: `<p>Oscar Fitzgerald ist Philologe und Computerkünstler in Oxford. Er arbeitet an der Schnittstelle von altorientalischer Literatur, Computation und physischer Installation.</p>` },
+      about:     { type: 'html', html: `<p>Auch bekannt als Oskie Fitz, Oskar HadžiFicĐerald, Oskar Stanković.</p>` },
       location:  { type: 'html', html: `<p>Oxford, England</p><p style="color:var(--muted);font-size:0.85rem;margin-top:0.2rem;">51° 45′ N · 1° 15′ W</p>` },
       studying:  { type: 'html', html: `<ul class="item-list"><li><span class="year">2023–26</span><span>BA Theologie &amp; Religion, Universität Oxford</span></li><li><span class="year">2022–23</span><span>BA Bildende Kunst: Computational Arts (CertHE), UAL</span></li></ul>` },
       prizes:    { type: 'html', html: `<ul class="item-list"><li><span class="year">2026</span><span>Tel Aviv University Archaeology Scholarship</span></li><li><span class="year">2025</span><span>Hazem Ben-Gacem Scholarship</span></li><li><span class="year">2025</span><span>St. Antony's Middle East Centre Arabic Training Fund, Tunesien</span></li><li><span class="year">2024</span><span>Expanding Horizons Grant, St. John's College</span></li><li><span class="year">2024</span><span>Special Grant, St. John's College, Universität Belgrad</span></li><li><span class="year">2024</span><span>Kennicott &amp; Pusey–Ellerton-Preis, Biblisches Hebräisch</span></li><li><span class="year">2024</span><span>Casberd-Stipendium</span></li></ul>` },
+      contact:   { type: 'html', html: `<p><a href="mailto:oskie@wiseblood.com">oskie@wiseblood.com</a></p>` },
       installations: { type: 'projects', backKey: 'installations', items: [
-        { key: 'en-plein-air', year: '2024', title: 'En Plein Air, Oxford 2025', desc: 'Elektroenzephalogramm aus wiederverwendeter Elektronik. Generatives Monet-Bild eines Live-Webcam-Feeds, detailreicher je konzentrierter der Betrachter ist.', panelImages: 'en-plein-air-exhibition' },
-        { key: 'spit-shined',  year: '2023', title: 'Spit-shined Apocalypse', desc: 'Präsentiert bei Creative Tech & Digital Design, London.', direct: true },
+        { key: 'en-plein-air', year: '2024', title: 'En Plein Air, Oxford 2025', desc: 'Mithilfe eines Elektroenzephalogramms aus wiederverwendeter Elektronik nutzt diese interaktive Installation elektrische Gehirnaktivität, um generative Kunstwerke im Stil Monets aus einem Live-Webcam-Feed zu erzeugen. Je konzentrierter der Betrachter, desto stilisierter die Generierung. Ausgestellt beim Oxford Review of Books und in der Dolphin Quad Gallery, 600+ Gäste.', panelImages: 'en-plein-air-exhibition' },
+        { key: 'spit-shined',  year: '2023', title: 'Spit-shined Apocalypse', desc: 'Das weltweit erste feuergesteuerte Arcade-Spiel. Ausgestellt im Oxo Tower in London; eine Flamme lässt den Spieler Feuer schießen.', direct: true },
       ]},
       physical: { type: 'projects', backKey: 'physical', items: [
-        { key: 'brain-scanner', year: '2024', title: 'Brain Scanner', desc: 'Beschreibung der physischen Brain-Scanner-Arbeit.', direct: true },
+        { key: 'brain-scanner', year: '2024', title: 'Brain Scanner', desc: 'Ein Elektroenzephalogramm aus wiederverwendeter Elektronik, das elektrische Signale des Gehirns messen und visualisieren kann.', direct: true },
       ]},
       threed: { type: 'projects', backKey: 'threed', items: [
-        { key: '3d-one',   year: '2025', title: 'Großer Jesaja-Scroll — FTL Institut', desc: 'Immersive Installation zum Großen Jesaja-Scroll; 3D-Interface in Unreal Engine.', direct: true },
+        { key: '3d-one',   year: '2025', title: 'Großer Jesaja-Scroll Mock-ups — FTL Institut', desc: 'Konzeptuelle Mock-ups, technische Schemata und Interaktionspläne für eine immersive Installation rund um den Großen Jesaja-Scroll. 3D-Interface in Unreal Engine, mit einer strukturierten Datenbank textueller Emendationen, gesteuert durch einen Orientierungssensor zur Materialitätssimulation.', direct: true },
         { key: '3d-two',   year: '2024', title: 'AR-Möbel-Tool — Chameleon Furniture', desc: 'Augmented-Reality-Tool zur Möbelpräsentation im Live-Webcam-Feed.', plain: true },
         { key: '3d-three', year: '2024', title: 'Animationen', desc: '', direct: true },
         { key: 'renders',  year: '2024', title: 'Renders', desc: '', direct: true },
       ]},
       philological: { type: 'philology', backKey: 'philological', items: [
         { key: 'cal',             title: 'My entries on the Comprehensive Aramaic Lexicon', type: 'link',   href: 'https://cal.huc.edu/displaycits.abbrev.php?abbrev=Bhchr%3E' },
-        { key: 'divinecommandline', title: 'divinecommandline',           type: 'images', desc: 'Open-Source-Kommandozeilen-Tool zur grammatikalischen Analyse rechtsbündiger Texte. Biblisches Hebräisch und Koranisches Arabisch.', direct: true },
-        { key: 'wahlul-uqode',    title: 'Wahlul Uqode',                  type: 'plain', desc: 'Kommandozeilen-GUI für die morphologische Analyse des Korantextes.' },
+        { key: 'divinecommandline', title: 'divinecommandline',           type: 'images', desc: 'Open-Source-Kommandozeilen-Tool zur grammatikalischen Analyse rechtsbündiger Texte. Ermöglicht die grammatikalische Analyse jedes hebräischen Wortes der Biblia Hebraica Stuttgartensia sowie ein koranisch-arabisches Parsing-Tool.', direct: true },
+        { key: 'wahlul-uqode',    title: 'Wahlul Uqode',                  type: 'plain', desc: 'Eine Kommandozeilen-GUI zur morphologischen Analyse des Qurʾānischen Arabisch.' },
       ]},
       visual: { type: 'projects', backKey: 'visual', items: [
         { key: 'illustrations', year: '', title: 'Illustrationen', desc: '', direct: true },
@@ -536,30 +537,31 @@ const CONTENT = {
     dir: 'rtl',
     backLabel: { installations: 'التركيبات ←', threed: 'ثلاثي الأبعاد ←', philological: 'فقه اللغة ←', physical: 'المادي ←', visual: 'البصري ←' },
 
-    bio: `مرحباً. أنا <span class="trigger" data-key="about">أوسكار فيتزجيرالد</span>، فيلولوجي وفنان حوسبة <span class="trigger" data-key="prizes">حائز على جوائز</span>، أدرس في <span class="trigger" data-key="location">أكسفورد</span> حيث <span class="trigger" data-key="studying">أتابع دراستي</span>. أعمل مع البيانات بأنواعها، <span class="trigger" data-key="philological">فيلولوجية</span> وفيزيائية و<span class="trigger" data-key="visual">بصرية</span>، من خلال <span class="trigger" data-key="installations">التركيبات الفنية</span> و<span class="trigger" data-key="threed">النمذجة ثلاثية الأبعاد</span>. يسعدني دائماً <span class="trigger" data-key="contact">التواصل</span>.`,
+    bio: `أسلّامة. اسمي <span class="trigger" data-key="about">أوسكار فيتزجيرالد</span>. أنا <span class="trigger" data-key="prizes">فِيلولوجيٌّ وفنّانٌ حاسوبيٌّ</span>، وأدرسُ في <span class="trigger" data-key="location">جامعة أكسفورد</span> حيث <span class="trigger" data-key="studying">أتابع دراستي</span>. أستخدمُ في أعمالي الفنّية كثيرًا من البيانات، مثلَ <span class="trigger" data-key="philological">البياناتِ الفيلولوجيّةِ</span>، و<span class="trigger" data-key="physical">المادّيّةِ</span>، و<span class="trigger" data-key="visual">البصريّةِ</span>، من خلال <span class="trigger" data-key="installations">التركيبات الفنّية</span> وأعمالِ <span class="trigger" data-key="threed">الثلاثيِّ الأبعاد</span>. يسعدني أن <span class="trigger" data-key="contact">تتواصلوا معي</span>.`,
 
     details: {
-      about:     { type: 'html', html: `<p>أوسكار فيتزجيرالد فيلولوجي وفنان حوسبة مقيم في أكسفورد. يعمل عند تقاطع الآداب السامية القديمة والحوسبة والتركيب المادي.</p>` },
+      about:     { type: 'html', html: `<p>يُعرف أيضاً بـ Oskie Fitz وOskar HadžiFicĐerald وOskar Stanković.</p>` },
       location:  { type: 'html', html: `<p>أكسفورد، إنجلترا</p><p style="color:var(--muted);font-size:0.85rem;margin-top:0.2rem;">51° 45′ N · 1° 15′ W</p>` },
       studying:  { type: 'html', html: `<ul class="item-list"><li><span class="year">٢٠٢٣–٢٦</span><span>بكالوريوس اللاهوت والدين، جامعة أكسفورد</span></li><li><span class="year">٢٠٢٢–٢٣</span><span>بكالوريوس الفنون الجميلة: الفنون الحسابية (CertHE)، UAL</span></li></ul>` },
       prizes:    { type: 'html', html: `<ul class="item-list"><li><span class="year">٢٠٢٦</span><span>Tel Aviv University Archaeology Scholarship</span></li><li><span class="year">٢٠٢٥</span><span>منحة حازم بن قاسم</span></li><li><span class="year">٢٠٢٥</span><span>صندوق تدريب اللغة العربية، مركز الشرق الأوسط، تونس</span></li><li><span class="year">٢٠٢٤</span><span>Expanding Horizons Grant، كلية سانت جون</span></li><li><span class="year">٢٠٢٤</span><span>Special Grant، كلية سانت جون، جامعة بلغراد</span></li><li><span class="year">٢٠٢٤</span><span>جائزة كينيكوت وبيوزي–إيلرتون، العبرية الكتابية</span></li><li><span class="year">٢٠٢٤</span><span>منحة كاسبيرد</span></li></ul>` },
+      contact:   { type: 'html', html: `<p><a href="mailto:oskie@wiseblood.com">oskie@wiseblood.com</a></p>` },
       installations: { type: 'projects', backKey: 'installations', items: [
-        { key: 'en-plein-air', year: '٢٠٢٤', title: 'En Plein Air, Oxford 2025', desc: 'جهاز تخطيط الدماغ من إلكترونيات معاد توظيفها. تركيب تفاعلي يعرض صورة تجريبية على طراز مونيه من تغذية ويب-كام مباشرة.', panelImages: 'en-plein-air-exhibition' },
-        { key: 'spit-shined',  year: '٢٠٢٣', title: 'Spit-shined Apocalypse', desc: 'قُدِّم في Creative Tech & Digital Design، لندن.', direct: true },
+        { key: 'en-plein-air', year: '٢٠٢٤', title: 'En Plein Air, Oxford 2025', desc: 'باستخدام جهاز تخطيط الدماغ المبني من إلكترونيات معاد توظيفها، يستخدم هذا التركيب التفاعلي النشاط الكهربائي للدماغ لإنتاج أعمال فنية تجريبية على طراز مونيه من بث ويب-كام مباشر. كلما زاد تركيز المشاهد، كلما ازداد التوليد أسلوبيةً. عُرض في فعالية Oxford Review of Books وفي Dolphin Quad Gallery، أمام أكثر من 600 ضيف.', panelImages: 'en-plein-air-exhibition' },
+        { key: 'spit-shined',  year: '٢٠٢٣', title: 'Spit-shined Apocalypse', desc: 'أول لعبة أركيد يتحكم فيها اللهب في العالم. عُرضت في برج Oxo في لندن؛ استخدم لهبًا لجعل اللاعب يطلق النار في اللعبة.', direct: true },
       ]},
       physical: { type: 'projects', backKey: 'physical', items: [
-        { key: 'brain-scanner', year: '٢٠٢٤', title: 'Brain Scanner', desc: 'وصف عمل Brain Scanner المادي.', direct: true },
+        { key: 'brain-scanner', year: '٢٠٢٤', title: 'Brain Scanner', desc: 'جهاز تخطيط الدماغ مبني من إلكترونيات معاد توظيفها، يستطيع قياس وتصور الإشارات الكهربائية الصادرة من الدماغ.', direct: true },
       ]},
       threed: { type: 'projects', backKey: 'threed', items: [
-        { key: '3d-one',   year: '٢٠٢٥', title: 'مخطوطة إشعياء الكبرى — معهد FTL', desc: 'تركيب غامر حول مخطوطة إشعياء الكبرى؛ واجهة ثلاثية الأبعاد في Unreal Engine.', direct: true },
+        { key: '3d-one',   year: '٢٠٢٥', title: 'نماذج مخطوطة إشعياء الكبرى — معهد FTL', desc: 'نماذج مفاهيمية ومخططات تقنية وخطط تفاعل لتركيب غامر حول مخطوطة إشعياء الكبرى. واجهة ثلاثية الأبعاد في Unreal Engine مع قاعدة بيانات منظمة للتعديلات النصية، تتحكم بها مستشعر التوجه لمحاكاة الماديّة.', direct: true },
         { key: '3d-two',   year: '٢٠٢٤', title: 'أداة الأثاث بالواقع المعزز', desc: 'أداة واقع معزز لعرض الأثاث في بيئة بث مباشر تفاعلية.', plain: true },
         { key: '3d-three', year: '٢٠٢٤', title: 'رسوم متحركة', desc: '', direct: true },
         { key: 'renders',  year: '٢٠٢٤', title: 'Renders', desc: '', direct: true },
       ]},
       philological: { type: 'philology', backKey: 'philological', items: [
         { key: 'cal',             title: 'My entries on the Comprehensive Aramaic Lexicon', type: 'link',   href: 'https://cal.huc.edu/displaycits.abbrev.php?abbrev=Bhchr%3E' },
-        { key: 'divinecommandline', title: 'divinecommandline',   type: 'images', desc: 'أداة سطر أوامر مفتوحة المصدر لتحليل النصوص العبرية والعربية القرآنية نحوياً.', direct: true },
-        { key: 'wahlul-uqode',    title: 'Wahlul Uqode',          type: 'plain', desc: 'واجهة رسومية لسطر الأوامر للتحليل الصرفي للقرآن الكريم.' },
+        { key: 'divinecommandline', title: 'divinecommandline',   type: 'images', desc: 'أداة سطر أوامر مفتوحة المصدر لتحليل النصوص العبرية والعربية القرآنية نحوياً. تتيح عرض التحليل النحوي لكل كلمة عبرية في النص الماسوري، مع أداة مماثلة للعربية القرآنية.', direct: true },
+        { key: 'wahlul-uqode',    title: 'Wahlul Uqode',          type: 'plain', desc: 'واجهة رسومية لسطر الأوامر للتحليل الصرفي للعربية القرآنية.' },
       ]},
       visual: { type: 'projects', backKey: 'visual', items: [
         { key: 'illustrations', year: '', title: 'رسوم توضيحية', desc: '', direct: true },
@@ -576,29 +578,30 @@ const CONTENT = {
     dir: 'ltr',
     backLabel: { installations: '← инсталације', threed: '← 3D', philological: '← филологија', physical: '← физичко', visual: '← визуелно' },
 
-    bio: `Zdravo. Ja sam <span class="trigger" data-key="about">Oskar Fицџералд</span>, <span class="trigger" data-key="prizes">награђивани</span> филолог и рачунарски уметник, <span class="trigger" data-key="studying">студирам</span> у <span class="trigger" data-key="location">Оксфорду</span>. Радим са свим врстама података, <span class="trigger" data-key="philological">филолошким</span>, физичким, <span class="trigger" data-key="visual">визуелним</span>, кроз <span class="trigger" data-key="installations">инсталације</span> и <span class="trigger" data-key="threed">3D</span>. Увек сам радо доступан за <span class="trigger" data-key="contact">контакт</span>.`,
+    bio: `Шалом. Ја сам <span class="trigger" data-key="about">Оскар Фицџералд</span>, <span class="trigger" data-key="prizes">награђивани</span> филолог и рачунарски уметник, <span class="trigger" data-key="studying">студирам</span> на <span class="trigger" data-key="location">Оксфорду</span>. Радим са свим врстама података — <span class="trigger" data-key="philological">филолошким</span>, <span class="trigger" data-key="physical">физичким</span> и <span class="trigger" data-key="visual">визуелним</span> — кроз <span class="trigger" data-key="installations">инсталације</span> и <span class="trigger" data-key="threed">3Д</span>. Слободно ми се <span class="trigger" data-key="contact">јавите</span>.`,
 
     details: {
-      about:     { type: 'html', html: `<p>Оскар Фицџералд је филолог и рачунарски уметник у Оксфорду. Ради на пресеку старих семитских књижевности, рачунарства и физичке инсталације.</p>` },
+      about:     { type: 'html', html: `<p>Познат и као Oskie Fitz, Oskar HadžiFicĐerald, Oskar Stanković.</p>` },
       location:  { type: 'html', html: `<p>Оксфорд, Енглеска</p><p style="color:var(--muted);font-size:0.85rem;margin-top:0.2rem;">51° 45′ N · 1° 15′ W</p>` },
       studying:  { type: 'html', html: `<ul class="item-list"><li><span class="year">2023–26</span><span>BA Теологија и религија, Универзитет у Оксфорду</span></li><li><span class="year">2022–23</span><span>BA Ликовне уметности: Рачунарске уметности (CertHE), UAL</span></li></ul>` },
       prizes:    { type: 'html', html: `<ul class="item-list"><li><span class="year">2026</span><span>Tel Aviv University Archaeology Scholarship</span></li><li><span class="year">2025</span><span>Hazem Ben-Gacem Scholarship</span></li><li><span class="year">2025</span><span>Фонд за обуку арапског језика, Тунис</span></li><li><span class="year">2024</span><span>Expanding Horizons Grant, Колеџ Св. Јована</span></li><li><span class="year">2024</span><span>Special Grant, Колеџ Св. Јована, Филолошки факултет у Београду</span></li><li><span class="year">2024</span><span>Кеникот и Пузи–Елертон награда, Библијски хебрејски</span></li><li><span class="year">2024</span><span>Каспберд стипендија</span></li></ul>` },
+      contact:   { type: 'html', html: `<p><a href="mailto:oskie@wiseblood.com">oskie@wiseblood.com</a></p>` },
       installations: { type: 'projects', backKey: 'installations', items: [
-        { key: 'en-plein-air', year: '2024', title: 'En Plein Air, Oxford 2025', desc: 'Електроенцефалограм од рециклиране електронике. Интерактивна инсталација са генеративном сликом у стилу Монеа.', panelImages: 'en-plein-air-exhibition' },
-        { key: 'spit-shined',  year: '2023', title: 'Spit-shined Apocalypse', desc: 'Представљено на Creative Tech & Digital Design, Лондон.', direct: true },
+        { key: 'en-plein-air', year: '2024', title: 'En Plein Air, Oxford 2025', desc: 'Користећи електроенцефалограм направљен од рециклиране електронике, ова интерактивна инсталација употребљава електричну активност мозга за генерисање уметничких дела у стилу Монеа из живог веб-камера. Што је посматрач концентрисанији, то је генерација стилизованија. Изложено на Oxford Review of Books и у Dolphin Quad Gallery, 600+ гостију.', panelImages: 'en-plein-air-exhibition' },
+        { key: 'spit-shined',  year: '2023', title: 'Spit-shined Apocalypse', desc: 'Прва аркадна игра на свету контролисана ватром. Изложена у Oxo Tower-у у Лондону; употреби пламен да натераш играча да пуца ватром у игри.', direct: true },
       ]},
       physical: { type: 'projects', backKey: 'physical', items: [
-        { key: 'brain-scanner', year: '2024', title: 'Brain Scanner', desc: 'Опис физичког рада Brain Scanner.', direct: true },
+        { key: 'brain-scanner', year: '2024', title: 'Brain Scanner', desc: 'Електроенцефалограм направљен од рециклиране електронике, може мерити и визуализовати електричне сигнале мозга.', direct: true },
       ]},
       threed: { type: 'projects', backKey: 'threed', items: [
-        { key: '3d-one',   year: '2025', title: 'Велики Исаијин свитак — FTL институт', desc: 'Имерзивна инсталација о Великом Исаијином свитку; 3D интерфејс у Unreal Engine-у.', direct: true },
+        { key: '3d-one',   year: '2025', title: 'Макете Великог Исаијиног свитка — FTL институт', desc: 'Концептуалне макете, технички дијаграми и планови интеракције за имерзивну инсталацију о Великом Исаијином свитку. 3D интерфејс у Unreal Engine-у са структурираном базом текстуалних емендација, контролисан сензором оријентације ради симулације материјалности.', direct: true },
         { key: '3d-two',   year: '2024', title: 'AR алат за намештај', desc: 'Алат проширене стварности за приказ намештаја у интерактивном окружењу.', plain: true },
         { key: '3d-three', year: '2024', title: 'Анимације', desc: '', direct: true },
         { key: 'renders',  year: '2024', title: 'Renders', desc: '', direct: true },
       ]},
       philological: { type: 'philology', backKey: 'philological', items: [
         { key: 'cal',             title: 'My entries on the Comprehensive Aramaic Lexicon', type: 'link',   href: 'https://cal.huc.edu/displaycits.abbrev.php?abbrev=Bhchr%3E' },
-        { key: 'divinecommandline', title: 'divinecommandline',              type: 'images', desc: 'Алат командне линије отвореног кода за граматичку анализу хебрејских и арапских текстова.', direct: true },
+        { key: 'divinecommandline', title: 'divinecommandline',              type: 'images', desc: 'Алат командне линије отвореног кода за граматичку анализу текстова с десна на лево. Омогућава граматичку анализу сваке хебрејске речи у Biblia Hebraica Stuttgartensia, као и алат за куранску арапску анализу.', direct: true },
         { key: 'wahlul-uqode',    title: 'Wahlul Uqode',                     type: 'plain', desc: 'GUI алат командне линије за морфолошку анализу куранског арапског.' },
       ]},
       visual: { type: 'projects', backKey: 'visual', items: [
