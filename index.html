@@ -304,15 +304,30 @@ const IMAGES = {
     'images/brain/3.jpg',
     'images/brain/4.jpg',
   ],
-  '3d-one':   ['https://placehold.co/800x600/e0ddd7/888?text=3D+One+1','https://placehold.co/800x600/d8d4ce/888?text=3D+One+2','https://placehold.co/800x600/e8e5df/888?text=3D+One+3'],
-  '3d-two':   ['https://placehold.co/800x600/e0ddd7/888?text=3D+Two+1','https://placehold.co/800x600/d8d4ce/888?text=3D+Two+2'],
-  '3d-three': ['https://placehold.co/800x600/e0ddd7/888?text=3D+Three+1','https://placehold.co/800x600/d8d4ce/888?text=3D+Three+2','https://placehold.co/800x600/e8e5df/888?text=3D+Three+3'],
-  'divinecommandline': ['images/div3.PNG','images/div2.PNG'],
+  '3d-one':   ['images/unnamed.gif'],
+  '3d-two':   [],
+  '3d-three': [],
+  'renders':  [
+    'https://placehold.co/800x600/e0ddd7/888?text=Render+1',
+    'https://placehold.co/800x600/d8d4ce/888?text=Render+2',
+    'https://placehold.co/800x600/e8e5df/888?text=Render+3',
+  ],
+  'divinecommandline': ['https://placehold.co/800x600/e0ddd7/888?text=Divinecommandline+1','https://placehold.co/800x600/d8d4ce/888?text=Divinecommandline+2','https://placehold.co/800x600/e8e5df/888?text=Divinecommandline+3'],
+  'wahlul-uqode': ['https://placehold.co/800x600/e0ddd7/888?text=Wahlul+Uqode+1','https://placehold.co/800x600/d8d4ce/888?text=Wahlul+Uqode+2'],
 };
 
 const VIDEOS = {
   'brain-scanner': 'images/brain/1.mp4',
-  'spit-shined':   'images/spit-shined/2.mp4', // ← update path to your video
+  'spit-shined':   'images/spit-shined/2.mp4',
+  '3d-one':        'images/gyro.mp4',
+};
+
+const VIDEO_LIST = {
+  '3d-three': [
+    'images/1.mp4',
+    'images/2.mp4',
+    'images/3.mp4',
+  ],
 };
 
 const GAMES = {
@@ -412,13 +427,19 @@ const CONTENT = {
             year: '2024',
             title: 'AR Furniture Tool — Chameleon Furniture',
             desc: 'Designed and programmed an Augmented Reality tool to showcase furniture in an interactive live-feed webcam environment. Leveraged AI tools to create desired brand image without need for expensive property rental.',
-            direct: true,
           },
           {
             key: '3d-three',
             year: '2024',
-            title: '3D Work Three',
-            desc: 'Description of third 3D work.',
+            title: 'Animations',
+            desc: '',
+            direct: true,
+          },
+          {
+            key: 'renders',
+            year: '2024',
+            title: 'Renders',
+            desc: '',
             direct: true,
           },
         ],
@@ -479,8 +500,9 @@ const CONTENT = {
       ]},
       threed: { type: 'projects', backKey: 'threed', items: [
         { key: '3d-one',   year: '2025', title: 'Großer Jesaja-Scroll — FTL Institut', desc: 'Immersive Installation zum Großen Jesaja-Scroll; 3D-Interface in Unreal Engine.', direct: true },
-        { key: '3d-two',   year: '2024', title: 'AR-Möbel-Tool — Chameleon Furniture', desc: 'Augmented-Reality-Tool zur Möbelpräsentation im Live-Webcam-Feed.', direct: true },
-        { key: '3d-three', year: '2024', title: '3D-Arbeit Drei', desc: 'Beschreibung der dritten 3D-Arbeit.', direct: true },
+        { key: '3d-two',   year: '2024', title: 'AR-Möbel-Tool — Chameleon Furniture', desc: 'Augmented-Reality-Tool zur Möbelpräsentation im Live-Webcam-Feed.' },
+        { key: '3d-three', year: '2024', title: 'Animationen', desc: '', direct: true },
+        { key: 'renders',  year: '2024', title: 'Renders', desc: '', direct: true },
       ]},
       philological: { type: 'philology', backKey: 'philological', items: [
         { key: 'cal',             title: 'Comprehensive Aramaic Lexicon', type: 'link',   href: 'https://cal.huc.edu/' },
@@ -515,8 +537,9 @@ const CONTENT = {
       ]},
       threed: { type: 'projects', backKey: 'threed', items: [
         { key: '3d-one',   year: '٢٠٢٥', title: 'مخطوطة إشعياء الكبرى — معهد FTL', desc: 'تركيب غامر حول مخطوطة إشعياء الكبرى؛ واجهة ثلاثية الأبعاد في Unreal Engine.', direct: true },
-        { key: '3d-two',   year: '٢٠٢٤', title: 'أداة الأثاث بالواقع المعزز', desc: 'أداة واقع معزز لعرض الأثاث في بيئة بث مباشر تفاعلية.', direct: true },
-        { key: '3d-three', year: '٢٠٢٤', title: 'عمل ثلاثي الأبعاد الثالث', desc: 'وصف هذا العمل.', direct: true },
+        { key: '3d-two',   year: '٢٠٢٤', title: 'أداة الأثاث بالواقع المعزز', desc: 'أداة واقع معزز لعرض الأثاث في بيئة بث مباشر تفاعلية.' },
+        { key: '3d-three', year: '٢٠٢٤', title: 'رسوم متحركة', desc: '', direct: true },
+        { key: 'renders',  year: '٢٠٢٤', title: 'Renders', desc: '', direct: true },
       ]},
       philological: { type: 'philology', backKey: 'philological', items: [
         { key: 'cal',             title: 'المعجم الآرامي الشامل', type: 'link',   href: 'https://cal.huc.edu/' },
@@ -551,8 +574,9 @@ const CONTENT = {
       ]},
       threed: { type: 'projects', backKey: 'threed', items: [
         { key: '3d-one',   year: '2025', title: 'Велики Исаијин свитак — FTL институт', desc: 'Имерзивна инсталација о Великом Исаијином свитку; 3D интерфејс у Unreal Engine-у.', direct: true },
-        { key: '3d-two',   year: '2024', title: 'AR алат за намештај', desc: 'Алат проширене стварности за приказ намештаја у интерактивном окружењу.', direct: true },
-        { key: '3d-three', year: '2024', title: '3D рад три', desc: 'Опис трећег 3D рада.', direct: true },
+        { key: '3d-two',   year: '2024', title: 'AR алат за намештај', desc: 'Алат проширене стварности за приказ намештаја у интерактивном окружењу.' },
+        { key: '3d-three', year: '2024', title: 'Анимације', desc: '', direct: true },
+        { key: 'renders',  year: '2024', title: 'Renders', desc: '', direct: true },
       ]},
       philological: { type: 'philology', backKey: 'philological', items: [
         { key: 'cal',             title: 'Свеобухватни арамејски лексикон', type: 'link',   href: 'https://cal.huc.edu/' },
@@ -580,12 +604,15 @@ const htmlEl      = document.documentElement;
 function imageSubPanelHTML(key, title, desc, backKey) {
   const imgs      = IMAGES[key] || [];
   const video     = VIDEOS[key] || null;
+  const videos    = VIDEO_LIST[key] || [];
   const game      = GAMES[key]  || null;
   const backLabel = CONTENT[currentLang].backLabel[backKey] || '←';
   const grid      = imgs.map(s => `<img src="${s}" alt="${title}" loading="lazy" decoding="async" style="cursor:zoom-in" onclick="document.getElementById('lb-img').src=this.src;document.getElementById('lb').showModal()">`).join('');
   const carousel  = imgs.map(s => `<img src="${s}" alt="${title}" loading="lazy" decoding="async">`).join('');
   const dots      = imgs.map((_, i) => `<span class="${i===0?'active':''}" data-dot="${i}"></span>`).join('');
-  const videoHTML = video ? `<video controls preload="metadata" style="width:100%;max-width:600px;display:block;margin-top:0.75rem"><source src="${video}" type="video/mp4"></video>` : '';
+  const videoHTML = video
+    ? `<video controls preload="metadata" style="width:100%;max-width:600px;display:block;margin-top:0.75rem"><source src="${video}" type="video/mp4"></video>`
+    : videos.map(v => `<video controls preload="metadata" style="width:100%;max-width:600px;display:block;margin-top:0.75rem"><source src="${v}"></video>`).join('');
   const gameHTML  = game
     ? `<p style="margin-top:0.75rem"><a href="${game}" target="_blank" rel="noopener" class="sub-trigger" style="color:var(--muted)">press here to play!</a></p>`
     : '';
@@ -594,9 +621,7 @@ function imageSubPanelHTML(key, title, desc, backKey) {
     <p class="sub-title">${title}</p>
     ${desc ? `<p class="sub-desc">${desc}</p>` : ''}
     ${gameHTML}
-    <div class="img-grid">${grid}</div>
-    <div class="img-carousel" id="sub-carousel">${carousel}</div>
-    <div class="carousel-dots" id="sub-dots">${dots}</div>
+    ${imgs.length ? `<div class="img-grid">${grid}</div><div class="img-carousel" id="sub-carousel">${carousel}</div><div class="carousel-dots" id="sub-dots">${dots}</div>` : ''}
     ${videoHTML}`;
 }
 
